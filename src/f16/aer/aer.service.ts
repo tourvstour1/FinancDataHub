@@ -1,0 +1,75 @@
+import { Injectable } from '@nestjs/common';
+import { t_aer } from 'prisma/generated/finanace-client';
+import { PrismaFinance } from 'src/prisma/prisma.service.finanec';
+
+@Injectable()
+export class AerService {
+  constructor(readonly prisma: PrismaFinance) {}
+
+  createAer = async (aer: t_aer[]) => {
+    const listSize = 1000;
+    const listData: Array<t_aer[]> = [];
+
+    if (aer.length > 0) {
+      for (let i = 0; i < aer.length; i += listSize) {
+        const item = aer.slice(i, i + listSize);
+        listData.push(item);
+      }
+      await this.findAndDelete(listData);
+      await this.insert(listData);
+      return 0;
+    } else {
+      return 0;
+    }
+  };
+
+  findAndDelete = async (aerList: Array<t_aer[]>) => {
+    return await new Promise((resolve, reject) => {
+      const apdListSzie = aerList.length;
+      let round = 0;
+      aerList.forEach(async (adp) => {
+        await this.prisma.t_aer
+          .deleteMany({
+            where: {
+              seq: { in: adp.map((i) => i.seq) },
+            },
+          })
+          .finally(() => this.prisma.$disconnect());
+
+        await this.prisma.t_aer
+          .deleteMany({
+            where: {
+              an: { in: adp.map((i) => i.an) },
+            },
+          })
+          .finally(() => this.prisma.$disconnect());
+
+        round = round + 1;
+
+        if (apdListSzie === round) {
+          resolve(true);
+        }
+      });
+    });
+  };
+
+  insert = async (aerList: Array<t_aer[]>) => {
+    return await new Promise((resolve, reject) => {
+      const listSize = aerList.length;
+      let round = 0;
+      aerList.forEach(async (adp) => {
+        await this.prisma.t_aer
+          .createMany({
+            data: adp,
+          })
+          .finally(() => this.prisma.$disconnect());
+
+        round = round + 1;
+
+        if (listSize === round) {
+          resolve(true);
+        }
+      });
+    });
+  };
+}

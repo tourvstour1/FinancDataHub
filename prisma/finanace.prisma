@@ -1,0 +1,277 @@
+generator client {
+    provider        = "prisma-client-js"
+    previewFeatures = ["multiSchema", "relationJoins"]
+    output          = "./generated/finanace-client"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_FINANCE_URL")
+}
+
+model t_ins {
+    id       String  @id @unique @default(uuid())
+    hn       String? @db.VarChar(15)
+    inscl    String  @db.VarChar(3)
+    subtype  String? @db.VarChar(2)
+    cid      String? @db.VarChar(16)
+    hcode    String  @db.VarChar(5)
+    dateexp  String?
+    hospmain String  @db.VarChar(5)
+    hospsub  String  @db.VarChar(5)
+    govcode  String? @db.VarChar(6)
+    govname  String? @db.VarChar(255)
+    permitno String? @db.VarChar(30)
+    docno    String? @db.VarChar(30)
+    ownrpid  String? @db.VarChar(13)
+    ownname  String? @db.VarChar(255)
+    an       String  @db.VarChar(15)
+    seq      String  @db.VarChar(15)
+    subinscl String? @db.VarChar(2)
+    relinscl String? @db.VarChar(1)
+    htype    String? @db.VarChar(1)
+}
+
+model t_pat {
+    id        String  @id @default(uuid())
+    hcode     String  @db.VarChar(5)
+    hn        String  @db.VarChar(15)
+    changwat  String? @db.VarChar(2)
+    amphur    String? @db.VarChar(2)
+    dob       String
+    sex       String  @db.VarChar(1)
+    marriage  String  @db.VarChar(1)
+    occupa    String  @db.VarChar(3)
+    nation    String  @db.VarChar(3)
+    person_id String  @db.VarChar(13)
+    namepat   String  @db.VarChar(36)
+    title     String  @db.VarChar(30)
+    fname     String  @db.VarChar(40)
+    lname     String  @db.VarChar(40)
+    idtype    String
+}
+
+// Define the t_opd model
+model t_opd {
+    id      String  @id @default(uuid())
+    hn      String  @db.VarChar(15)
+    clinic  String? @db.VarChar(5)
+    dateopd String
+    timeopd String  @db.VarChar(4)
+    seq     String  @db.VarChar(15)
+    uuc     String  @db.VarChar(1)
+    detail  String  @db.VarChar(255)
+    btemp   String
+    sbp     String
+    dbp     String
+    pr      String
+    rr      String
+    optype  String  @db.VarChar(2)
+    typein  String? @db.VarChar(1)
+    typeout String? @db.VarChar(1)
+}
+
+model t_orf {
+    id        String  @id @default(uuid())
+    hn        String  @db.VarChar(15)
+    dateopd   String
+    clinic    String? @db.VarChar(5)
+    refer     String  @db.VarChar(5)
+    refertype String  @db.VarChar(1)
+    seq       String  @db.VarChar(15)
+    referdate String
+}
+
+model t_odx {
+    id        String  @id @default(uuid())
+    hn        String  @db.VarChar(15)
+    datedx    String
+    clinic    String? @db.VarChar(5)
+    diag      String  @db.VarChar(7)
+    dxtype    String  @db.VarChar(1)
+    drdx      String  @db.VarChar(6)
+    person_id String  @db.VarChar(13)
+    seq       String  @db.VarChar(15)
+}
+
+model t_oop {
+    id        String  @id @default(uuid())
+    hn        String  @db.VarChar(15)
+    dateopd   String
+    clinic    String? @db.VarChar(5)
+    oper      String  @db.VarChar(7)
+    dropid    String  @db.VarChar(6)
+    person_id String  @db.VarChar(13)
+    seq       String  @db.VarChar(15)
+    servprice String
+}
+
+model t_ipd {
+    id      String  @id @default(uuid())
+    hn      String  @db.VarChar(15)
+    an      String  @unique @db.VarChar(15)
+    dateadm String
+    timeadm String  @db.VarChar(4)
+    datedsc String
+    timedsc String  @db.VarChar(4)
+    dischs  String  @db.VarChar(1)
+    discht  String  @db.VarChar(1)
+    warddsc String? @db.VarChar(4)
+    dept    String? @db.VarChar(2)
+    adm_w   String
+    uuc     String  @db.VarChar(1)
+    svctype String  @db.VarChar(1)
+}
+
+model t_irf {
+    id        String @id @default(uuid())
+    an        String @db.VarChar(15)
+    refer     String @db.VarChar(5)
+    refertype String @db.VarChar(1)
+}
+
+model t_idx {
+    id     String @id @default(uuid())
+    an     String @db.VarChar(15)
+    diag   String @db.VarChar(7)
+    dxtype String @db.VarChar(1)
+    drdx   String @db.VarChar(6)
+}
+
+model t_iop {
+    id      String  @id @default(uuid())
+    an      String  @db.VarChar(15)
+    oper    String  @db.VarChar(7)
+    optype  String? @db.VarChar(1)
+    dropid  String  @db.VarChar(6)
+    datein  String
+    timein  String  @db.VarChar(4)
+    dateout String?
+    timeout String? @db.VarChar(4)
+}
+
+model t_cht {
+    id         String  @id @default(uuid())
+    hn         String  @db.VarChar(15)
+    an         String  @db.VarChar(15)
+    date       String
+    total      String
+    paid       String
+    pttype     String? @db.VarChar(2)
+    person_id  String  @db.VarChar(13)
+    seq        String  @db.VarChar(15)
+    opd_memo   String  @db.VarChar(500)
+    invoice_no String  @db.VarChar(50)
+    invoice_lt String? @db.VarChar(50)
+}
+
+model t_cha {
+    id        String @id @default(uuid())
+    hn        String @db.VarChar(15)
+    an        String @db.VarChar(15)
+    date      String
+    chrgitem  String @db.VarChar(2)
+    amount    String
+    person_id String @db.VarChar(13)
+    seq       String @db.VarChar(15)
+}
+
+model t_aer {
+    id       String  @id @default(uuid())
+    hn       String  @db.VarChar(15)
+    an       String  @db.VarChar(15)
+    dateopd  String
+    authae   String? @db.VarChar(12)
+    aedate   String
+    aetime   String  @db.VarChar(4)
+    aetype   String  @db.VarChar(1)
+    refer_no String  @db.VarChar(20)
+    refmaini String  @db.VarChar(5)
+    ireftype String  @db.VarChar(4)
+    refmaino String  @db.VarChar(5)
+    oreftype String  @db.VarChar(4)
+    ucae     String  @db.VarChar(1)
+    emtype   String  @db.VarChar(1)
+    seq      String  @db.VarChar(15)
+    aestatus String? @db.VarChar(1)
+    dalert   String?
+    talert   String? @db.VarChar(4)
+}
+
+model t_adp {
+    id            String  @id @unique @default(uuid())
+    hn            String  @db.VarChar(15)
+    an            String  @db.VarChar(15)
+    dateopd       String
+    type          String  @db.VarChar(2)
+    code          String  @db.VarChar(30)
+    qty           String
+    rate          String
+    seq           String  @db.VarChar(15)
+    cagcode       String? @db.VarChar(10)
+    dose          String? @db.VarChar(10)
+    ca_type       String? @db.VarChar(1)
+    serialno      String? @db.VarChar(24)
+    totcopay      String?
+    use_status    String? @db.VarChar(1)
+    total         String?
+    tmltcode      String  @db.VarChar(15)
+    status1       String  @db.VarChar(1)
+    bi            String
+    clinic        String? @db.VarChar(5)
+    itemsrc       String
+    provider      String  @db.VarChar(15)
+    gravida       String?
+    ga_week       String?
+    dcip_e_screen String?
+    lmp           String?
+}
+
+model t_lvd {
+    id      String @id @default(uuid())
+    seqlvd  String @db.VarChar(3)
+    an      String @db.VarChar(15)
+    dateout String
+    timeout String @db.VarChar(4)
+    datein  String
+    timein  String @db.VarChar(4)
+    qtyday  String @db.VarChar(3)
+}
+
+model t_dru {
+    id         String  @id @default(uuid())
+    hcode      String  @db.VarChar(5)
+    hn         String  @db.VarChar(15)
+    an         String  @db.VarChar(15)
+    clinic     String? @db.VarChar(5)
+    person_id  String  @db.VarChar(13)
+    date_serv  String
+    did        String  @db.VarChar(30)
+    didname    String  @db.VarChar(255)
+    amount     String
+    drugprice  String  @db.VarChar(14)
+    drugcost   String? @db.VarChar(14)
+    didstd     String  @db.VarChar(24)
+    unit       String  @db.VarChar(20)
+    unit_pack  String? @db.VarChar(20)
+    seq        String  @db.VarChar(15)
+    drugremark String  @db.VarChar(2)
+    pa_no      String  @db.VarChar(9)
+    totcopay   String?
+    use_status String  @db.VarChar(1)
+    total      String?
+    sigcode    String? @db.VarChar(50)
+    sigtext    String? @db.VarChar(255)
+    provider   String  @db.VarChar(15)
+}
+
+model t_labfu {
+    id        String @id @default(uuid())
+    hcode     String @db.VarChar(5)
+    hn        String @db.VarChar(15)
+    person_id String @db.VarChar(13)
+    dateserv  String
+    seq       String @db.VarChar(15)
+    labtest   String @db.VarChar()
+    labresult String
+}
