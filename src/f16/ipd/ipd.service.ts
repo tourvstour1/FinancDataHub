@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { t_ipd } from 'prisma/generated/finanace-client';
 import { PrismaFinance } from 'src/prisma/prisma.service.finanec';
+import { ModelIpdDulpicates } from './ipd.entity';
 
 @Injectable()
 export class IpdService {
-  constructor(readonly prisma: PrismaFinance) {}
+  constructor(readonly prisma: PrismaFinance) { }
 
   createIpd = async (ipd: t_ipd[]) => {
     const listSize = 1000;
@@ -28,21 +29,18 @@ export class IpdService {
       const ipdListSzie = ipdlist.length;
       let round = 0;
       ipdlist.forEach(async (ipd) => {
-        await this.prisma
-          .$transaction([
-            this.prisma.t_ins.deleteMany({
-              where: {
-                an: { in: ipd.map((i) => i.an) },
-              },
-            }),
+        const an: string[] = [];
+        ipd.forEach((i) => {
+          if (i.an !== '') {
+            an.push(i.an);
+          }
+        });
 
-            this.prisma.t_ipd.deleteMany({
-              where: {
-                an: { in: ipd.map((i) => i.an) },
-              },
-            }),
-          ])
-          .finally(() => this.prisma.$disconnect());
+        await this.prisma.t_ipd.deleteMany({
+          where: {
+            an: { in: an },
+          },
+        })
 
         round = round + 1;
 
@@ -57,19 +55,63 @@ export class IpdService {
     return await new Promise((resolve, reject) => {
       const listSize = ipdList.length;
       let round = 0;
-      ipdList.forEach(async (ipd) => {
-        await this.prisma.t_ipd
-          .createMany({
-            data: ipd,
-          })
-          .finally(() => this.prisma.$disconnect())
-
+      ipdList.forEach(async (ipd: t_ipd[]) => {
+        // console.log(ipd);
+        await this.prisma.t_ipd.createMany({
+          data: ipd
+        })
         round = round + 1;
 
         if (listSize === round) {
           resolve(true);
+          await this.clearDuplicates()
         }
       });
     });
   };
+
+  clearDuplicates = async () => {
+    const getDuplicate = await this.prisma.$queryRawUnsafe(`
+    SELECT an ,count(an) from t_ipd GROUP BY an HAVING count(an)>1`) as ModelIpdDulpicates[]
+
+    if (getDuplicate.length > 0) {
+      const duplicateAns = getDuplicate.map(an => an.an)
+
+      const getAnIpd = await this.prisma.t_ipd.findMany({
+        select: {
+          id: false,
+          hn: true,
+          an: true,
+          dateadm: true,
+          timeadm: true,
+          datedsc: true,
+          timedsc: true,
+          dischs: true,
+          discht: true,
+          warddsc: true,
+          dept: true,
+          adm_w: true,
+          uuc: true,
+          svctype: true,
+        },
+        where: {
+          an: {
+            in: duplicateAns
+          }
+        }, distinct: 'an'
+      })
+
+      await this.prisma.t_ipd.deleteMany({
+        where: {
+          an: {
+            in: duplicateAns
+          }
+        }
+      })
+
+      await this.prisma.t_ipd.createMany({
+        data: getAnIpd
+      })
+    }
+  }
 }

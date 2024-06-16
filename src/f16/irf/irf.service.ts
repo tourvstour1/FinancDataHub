@@ -28,9 +28,16 @@ export class IrfService {
       const irfListSzie = irflist.length;
       let round = 0;
       irflist.forEach(async (irf) => {
+        const an: string[] = [];
+
+        irf.forEach((i) => {
+          if (i.an !== '') {
+            an.push(i.an);
+          }
+        });
         await this.prisma.t_irf.deleteMany({
           where: {
-            an: { in: irf.map((i) => i.an) },
+            an: { in: an },
           },
         });
 

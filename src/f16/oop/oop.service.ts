@@ -28,10 +28,18 @@ export class OopService {
       const odxListSzie = odxlist.length;
       let round = 0;
       odxlist.forEach(async (odx) => {
+        const seq: string[] = [];
+
+        odx.forEach((i) => {
+          if (i.seq !== '') {
+            seq.push(i.seq);
+          }
+        });
+
         await this.prisma.t_oop
           .deleteMany({
             where: {
-              seq: { in: odx.map((i) => i.seq) },
+              seq: { in: seq },
             },
           })
           .finally(() => this.prisma.$disconnect());

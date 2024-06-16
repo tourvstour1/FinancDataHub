@@ -22,6 +22,7 @@ import { AdpModule } from 'src/f16/adp/adp.module';
 import { LvdModule } from 'src/f16/lvd/lvd.module';
 import { DruModule } from 'src/f16/dru/dru.module';
 import { LabfuModule } from 'src/f16/labfu/labfu.module';
+import { EventModule } from 'src/event/event.module';
 
 @Module({
   imports: [
@@ -43,7 +44,7 @@ import { LabfuModule } from 'src/f16/labfu/labfu.module';
     LvdModule,
     DruModule,
     LabfuModule,
-    
+    EventModule,
   ],
   controllers: [ProcessController],
   providers: [ProcessService, PrismaFinance, PrismaHospital],

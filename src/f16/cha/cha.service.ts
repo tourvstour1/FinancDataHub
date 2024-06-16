@@ -27,10 +27,25 @@ export class ChaService {
       const apdListSzie = chalist.length;
       let round = 0;
       chalist.forEach(async (cha) => {
+        const seq: string[] = [];
+        const an: string[] = [];
+
+        cha.forEach((i) => {
+          if (i.seq !== '') {
+            seq.push(i.seq);
+          }
+        });
+
+        cha.forEach((i) => {
+          if (i.an !== '') {
+            an.push(i.an);
+          }
+        });
+
         await this.prisma.t_cha
           .deleteMany({
             where: {
-              seq: { in: cha.map((i) => i.seq) },
+              seq: { in: seq },
             },
           })
           .finally(() => this.prisma.$disconnect());
@@ -38,7 +53,7 @@ export class ChaService {
         await this.prisma.t_cha
           .deleteMany({
             where: {
-              an: { in: cha.map((i) => i.an) },
+              an: { in: an },
             },
           })
           .finally(() => this.prisma.$disconnect());

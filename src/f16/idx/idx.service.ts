@@ -28,6 +28,13 @@ export class IdxService {
       const idxListSize = idxlist.length;
       let round = 0;
       idxlist.forEach(async (idx) => {
+        const an: string[] = [];
+
+        idx.forEach((i) => {
+          if (i.an !== '') {
+            an.push(i.an);
+          }
+        });
         await this.prisma.t_idx
           .deleteMany({
             where: {

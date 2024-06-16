@@ -28,10 +28,25 @@ export class AerService {
       const apdListSzie = aerList.length;
       let round = 0;
       aerList.forEach(async (adp) => {
+        const seq: string[] = [];
+        const an: string[] = [];
+
+        adp.forEach((i) => {
+          if (i.seq !== '') {
+            seq.push(i.seq);
+          }
+        });
+
+        adp.forEach((i) => {
+          if (i.an !== '') {
+            an.push(i.an);
+          }
+        });
+
         await this.prisma.t_aer
           .deleteMany({
             where: {
-              seq: { in: adp.map((i) => i.seq) },
+              seq: { in: seq },
             },
           })
           .finally(() => this.prisma.$disconnect());
@@ -39,7 +54,7 @@ export class AerService {
         await this.prisma.t_aer
           .deleteMany({
             where: {
-              an: { in: adp.map((i) => i.an) },
+              an: { in: an },
             },
           })
           .finally(() => this.prisma.$disconnect());

@@ -4,7 +4,7 @@ import { PrismaFinance } from 'src/prisma/prisma.service.finanec';
 
 @Injectable()
 export class IopService {
-  constructor(readonly prisma: PrismaFinance) {}
+  constructor(readonly prisma: PrismaFinance) { }
 
   createIop = async (iop: t_iop[]) => {
     const listSize = 1000;
@@ -28,13 +28,21 @@ export class IopService {
       const iopListSzie = ioplist.length;
       let round = 0;
       ioplist.forEach(async (iop) => {
+        const an: string[] = [];
+
+        iop.forEach((i) => {
+          if (i.an !== '') {
+            an.push(i.an);
+          }
+        });
+
         await this.prisma.t_iop
           .deleteMany({
             where: {
-              an: { in: iop.map((i) => i.an) },
+              an: { in: an },
             },
           })
-          .finally(() => this.prisma.$disconnect());
+
 
         round = round + 1;
 
@@ -54,8 +62,7 @@ export class IopService {
           .createMany({
             data: iop,
           })
-          .finally(() => this.prisma.$disconnect());
-
+     
         round = round + 1;
 
         if (listSize === round) {

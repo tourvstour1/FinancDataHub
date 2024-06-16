@@ -29,10 +29,17 @@ export class LvdService {
       const lvdListSzie = lvdlist.length;
       let round = 0;
       lvdlist.forEach(async (lvd) => {
+        const an: string[] = [];
+
+        lvd.forEach((i) => {
+          if (i.an !== '') {
+            an.push(i.an);
+          }
+        });
         await this.prisma.t_lvd
           .deleteMany({
             where: {
-              an: { in: lvd.map((i) => i.an) },
+              an: { in: an },
             },
           })
           .finally(() => this.prisma.$disconnect());

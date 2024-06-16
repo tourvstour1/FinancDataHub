@@ -1,6 +1,6 @@
 select
 	q.hn :: text as hn,
-	q.inscl :: text as inscl,
+case when	q.inscl :: text is null then ' ' else q.inscl :: text end as inscl,
 	q.subtype :: text as subtype,
 	q.cid :: text as cid,
 	q.hcode :: text as hcode,
@@ -22,7 +22,8 @@ from
 	(
 	select
 		t_patient.patient_hn as hn,
-		r_rp1853_instype.maininscl as inscl,
+		case when b_map_rp1853_instype.r_rp1853_instype_id  = 'ST' then 'STP' else 	
+		r_rp1853_instype.maininscl end as inscl,
 		b_map_rp1853_instype.r_rp1853_instype_id as subtype,
 		replace (t_patient.patient_pid, ' ', '' ) as cid,
 	case
@@ -111,7 +112,7 @@ from
 				inner join t_visit on ( t_patient.t_patient_id = t_visit.t_patient_id )
 				inner join t_billing on t_billing.t_visit_id = t_visit.t_visit_id 
 				and t_billing.billing_active = '1' 
-				and t_billing.billing_payer_share <> 0
+			--	and t_billing.billing_payer_share <> 0
 				inner join t_health_family on t_health_family.t_health_family_id = t_patient.t_health_family_id
 				inner join f_patient_prefix on f_patient_prefix.f_patient_prefix_id = t_patient.f_patient_prefix_id
 				inner join t_visit_payment on t_visit.t_visit_id = t_visit_payment.t_visit_id 
@@ -122,8 +123,8 @@ from
 				left join f_govcode on t_visit_govoffical_plan.f_govcode_id = f_govcode.f_govcode_id
 				inner join b_contract_plans on t_visit_payment.b_contract_plans_id = b_contract_plans.b_contract_plans_id
 				inner join b_map_rp1853_instype on b_contract_plans.b_contract_plans_id = b_map_rp1853_instype.b_contract_plans_id
-				inner join r_rp1853_instype on b_map_rp1853_instype.r_rp1853_instype_id = r_rp1853_instype.id 
-							and regexp_like(r_rp1853_instype.maininscl,upper('ucs|ofc|sss|lgo|ssi|nhs')) 
+				LEFT join r_rp1853_instype on b_map_rp1853_instype.r_rp1853_instype_id = r_rp1853_instype.id 
+						--	and regexp_like(r_rp1853_instype.maininscl,upper('ucs|ofc|sss|lgo|ssi|nhs')) 
 							
 							cross JOIN b_site
 			where

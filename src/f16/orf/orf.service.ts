@@ -28,10 +28,17 @@ export class OrfService {
       const orfListSzie = orflist.length;
       let round = 0;
       orflist.forEach(async (orf) => {
+        const seq: string[] = [];
+
+        orf.forEach((i) => {
+          if (i.seq !== '') {
+            seq.push(i.seq);
+          }
+        });
         await this.prisma.t_orf
           .deleteMany({
             where: {
-              seq: { in: orf.map((i) => i.seq) },
+              seq: { in: seq },
             },
           })
           .finally(() => this.prisma.$disconnect());

@@ -12,8 +12,7 @@ export class ProcessController {
     @Query('dateStart') dateStart: string,
     @Query('dateEnd') dateEnd: string,
   ) {
-    console.log(555);
-    
+     
     const newDateStart =
       +dateStart.split('-')[0] +
       543 +

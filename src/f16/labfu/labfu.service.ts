@@ -28,10 +28,18 @@ export class LabfuService {
       const labfuListSzie = labfulist.length;
       let round = 0;
       labfulist.forEach(async (labfu) => {
+        const seq: string[] = [];
+
+        labfu.forEach((i) => {
+          if (i.seq !== '') {
+            seq.push(i.seq);
+          }
+        });
+
         await this.prisma.t_labfu
           .deleteMany({
             where: {
-              seq: { in: labfu.map((i) => i.seq) },
+              seq: { in: seq },
             },
           })
           .finally(() => this.prisma.$disconnect());

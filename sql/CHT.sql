@@ -77,12 +77,12 @@ from
 			and t_visit_payment.visit_payment_active = '1'
 			inner join b_contract_plans on t_visit_payment.b_contract_plans_id = b_contract_plans.b_contract_plans_id
 			inner join b_map_rp1853_instype on b_contract_plans.b_contract_plans_id = b_map_rp1853_instype.b_contract_plans_id
-			inner join r_rp1853_instype on b_map_rp1853_instype.r_rp1853_instype_id = r_rp1853_instype.id 	
-			and regexp_like(r_rp1853_instype.maininscl,upper('ucs|ofc|sss|lgo|ssi|nhs')) 
+			LEFT join r_rp1853_instype on b_map_rp1853_instype.r_rp1853_instype_id = r_rp1853_instype.id 	
+			--and regexp_like(r_rp1853_instype.maininscl,upper('ucs|ofc|sss|lgo|ssi|nhs')) 
 		where
 			t_visit.f_visit_status_id <> '4' 
 			and t_billing.billing_active = '1' 
-			and t_billing.billing_payer_share <> 0 
+			--and t_billing.billing_payer_share <> 0 
 			and length ( t_visit.visit_staff_doctor_discharge_date_time ) > 10 
 			and substring ( t_visit.visit_staff_doctor_discharge_date_time, 1, 10 ) <> '' 
 		AND SUBSTRING ( t_visit.visit_staff_doctor_discharge_date_time, 1, 10 ) >= ':startDate' 

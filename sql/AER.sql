@@ -74,6 +74,7 @@ FROM
 						t_visit_refer_in_out.visit_refer_in_out_lab ELSE'0' 
 						END || '0' ELSE'' 
 	END AS ireftype,
+	case when t_visit_refer_in_out.visit_refer_in_out_treatment <>  '1' THEN '1' end as toru,
 CASE
 		
 		WHEN t_visit_refer_in_out.f_visit_refer_type_id = '1' --refer_out
@@ -123,12 +124,12 @@ CASE
 						( CAST ( SUBSTRING ( t_visit.visit_begin_visit_time, 1, 4 ) AS NUMERIC ) - 543 ) :: TEXT || SUBSTRING ( t_visit.visit_begin_visit_time, 5, 6 ) 
 					) :: DATE AS data_date,
 					t_visit.visit_vn AS vn_an 
-				FROM
-					t_accident
-					INNER JOIN t_visit ON t_accident.t_visit_id = t_visit.t_visit_id
+				FROM t_visit
+					
+					left JOIN t_accident ON t_accident.t_visit_id = t_visit.t_visit_id
 					INNER JOIN t_billing ON t_billing.t_visit_id = t_visit.t_visit_id 
 					AND t_billing.billing_active = '1' 
-					AND t_billing.billing_payer_share <> 0
+					--AND t_billing.billing_payer_share <> 0
 					INNER JOIN t_visit_refer_in_out ON t_visit_refer_in_out.t_visit_id = t_visit.t_visit_id 
 					AND t_visit_refer_in_out.visit_refer_in_out_active = '1'
 					INNER JOIN t_visit_payment ON t_visit_payment.t_visit_id = t_visit.t_visit_id 
@@ -136,14 +137,14 @@ CASE
 					AND t_visit_payment.visit_payment_priority = '0'
 					INNER JOIN b_contract_plans ON t_visit_payment.b_contract_plans_id = b_contract_plans.b_contract_plans_id
 					INNER JOIN b_map_rp1853_instype ON b_contract_plans.b_contract_plans_id = b_map_rp1853_instype.b_contract_plans_id
-					INNER JOIN r_rp1853_instype ON b_map_rp1853_instype.r_rp1853_instype_id = r_rp1853_instype.ID 
-					and regexp_like(r_rp1853_instype.maininscl,upper('ucs|ofc|sss|lgo|ssi|nhs')) 
+					LEFT JOIN r_rp1853_instype ON b_map_rp1853_instype.r_rp1853_instype_id = r_rp1853_instype.ID 
+					--and regexp_like(r_rp1853_instype.maininscl,upper('ucs|ofc|sss|lgo|ssi|nhs')) 
 				WHERE
 					t_visit.f_visit_status_id <> '4' 
-					AND t_accident.accident_active = '1' 
+				--	AND t_accident.accident_active = '1' 
 					AND LENGTH ( t_visit.visit_staff_doctor_discharge_date_time ) > 10 
 					AND SUBSTRING ( t_visit.visit_staff_doctor_discharge_date_time, 1, 10 ) <> '' 
-							AND SUBSTRING ( t_visit.visit_staff_doctor_discharge_date_time, 1, 10 ) >= ':startDate' 
+					AND SUBSTRING ( t_visit.visit_staff_doctor_discharge_date_time, 1, 10 ) >= ':startDate' 
 		AND SUBSTRING ( t_visit.visit_staff_doctor_discharge_date_time, 1, 10 ) <= ':endDate' 
 					AND t_visit.f_visit_type_id IN ( '0', '1' ) 
 				GROUP BY
@@ -169,7 +170,8 @@ CASE
 					data_date,
 					visit_type,
 					main_inscl,
-					vn_an 
+					vn_an ,
+					t_visit_refer_in_out.visit_refer_in_out_treatment
 				) AS q 
 		ORDER BY
 	q.HN ASC

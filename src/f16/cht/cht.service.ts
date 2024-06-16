@@ -7,6 +7,7 @@ export class ChtService {
   constructor(readonly prisma: PrismaFinance) {}
 
   createCht = async (cht: t_cht[]) => {
+    if (cht.length === 0) return 0;
     const listSize = 1000;
     const listData = [];
 
@@ -24,10 +25,24 @@ export class ChtService {
       const apdListSzie = chtlist.length;
       let round = 0;
       chtlist.forEach(async (cht) => {
+        const seq: string[] = [];
+        const an: string[] = [];
+
+        cht.forEach((i) => {
+          if (i.seq !== '') {
+            seq.push(i.seq);
+          }
+        });
+
+        cht.forEach((i) => {
+          if (i.an !== '') {
+            an.push(i.an);
+          }
+        });
         await this.prisma.t_cht
           .deleteMany({
             where: {
-              seq: { in: cht.map((i) => i.seq) },
+              seq: { in: seq },
             },
           })
           .finally(() => this.prisma.$disconnect());
@@ -35,7 +50,7 @@ export class ChtService {
         await this.prisma.t_cht
           .deleteMany({
             where: {
-              an: { in: cht.map((i) => i.an) },
+              an: { in: an },
             },
           })
           .finally(() => this.prisma.$disconnect());

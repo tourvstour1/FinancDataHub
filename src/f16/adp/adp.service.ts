@@ -4,9 +4,10 @@ import { PrismaFinance } from 'src/prisma/prisma.service.finanec';
 
 @Injectable()
 export class AdpService {
-  constructor(private prisma: PrismaFinance) {}
+  constructor(private prisma: PrismaFinance) { }
 
   createAdp = async (adp: t_adp[]) => {
+    console.log('start adp');
     const listSize = 1000;
     const listData: Array<t_adp[]> = [];
 
@@ -15,37 +16,51 @@ export class AdpService {
         const item = adp.slice(i, i + listSize);
         listData.push(item);
       }
+
       await this.findAndDelete(listData);
       await this.insert(listData);
       return 0;
     } else {
       return 0;
     }
-  };
+  }
 
   findAndDelete = async (adplist: Array<t_adp[]>) => {
-    return await new Promise((resolve, reject) => {
+    return await new Promise((resolve, _reject) => {
       const adpListSzie = adplist.length;
       let round = 0;
       adplist.forEach(async (adp) => {
-        await this.prisma.t_adp
-          .deleteMany({
+        const seq: string[] = [];
+        const an: string[] = [];
+
+        adp.forEach((i) => {
+          if (i.an !== '') {
+            an.push(i.an);
+          }
+          if (i.seq !== '') {
+            seq.push(i.seq);
+          }
+        });
+
+        if (seq.length > 0) {
+
+          await this.prisma.t_adp.deleteMany({
             where: {
-              seq: { in: adp.map((i) => i.seq) },
+              seq: { in: seq },
             },
           })
-          .finally(() => this.prisma.$disconnect());
+        }
 
-        await this.prisma.t_adp
-          .deleteMany({
+        if (an.length > 0) {
+
+          await this.prisma.t_adp.deleteMany({
             where: {
-              an: { in: adp.map((i) => i.an) },
+              an: { in: an },
             },
           })
-          .finally(() => this.prisma.$disconnect());
-
+        }
         round = round + 1;
-
+        //  console.log({ round, adpListSzie });
         if (adpListSzie === round) {
           resolve(true);
         }
@@ -54,15 +69,18 @@ export class AdpService {
   };
 
   insert = async (adpList: Array<t_adp[]>) => {
-    return await new Promise((resolve, reject) => {
+    return await new Promise((resolve, _reject) => {
       const listSize = adpList.length;
       let round = 0;
       adpList.forEach(async (adp) => {
-        await this.prisma.t_adp
-          .createMany({
-            data: adp,
-          })
-          .finally(() => this.prisma.$disconnect());
+
+        console.log('create item ADP' + adp.length);
+
+        await this.prisma.t_adp.createMany({
+          data: adp,
+        }).catch(err => {
+          console.log(err);
+        })
 
         round = round + 1;
 

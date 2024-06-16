@@ -22,7 +22,6 @@ select
 	q.sigcode :: text as sigcode,
 	q.sigtext :: text as sigtext,
 	q.provider :: text as provider
- 
 from
 	(
 	select
@@ -55,7 +54,7 @@ from
 		q1.vn_an 
 	from
 		(
-		select
+		select		
 			b_site.b_visit_office_id as hcode,
 			t_visit.visit_hn as hn,
 		case
@@ -70,7 +69,8 @@ from
 				when text_to_timestamp ( t_visit.visit_begin_visit_time ) is not null then
 				to_char( text_to_timestamp ( t_visit.visit_begin_visit_time ), 'yyyymmdd' ) else'' 
 			end as date_serv,
-			b_item.item_number as did,
+			case WHEN lower(dru_cataloges."HOSPDRUGCODE") is null then 'NHSOED' else
+			b_item.item_number END as did,
 			t_order.order_common_name as didname,
 			t_order.order_qty as amount,
 			t_order.order_price as drugprice,
@@ -123,7 +123,7 @@ from
 	t_visit
 	inner join t_billing on t_billing.t_visit_id = t_visit.t_visit_id 
 	and t_billing.billing_active = '1' 
-	and t_billing.billing_payer_share <> 0
+	--and t_billing.billing_payer_share <> 0
 	inner join t_patient on ( t_visit.t_patient_id = t_patient.t_patient_id )
 	inner join t_health_family on ( t_health_family.t_health_family_id = t_patient.t_health_family_id )
 	inner join t_order on (
@@ -188,8 +188,12 @@ from
 	and t_visit_payment.visit_payment_active = '1'
 	inner join b_contract_plans on t_visit_payment.b_contract_plans_id = b_contract_plans.b_contract_plans_id
 	inner join b_map_rp1853_instype on b_contract_plans.b_contract_plans_id = b_map_rp1853_instype.b_contract_plans_id
-	inner join r_rp1853_instype on b_map_rp1853_instype.r_rp1853_instype_id = r_rp1853_instype.id 
-				and regexp_like(r_rp1853_instype.maininscl,upper('ucs|ofc|sss|lgo|ssi|nhs')) 
+	LEFT join r_rp1853_instype on b_map_rp1853_instype.r_rp1853_instype_id = r_rp1853_instype.id 
+		--		and regexp_like(r_rp1853_instype.maininscl,upper('ucs|ofc|sss|lgo|ssi|nhs')) 
+		LEFT JOIN b_map_product_category ON b_map_product_category.b_item_id = b_item.b_item_id
+		INNER JOIN f_product_category ON f_product_category.f_product_category_id = b_map_product_category.f_product_category_id 
+		LEFT JOIN hospital_catalog.dru_cataloges ON  lower(dru_cataloges."HOSPDRUGCODE") =lower(b_item.item_number)
+				
  cross join b_site 
 where
 	t_order.f_order_status_id <> '3' 
@@ -199,6 +203,7 @@ where
 		AND SUBSTRING ( t_visit.visit_staff_doctor_discharge_date_time, 1, 10 ) >= ':startDate' 
 		AND SUBSTRING ( t_visit.visit_staff_doctor_discharge_date_time, 1, 10 ) <= ':endDate' 
 	and t_visit.f_visit_type_id in ( '0', '1' ) 
+	AND f_product_category.f_product_category_id <> '3'
 	) as q1 
 group by
 	q1.hcode,

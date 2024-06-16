@@ -1,19 +1,36 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaFinance } from 'src/prisma/prisma.service.finanec';
-import { OpdServiceTyep, IpdServiceType } from './edit-16f.entity';
+import { OpdServiceType, IpdServiceType } from './edit-16f.entity';
 
 @Injectable()
 export class Edit16fService {
-  constructor(readonly prisma: PrismaFinance) {}
+  constructor(readonly prisma: PrismaFinance) { }
 
-  getWithSeq = async (seq: string): Promise<OpdServiceTyep> => {
+  getWithSeq = async (seq: string[]): Promise<OpdServiceType> => {
+
+    if(seq[0]===undefined) return
     const opd = await this.prisma.t_opd.findMany({
       where: {
-        seq: seq,
+        seq: {
+          in: seq
+        },
       },
     });
-    const hnList: string[] = opd.map((i) => i.hn);
-    const seqList: string[] = opd.map((i) => i.seq);
+    const hnList: string[] = []
+
+    const seqList: string[] = []
+
+    opd.forEach((i) => {
+      if (i.hn !== '') {
+        hnList.push(i.hn)
+      }
+    });
+
+    opd.forEach((i) => {
+      if (i.seq !== '') {
+        seqList.push(i.seq)
+      }
+    });
 
     const pat = await this.prisma.t_pat.findMany({
       where: {
@@ -22,6 +39,8 @@ export class Edit16fService {
         },
       },
     });
+
+    const listTables = ['t_ins', 't_adp', 't_aer', 't_cht', 't_cha', 't_dru', 't_labfu', 't_odx', 't_oop', 't_orf']
 
     const ins = await this.prisma.t_ins.findMany({
       where: {
@@ -59,7 +78,9 @@ export class Edit16fService {
       where: {
         seq: {
           in: seqList,
-        },
+        }, amount: {
+          not: '0'
+        }
       },
     });
 
@@ -103,31 +124,38 @@ export class Edit16fService {
       },
     });
 
-    const opdServive: OpdServiceTyep = {
-      opd,
-      pat,
-      ins,
-      adp,
-      aer,
-      cht,
-      cha,
-      dru,
-      labfu,
-      odx,
-      oop,
-      orf,
-    };
+    const opdServive: OpdServiceType = { opd, pat, ins, adp, aer, cht, cha, dru, labfu, odx, oop, orf, };
+
     return opdServive;
   };
 
-  getWithAn = async (an: string): Promise<IpdServiceType> => {
+  getWithAn = async (an: string[]): Promise<IpdServiceType> => { 
+    const anList: string[] = []
+    const hnList: string[] = []
+
     const ipd = await this.prisma.t_ipd.findMany({
       where: {
-        an: an,
+        an: {
+          in: an
+        },
       },
     });
-    const anList: string[] = ipd.map((i) => i.an);
-    const hnList: string[] = ipd.map((i) => i.hn);
+
+    const ipdServive: IpdServiceType = {
+      ipd
+    };
+
+    ipd.forEach((i) => {
+      if (i.an !== '') {
+        anList.push(i.an)
+      }
+      
+      if (i.hn !== '') {
+        hnList.push(i.hn)
+      }
+    });
+
+
 
     const pat = await this.prisma.t_pat.findMany({
       where: {
@@ -137,90 +165,295 @@ export class Edit16fService {
       },
     });
 
-    const ins = await this.prisma.t_ins.findMany({
-      where: {
-        an: {
-          in: anList,
-        },
-      },
-    });
+    Object.assign(ipdServive, {
+      pat
+    })
 
-    const adp = await this.prisma.t_adp.findMany({
-      where: {
-        an: {
-          in: anList,
-        },
-      },
-    });
+    const listTabls = ['t_lvd', 't_irf', 't_iop', 't_ins', 't_adp', 't_aer', 't_cht', 't_cha', 't_idx', 't_dru']
 
-    const aer = await this.prisma.t_aer.findMany({
-      where: {
-        an: {
-          in: anList,
+    await Promise.all(listTabls.map(async (table) => {
+      const replaceTable = table.replaceAll('t_', '')
+      const result = await this.prisma[table].findMany({
+        where: {
+          an: {
+            in: anList,
+          },
         },
-      },
-    });
+      });
 
-    const cht = await this.prisma.t_cht.findMany({
-      where: {
-        an: {
-          in: anList,
-        },
-      },
-    });
+      Object.assign(ipdServive, {
+        [replaceTable]: result
+      })
+    }))
 
-    const cha = await this.prisma.t_cha.findMany({
-      where: {
-        an: {
-          in: anList,
-        },
-      },
-    });
-
-    const dru = await this.prisma.t_dru.findMany({
-      where: {
-        an: {
-          in: anList,
-        },
-      },
-    });
-
-    const idx = await this.prisma.t_idx.findMany({
-      where: {
-        an: {
-          in: anList,
-        },
-      },
-    });
-
-    const iop = await this.prisma.t_iop.findMany({
-      where: {
-        an: {
-          in: anList,
-        },
-      },
-    });
-
-    const irf = await this.prisma['t_irf'].findMany({
-      where: {
-        an: {
-          in: anList,
-        },
-      },
-    });
-    const opdServive: IpdServiceType = {
-      ipd,
-      pat,
-      ins,
-      adp,
-      aer,
-      cht,
-      cha,
-      dru,
-      idx,
-      iop,
-      irf,
-    };
-    return opdServive;
+    return ipdServive;
   };
+
+  updateOpdService = async (value: OpdServiceType) => {
+    return await new Promise(async (resolve, reject) => {
+      try {
+        let rowOpd = 0;
+        const reslutData = [];
+        const visit = value['opd'].map(item => item.seq)[0]
+        for (let table in value) {
+          const isTable = 't_' + table;
+          const result = await this.edit(value[table], isTable, visit, undefined);
+          reslutData.push(result);
+          rowOpd += 1;
+          if (Object.keys(value).length === rowOpd) {
+            resolve(reslutData);
+            this.updateLogOpd(value['opd'][0])
+          }
+        }
+      } catch (err) {
+        console.log(err);
+        throw err
+      }
+    });
+  };
+
+  updateIpdservice = async (value: IpdServiceType) => {
+    return await new Promise(async (resolve, reject) => {
+      try {
+        let rowIpd = 0;
+        const reslutData = [];
+        const visit = value['ipd'].map(i => i.an)[0]
+        for (let table in value) {
+          const isTable = 't_' + table;
+
+          if (table !== 'labfu') {
+            const result = await this.edit(value[table], isTable, undefined, visit);
+            reslutData.push(result);
+            rowIpd += 1;
+          } else {
+            rowIpd += 1;
+          }
+
+          if (Object.keys(value).length === rowIpd) {
+            resolve(reslutData);
+            this.updateLogIpd(value['ipd'][0])
+          }
+        }
+      } catch (err) {
+        console.log(err);
+        throw err
+      }
+    });
+  };
+
+  edit = async (value: any, table: string, visitVN: string, visitAN: string) => {
+    return await new Promise(async (resolve, reject) => {
+      try {
+        const an = { an: visitAN }
+        const seq = { seq: visitVN }
+        let rowCount = 0;
+        const isConditions = an.an !== undefined ? { an: an.an } : { seq: seq.seq }
+
+        if (value.length === 0) {
+          try {
+            if (table === 't_opd') return
+            if (table === 't_ipd') return
+            if (table === 't_pat') return
+
+            console.log('run delete ' + table);
+
+            await this.prisma[table].deleteMany({
+              where: isConditions
+            }).then((res) => {
+              console.log('delete ' + table + ' = ' + res.count);
+            })
+            rowCount += 0
+          } catch (err) {
+            rowCount += 0
+          }
+
+          if (rowCount === value.length) {
+            resolve(`Update แฟ้ม ${table} สำเร็จ`);
+          }
+        }
+
+        value.forEach(async (item) => {
+          if (item['typeEditor']) {
+            delete item['typeEditor']
+          }
+          if (item['chargeDetail']) {
+            delete item['chargeDetail']
+          }
+          if (item['feeDrug']) {
+            delete item['feeDrug']
+          }
+          if (item['validError']) {
+            delete item['validError']
+          }
+
+          for (let i in item) {
+            if (table === "t_adp") {
+              if (!item['status1']) {
+                Object.assign(item, {
+                  'status1': ''
+                })
+              }
+              if (!item['bi']) {
+                Object.assign(item, {
+                  'bi': ''
+                })
+              }
+              if (!item['provider']) {
+                Object.assign(item, {
+                  'provider': ''
+                })
+              }
+            }
+
+            if (typeof item[i] !== "string") {
+              let newItem = item[i] === null ? '' : item[i].toString()
+              Object.assign(item, {
+                [i]: newItem
+              })
+            }
+          }
+
+          const findId = await this.prisma[table].findMany({
+            where: {
+              id: item.id
+            }
+          })
+
+          if (item.id === null) {
+            const createItem = item
+            console.log('createItem+ ' + table + ' ' + item.id)
+
+            if (item.id !== '') {
+              await this.prisma[table].createMany({
+                data: createItem,
+              })
+            }
+
+            rowCount += 1
+          } else if (findId.length === 0) {
+            delete item['id']
+            console.log('createItem+ ' + table + ' ' + item.id)
+            if (item.id !== '') {
+              const createItem = item
+              await this.prisma[table].createMany({
+                data: createItem,
+              })
+            }
+            rowCount += 1
+          }
+          else {
+            console.log('update+ ' + table + ' ' + item.id)
+            if (item.id !== undefined) {
+              if (item.id !== '') {
+                await this.prisma[table].updateMany({
+                  data: item,
+                  where: {
+                    id: item.id,
+                  },
+                })
+              }
+            }
+            rowCount += 1
+          }
+
+          if (rowCount === value.length) {
+            resolve(`Update แฟ้ม ${table} สำเร็จ`);
+          }
+
+        });
+
+        try {
+          if (table === 't_opd') return
+          if (table === 't_ipd') return
+          if (table === 't_pat') return
+
+          const defaultData = await this.prisma[table].findMany({
+            select: {
+              id: true,
+            },
+            where: isConditions,
+          })
+
+          defaultData.forEach(async (item) => {
+            const find = value.findIndex((i) => i.id === item.id);
+            if (find === -1) {
+              if (item.id !== '') {
+                console.log('delete+ ' + table + ' ' + item.id)
+                if (item.id !== undefined) {
+                  await this.prisma[table].deleteMany({
+                    where: {
+                      id: item.id,
+                    },
+                  });
+                }
+              }
+            }
+          });
+        } catch (err) {
+          console.log("table =" + table)
+          console.log("default delete = " + err);
+        }
+      } catch (err) {
+        reject('err')
+        //  throw (err)
+      }
+    });
+  };
+
+  async updateLogOpd(opd) {
+    const findLog = await this.prisma.opd_claim_status.findMany({
+      where: {
+        seq: opd.seq
+      }
+    })
+
+    if (findLog.length > 0) {
+      await this.prisma.opd_claim_status.updateMany({
+        data: {
+          status_code: '2'
+        },
+        where:
+        {
+          seq: opd.seq
+        }
+      })
+    } else {
+      await this.prisma.opd_claim_status.create({
+        data: {
+          seq: opd.seq,
+          status_code: '2',
+          opd_claim_date: opd.dateopd
+        }
+      })
+    }
+  }
+
+  async updateLogIpd(ipd) {
+
+    const findLog = await this.prisma.ipd_claim_status.findMany({
+      where: {
+        an: ipd.an
+      }
+    })
+
+    if (findLog.length > 0) {
+      await this.prisma.ipd_claim_status.updateMany({
+        data: {
+          status_code: '2'
+        },
+        where:
+        {
+          an: ipd.an
+        }
+      })
+    } else {
+      await this.prisma.ipd_claim_status.create({
+        data: {
+          an: ipd.an,
+          status_code: '2',
+          ipd_claim_date: ipd.datedsc
+        }
+      })
+    }
+  }
 }

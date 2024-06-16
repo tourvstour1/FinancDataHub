@@ -1,0 +1,57 @@
+generator client {
+    provider        = "prisma-client-js"
+    previewFeatures = ["multiSchema", "relationJoins"]
+    output          = "./generated/master-client"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_FINANCE_MASTER_URL")
+    schemas  = ["master_items"]
+}
+
+model item_group {
+    id                String @id @default(uuid())
+    item_group_code   String
+    item_group_name   String
+    item_group_active Int    @default(1)
+
+    @@schema("master_items")
+}
+
+model item_main {
+    id String @id @default(uuid())
+
+    @@schema("master_items")
+}
+
+model lab_main {
+    id String @id @default(uuid())
+
+    @@schema("master_items")
+}
+
+model drug_free_schedule {
+    id           String @id
+    gpuid        String
+    generic_name String
+    strength     String
+    dosageform   String
+    contvalue    String
+    contunit     String
+    disp_unit    String
+    price        String
+
+    @@schema("master_items")
+}
+
+model adp_free_schedule {
+    id        String @id
+    item_code String
+    item_name String
+    unit      String
+    type      String
+    price     String
+
+    @@schema("master_items")
+}
