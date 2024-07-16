@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { readFileSync, readdir, readdirSync } from 'fs';
+import { readFileSync,  readdirSync } from 'fs';
 import { join } from 'path';
 import { t_adp, t_aer, t_cha, t_cht, t_dru, t_idx, t_ins, t_iop, t_ipd, t_irf, t_lvd, t_odx, t_oop, t_opd, t_orf, t_pat } from 'prisma/generated/finanace-client';
 import { AdpService } from 'src/f16/adp/adp.service';
@@ -82,7 +82,7 @@ export class ReProcressService {
                 case 'OPD_ORF.sql':
                     await this.orf.createOrf(resulteQuery as unknown as t_orf[])
                     break;
-                case 'OPD_PAD.sql':
+                case 'OPD_PAT.sql':
                     await this.pat.createPat(resulteQuery as unknown as t_pat[])
                     break;
 
@@ -181,8 +181,7 @@ export class ReProcressService {
                 case 'IPD_LVD.sql':
                     await this.lvd.createLvd(resulteQuery as unknown as t_lvd[])
                     break;
-                case 'IPD_PAD.sql':
-
+                case 'IPD_PAT.sql':
                     await this.pat.createPat(resulteQuery as unknown as t_pat[])
                     break;
 

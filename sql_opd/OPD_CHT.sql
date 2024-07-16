@@ -84,7 +84,8 @@ from
 			and t_billing.billing_active = '1' 
 			--and t_billing.billing_payer_share <> 0 
 			and length ( t_visit.visit_staff_doctor_discharge_date_time ) > 10 
-				AND t_visit.visit_vn =':seq'
+			AND t_visit.visit_vn =':seq'
+			AND LENGTH(t_visit.visit_vn) > 1
 			and t_visit.f_visit_type_id in ( '0', '1' ) 
 		group by
 			t_patient.patient_hn,

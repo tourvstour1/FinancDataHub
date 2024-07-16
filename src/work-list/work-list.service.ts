@@ -514,7 +514,6 @@ export class WorkListService {
       },
     })
 
-
     const ipd = await this.finance.t_ipd.findMany({
       select: {
         id: true,
@@ -579,6 +578,7 @@ export class WorkListService {
         cid: true,
         inscl: true,
         subtype: true,
+        an: true
       },
       where: {
         an: {
@@ -639,7 +639,6 @@ export class WorkListService {
     const ipdMapLog = ipdMapPat.map(item => {
       const ipd_log = ipdLog.filter((i) => i.an === item.an);
 
-
       if (ipd_log.length > 0) {
         Object.assign(item, {
           claim_log: ipd_log,
@@ -653,7 +652,6 @@ export class WorkListService {
     })
 
     const ipds = ipdMapLog as unknown as IpdSearchModel[];
-
     const result: IpdResponstModel = {
       data: ipds,
       pageIndex: pageOffset,

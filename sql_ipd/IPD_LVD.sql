@@ -59,6 +59,7 @@ FROM
 		AND t_admit_leave_day.active = '1' 
 		AND LENGTH ( t_visit.visit_staff_doctor_discharge_date_time ) > 10 
 		AND t_visit.visit_vn=':an'
+		AND LENGTH(t_visit.visit_vn) > 1
 		AND t_admit_leave_day.date_in <> '' 
 		AND t_admit_leave_day.date_out <> '' 
 	GROUP BY

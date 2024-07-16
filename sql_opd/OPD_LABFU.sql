@@ -111,8 +111,9 @@ where
 			
         and t_visit.f_visit_status_id ='3'
         and t_visit.visit_money_discharge_status='1'
-        and t_visit.visit_doctor_discharge_status='1' 			
-		AND t_visit.visit_vn =':seq'
+        and t_visit.visit_doctor_discharge_status='1' 	
+        AND LENGTH(t_visit.visit_vn) > 1		
+	AND t_visit.visit_vn =':seq'
         and (case when t_death.t_death_id is not null 
                     then true 
                when t_death.t_death_id is null and t_health_family.f_patient_discharge_status_id <> '1'

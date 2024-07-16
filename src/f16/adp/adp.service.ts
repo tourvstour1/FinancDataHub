@@ -19,6 +19,7 @@ export class AdpService {
 
       await this.findAndDelete(listData);
       await this.insert(listData);
+
       return 0;
     } else {
       return 0;

@@ -137,7 +137,7 @@ FROM
 										t_visit.f_visit_status_id <> '4' 
 										AND LENGTH ( t_visit.visit_staff_doctor_discharge_date_time ) > 10 
 										AND SUBSTRING ( t_visit.visit_staff_doctor_discharge_date_time, 1, 10 ) <> '' 
-										AND SUBSTRING ( t_visit.visit_staff_doctor_discharge_date_time, 1, 10 ) >= ':startDate' 
+								AND SUBSTRING ( t_visit.visit_staff_doctor_discharge_date_time, 1, 10 ) >= ':startDate' 
 										AND SUBSTRING ( t_visit.visit_staff_doctor_discharge_date_time, 1, 10 ) <= ':endDate' 
 										AND t_visit.f_visit_type_id <> 's' 
 									GROUP BY

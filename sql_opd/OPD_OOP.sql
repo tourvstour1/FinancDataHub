@@ -59,7 +59,8 @@ FROM
 			AND t_visit.f_visit_type_id = '0' 
 			AND t_diag_icd9.diag_icd9_active = '1' 
 			AND LENGTH ( t_visit.visit_staff_doctor_discharge_date_time ) > 10 
-				AND t_visit.visit_vn =':seq'
+			AND t_visit.visit_vn =':seq'
+			AND LENGTH(t_visit.visit_vn) > 1
 		GROUP BY
 			t_patient.patient_hn,
 			dateopd,

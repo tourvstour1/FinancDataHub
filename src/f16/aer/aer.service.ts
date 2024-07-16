@@ -4,7 +4,7 @@ import { PrismaFinance } from 'src/prisma/prisma.service.finanec';
 
 @Injectable()
 export class AerService {
-  constructor(readonly prisma: PrismaFinance) {}
+  constructor(readonly prisma: PrismaFinance) { }
 
   createAer = async (aer: t_aer[]) => {
     const listSize = 1000;
@@ -17,11 +17,32 @@ export class AerService {
       }
       await this.findAndDelete(listData);
       await this.insert(listData);
+      await this.clearNullAer()
       return 0;
     } else {
       return 0;
     }
   };
+
+  clearNullAer = async () => {
+    await this.prisma.t_aer.deleteMany({
+      where: {
+        OR: [
+          {
+            refer_no: '',
+            aetype: '',
+            ireftype: '',
+            oreftype: ''
+          },
+          {
+            refer_no: null,
+            aetype:null,
+      
+          }
+        ]
+      }
+    })
+  }
 
   findAndDelete = async (aerList: Array<t_aer[]>) => {
     return await new Promise((resolve, reject) => {

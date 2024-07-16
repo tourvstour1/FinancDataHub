@@ -9,9 +9,11 @@ import { CheckErrorService } from 'src/check-error/check-error.service';
 import { CatalogsService } from 'src/catalogs/catalogs.service';
 import { PrismaHospital } from 'src/prisma/prisma.service.hospital';
 import { JwtService } from '@nestjs/jwt';
+import { ChtModifyService } from 'src/cht-modify/cht-modify.service';
+import { ReProcressService } from 'src/re-procress/re-procress.service';
 
 @Module({
-  imports: [InsModule, ChtModule],
+  imports: [InsModule, ChtModule, ReProcressService],
   controllers: [WorkListController],
   providers: [
     WorkListService,
@@ -20,8 +22,9 @@ import { JwtService } from '@nestjs/jwt';
     Edit16fService,
     CheckErrorService,
     CatalogsService,
-    JwtService
+    JwtService,
+    ChtModifyService
   ],
   exports: [WorkListService,],
 })
-export class WorkListModule {}
+export class WorkListModule { }

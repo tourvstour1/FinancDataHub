@@ -54,7 +54,7 @@ from
 		q1.vn_an 
 	from
 		(
-		select		
+		select		DISTINCT
 			b_site.b_visit_office_id as hcode,
 			t_visit.visit_hn as hn,
 		case
@@ -94,7 +94,11 @@ from
 						end as drugremark,
 					'' :: text as pa_no,
 					t_billing_invoice_item.billing_invoice_item_patient_share as totcopay,
-				( case when t_order.order_home = '0' then '1' else'2' end ) :: text as use_status,
+								( case when t_order.order_home = '0' then 
+								case when t_order.b_item_16_group_id ='3120000000003' THEN '1'
+									   when t_order.b_item_16_group_id ='3120000000004' THEN '2'
+								else '2' end 
+				 else'2' end ) :: text as use_status,
 			t_billing_invoice_item.billing_invoice_item_payer_share as total,
 		case
 				
@@ -143,7 +147,7 @@ from
 		t_diag_icd10.seq 
 	from
 		(
-		select
+		select 
 			t_diag_icd10.t_diag_icd10_id,
 			t_diag_icd10.diag_icd10_vn,
 		case
@@ -166,6 +170,7 @@ from
 			and t_visit.f_visit_status_id <> '4' 
 			and length ( t_visit.visit_staff_doctor_discharge_date_time ) > 10 
 					AND t_visit.visit_vn=':an'
+					AND LENGTH(t_visit.visit_vn) > 1
 			and t_visit.f_visit_type_id in ( '0', '1' ) 
 		) as t_diag_icd10 
 	where
@@ -198,6 +203,7 @@ where
 	and t_visit.f_visit_status_id <> '4' 
 	and length ( t_visit.visit_staff_doctor_discharge_date_time ) > 10 
 			AND t_visit.visit_vn=':an'
+			AND LENGTH(t_visit.visit_vn) > 1
 	and t_visit.f_visit_type_id in ( '0', '1' ) 
 	AND f_product_category.f_product_category_id <> '3'
 	) as q1 

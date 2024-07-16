@@ -9,6 +9,9 @@ export class PatService {
   constructor(readonly prisma: PrismaFinance) { }
 
   createPat = async (pat: t_pat[]) => {
+
+    console.log("start item pat");
+    
     const listSize = 1000;
     const listData: Array<t_pat[]> = [];
 

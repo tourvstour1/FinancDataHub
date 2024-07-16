@@ -28,6 +28,29 @@ import { PrismaHospital } from './prisma/prisma.service.hospital';
 import { JwtAppModule } from './jwt-app/jwt-app.module';
 import { JwtAppService } from './jwt-app/jwt-app.service';
 import { JwtService } from '@nestjs/jwt';
+import { ScheduleService } from './schedule/schedule.service';
+import { ChtModifyService } from './cht-modify/cht-modify.service';
+import { ChtModifyModule } from './cht-modify/cht-modify.module';
+import { ReProcressService } from './re-procress/re-procress.service';
+import { InsService } from './f16/ins/ins.service';
+import { AdpService } from './f16/adp/adp.service';
+import { AerService } from './f16/aer/aer.service';
+import { ChaService } from './f16/cha/cha.service';
+import { ChtService } from './f16/cht/cht.service';
+import { DruService } from './f16/dru/dru.service';
+import { IdxService } from './f16/idx/idx.service';
+import { IopService } from './f16/iop/iop.service';
+import { IpdService } from './f16/ipd/ipd.service';
+import { IrfService } from './f16/irf/irf.service';
+import { LabfuService } from './f16/labfu/labfu.service';
+import { LvdService } from './f16/lvd/lvd.service';
+import { OdxService } from './f16/odx/odx.service';
+import { OopService } from './f16/oop/oop.service';
+import { OpdService } from './f16/opd/opd.service';
+import { OrfService } from './f16/orf/orf.service';
+import { PatService } from './f16/pat/pat.service';
+import { WorkListService } from './work-list/work-list.service';
+import { Edit16fService } from './edit-16f/edit-16f.service';
 
 const envConfig = {
   isGlobal: true,
@@ -38,8 +61,6 @@ const envConfig = {
   imports: [
     ConfigModule.forRoot(envConfig),
     ProcessModule,
-    WorkListModule,
-    Edit16fModule,
     ClaimFdhModule,
     ConnectMophModule,
     HttpModule,
@@ -49,9 +70,14 @@ const envConfig = {
     HistoryListModule,
     LoginModule,
     ReProcressModule,
-    JwtAppModule 
+    JwtAppModule,
+
   ],
   controllers: [AppController, WorkListController, Edit16fController, ClaimFdhController, HistoryListController, LoginController],
-  providers: [AppService, PrismaFinance, ClaimFdhService, ConnectMophService, HistoryListService, LoginService, PrismaHospital,JwtAppService,JwtService],
+  providers: [AppService, InsService, PatService,
+    WorkListService,
+    Edit16fService,
+    OpdService, OrfService, OdxService, OopService, IpdService, IrfService, IdxService, IopService, ChtService, ChaService, AerService, AdpService, LvdService, DruService, LabfuService,
+    PrismaFinance, ClaimFdhService, ConnectMophService, HistoryListService, LoginService, PrismaHospital, JwtAppService, JwtService, ScheduleService, ChtModifyService, ReProcressService],
 })
 export class AppModule { }

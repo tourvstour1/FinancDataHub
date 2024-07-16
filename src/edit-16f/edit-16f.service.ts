@@ -1,14 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaFinance } from 'src/prisma/prisma.service.finanec';
 import { OpdServiceType, IpdServiceType } from './edit-16f.entity';
+import { ChtModifyService } from 'src/cht-modify/cht-modify.service';
 
 @Injectable()
 export class Edit16fService {
-  constructor(readonly prisma: PrismaFinance) { }
+  constructor(
+    readonly prisma: PrismaFinance,
+    readonly modifyCht: ChtModifyService) { }
 
   getWithSeq = async (seq: string[]): Promise<OpdServiceType> => {
 
-    if(seq[0]===undefined) return
+    if (seq[0] === undefined) return
     const opd = await this.prisma.t_opd.findMany({
       where: {
         seq: {
@@ -129,7 +132,7 @@ export class Edit16fService {
     return opdServive;
   };
 
-  getWithAn = async (an: string[]): Promise<IpdServiceType> => { 
+  getWithAn = async (an: string[]): Promise<IpdServiceType> => {
     const anList: string[] = []
     const hnList: string[] = []
 
@@ -149,13 +152,11 @@ export class Edit16fService {
       if (i.an !== '') {
         anList.push(i.an)
       }
-      
+
       if (i.hn !== '') {
         hnList.push(i.hn)
       }
     });
-
-
 
     const pat = await this.prisma.t_pat.findMany({
       where: {
@@ -205,6 +206,7 @@ export class Edit16fService {
             this.updateLogOpd(value['opd'][0])
           }
         }
+        await this.modifyCht.opdModifyCht([visit])
       } catch (err) {
         console.log(err);
         throw err
@@ -234,6 +236,7 @@ export class Edit16fService {
             this.updateLogIpd(value['ipd'][0])
           }
         }
+        await this.modifyCht.ipdModifyCht([visit])
       } catch (err) {
         console.log(err);
         throw err
@@ -255,13 +258,32 @@ export class Edit16fService {
             if (table === 't_ipd') return
             if (table === 't_pat') return
 
-            console.log('run delete ' + table);
+            console.log('run delete ' + table + '=> ' + isConditions.an + isConditions.seq);
 
-            await this.prisma[table].deleteMany({
-              where: isConditions
-            }).then((res) => {
-              console.log('delete ' + table + ' = ' + res.count);
-            })
+            const deleteTableManys = async () => {
+              console.log(table);
+
+              const resultDelete = await this.prisma[table].deleteMany({
+                where: isConditions
+              })
+              console.log(resultDelete);
+
+            }
+
+            if (isConditions.seq !== undefined && isConditions.an === undefined) {
+              if (isConditions.seq !== '') {
+                deleteTableManys()
+              }
+            }
+
+            if (isConditions.an !== undefined && isConditions.seq === undefined) {
+              console.log(isConditions.an);
+
+              if (isConditions.an !== '') {
+                deleteTableManys()
+              }
+            }
+
             rowCount += 0
           } catch (err) {
             rowCount += 0
@@ -315,34 +337,43 @@ export class Edit16fService {
 
           const findId = await this.prisma[table].findMany({
             where: {
-              id: item.id
+              id: item.id,
             }
           })
 
           if (item.id === null) {
-            const createItem = item
-            console.log('createItem+ ' + table + ' ' + item.id)
 
             if (item.id !== '') {
+              console.log('createItem+ ' + table + ' ' + (isConditions.an !== undefined ? isConditions.an : isConditions.seq))
+              console.log(item);
+
               await this.prisma[table].createMany({
-                data: createItem,
+                data: item,
               })
             }
 
             rowCount += 1
           } else if (findId.length === 0) {
             delete item['id']
-            console.log('createItem+ ' + table + ' ' + item.id)
+            console.log('createItem+ ' + table + ' ' + + (isConditions.an !== undefined ? isConditions.an : isConditions.seq))
+
             if (item.id !== '') {
-              const createItem = item
-              await this.prisma[table].createMany({
-                data: createItem,
-              })
+              if (item.hn === undefined) {
+                // console.log(item);
+
+              } else {
+                console.log(item);
+
+                await this.prisma[table].createMany({
+                  data: item,
+                })
+              }
+
             }
             rowCount += 1
           }
           else {
-            console.log('update+ ' + table + ' ' + item.id)
+            console.log('update+ ' + table + ' ' + item.id + ' ' + (isConditions.an !== undefined ? isConditions.an : isConditions.seq))
             if (item.id !== undefined) {
               if (item.id !== '') {
                 await this.prisma[table].updateMany({
@@ -359,7 +390,6 @@ export class Edit16fService {
           if (rowCount === value.length) {
             resolve(`Update แฟ้ม ${table} สำเร็จ`);
           }
-
         });
 
         try {
@@ -375,20 +405,37 @@ export class Edit16fService {
           })
 
           defaultData.forEach(async (item) => {
-            const find = value.findIndex((i) => i.id === item.id);
-            if (find === -1) {
-              if (item.id !== '') {
-                console.log('delete+ ' + table + ' ' + item.id)
-                if (item.id !== undefined) {
-                  await this.prisma[table].deleteMany({
-                    where: {
-                      id: item.id,
-                    },
-                  });
+            const find = value.findIndex((i) => i.id === item.id)
+            const delMany = async (find) => {
+              if (find === -1) {
+                if (item.id !== '') {
+                  console.log('delete+ ' + table + ' ' + item.id + ' ' + (isConditions.an !== undefined ? isConditions.an : isConditions.seq))
+                  if (item.id !== undefined) {
+                    await this.prisma[table].deleteMany({
+                      where: {
+                        ...isConditions,
+                        id: item.id,
+                      },
+                    });
+                  }
                 }
               }
             }
+
+            if (isConditions.seq !== undefined && isConditions.an === undefined) {
+              if (isConditions.seq !== '') {
+                delMany(find)
+              }
+            }
+
+            if (isConditions.an !== undefined && isConditions.seq === undefined) {
+              if (isConditions.an !== '') {
+                delMany(find)
+              }
+            }
+
           });
+
         } catch (err) {
           console.log("table =" + table)
           console.log("default delete = " + err);

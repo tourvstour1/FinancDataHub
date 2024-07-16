@@ -401,7 +401,7 @@ model adp_free_schedule {
   unit      String
   type      String
   price     String
-  id        Int    @id @default(autoincrement())
+  id        Int    @id(map: "adp_free_schedule_copy1_pkey") @default(autoincrement())
 
   @@schema("master_items")
 }
@@ -416,4 +416,43 @@ model t_employee {
   active                 Int     @default(1) @db.SmallInt
 
   @@schema("employee")
+}
+
+model adp_free_schedule_backup {
+  item_code String
+  item_name String
+  unit      String
+  type      String
+  price     String
+  id        Int    @id(map: "adp_free_schedule_pkey") @default(autoincrement())
+
+  @@schema("master_items")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model adp_nhso {
+  item_type          String? @db.VarChar(255)
+  item_code          String? @db.VarChar(255)
+  item_name          String? @db.VarChar(255)
+  item_price         String? @db.VarChar(255)
+  item_unit          String? @db.VarChar(255)
+  date_start         String? @db.VarChar(255)
+  date_end           String? @db.VarChar(255)
+  date_update        String? @db.VarChar(255)
+  fee_schedule_list1 String? @db.VarChar(255)
+  fee_schedule_list2 String? @db.VarChar(255)
+  item_type_number   String? @db.VarChar(255)
+
+  @@ignore
+  @@schema("master_items")
+}
+
+model adp_type {
+  adp_catalogy_id   Int     @id
+  adp_name          String  @db.VarChar
+  adp_type_number   Int[]
+  adp_nhso_name     String? @db.VarChar
+  adp_hospital_code String? @db.VarChar(255)
+
+  @@schema("master_items")
 }

@@ -121,7 +121,8 @@ FROM
 							t_visit.f_visit_status_id <> '4' 
 							AND t_diag_icd10.diag_icd10_active = '1' 
 							AND LENGTH ( t_visit.visit_staff_doctor_discharge_date_time ) > 10 
-								AND t_visit.visit_vn =':seq'
+							AND t_visit.visit_vn =':seq'
+							AND LENGTH(t_visit.visit_vn) > 1
 							AND t_visit.f_visit_type_id = '0' 
 						GROUP BY
 							t_patient.patient_hn,

@@ -16,12 +16,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.11.0
- * Query Engine version: efd2449663b3d73d637ea1fd226bafbcf45b3102
+ * Prisma Client JS version: 5.15.0
+ * Query Engine version: 12e25d8d06f6ea5a0252864dd9a03b1bb51f3022
  */
 Prisma.prismaVersion = {
-  client: "5.11.0",
-  engine: "efd2449663b3d73d637ea1fd226bafbcf45b3102"
+  client: "5.15.0",
+  engine: "12e25d8d06f6ea5a0252864dd9a03b1bb51f3022"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -474,6 +474,23 @@ exports.Prisma.T_employeeScalarFieldEnum = {
   active: 'active'
 };
 
+exports.Prisma.Adp_free_schedule_backupScalarFieldEnum = {
+  item_code: 'item_code',
+  item_name: 'item_name',
+  unit: 'unit',
+  type: 'type',
+  price: 'price',
+  id: 'id'
+};
+
+exports.Prisma.Adp_typeScalarFieldEnum = {
+  adp_catalogy_id: 'adp_catalogy_id',
+  adp_name: 'adp_name',
+  adp_type_number: 'adp_type_number',
+  adp_nhso_name: 'adp_nhso_name',
+  adp_hospital_code: 'adp_hospital_code'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -824,6 +841,20 @@ exports.Prisma.t_employeeOrderByRelevanceFieldEnum = {
   employee_hospital_code: 'employee_hospital_code'
 };
 
+exports.Prisma.adp_free_schedule_backupOrderByRelevanceFieldEnum = {
+  item_code: 'item_code',
+  item_name: 'item_name',
+  unit: 'unit',
+  type: 'type',
+  price: 'price'
+};
+
+exports.Prisma.adp_typeOrderByRelevanceFieldEnum = {
+  adp_name: 'adp_name',
+  adp_nhso_name: 'adp_nhso_name',
+  adp_hospital_code: 'adp_hospital_code'
+};
+
 
 exports.Prisma.ModelName = {
   t_ins: 't_ins',
@@ -852,7 +883,9 @@ exports.Prisma.ModelName = {
   lab_main: 'lab_main',
   drug_free_schedule: 'drug_free_schedule',
   adp_free_schedule: 'adp_free_schedule',
-  t_employee: 't_employee'
+  t_employee: 't_employee',
+  adp_free_schedule_backup: 'adp_free_schedule_backup',
+  adp_type: 'adp_type'
 };
 
 /**

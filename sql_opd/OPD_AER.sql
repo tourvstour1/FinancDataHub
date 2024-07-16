@@ -31,7 +31,7 @@ FROM
 			WHEN text_to_timestamp ( t_visit.visit_begin_visit_time ) IS NOT NULL THEN
 			to_char( text_to_timestamp ( t_visit.visit_begin_visit_time ), 'YYYYMMDD' ) ELSE'' 
 		END AS dateopd,
-		t_accident.accident_claim_code AS authae,
+				t_nhso_authencode.claim_code AS authae,
 	CASE
 			
 			WHEN text_to_timestamp ( t_accident.accident_date ) IS NOT NULL THEN
@@ -129,7 +129,8 @@ CASE
 					INNER JOIN t_billing ON t_billing.t_visit_id = t_visit.t_visit_id 
 					AND t_billing.billing_active = '1' 
 					--AND t_billing.billing_payer_share <> 0
-					INNER JOIN t_visit_refer_in_out ON t_visit_refer_in_out.t_visit_id = t_visit.t_visit_id 
+					LEFT JOIN t_nhso_authencode ON t_nhso_authencode.vn = t_visit.visit_vn
+					LEFT JOIN t_visit_refer_in_out ON t_visit_refer_in_out.t_visit_id = t_visit.t_visit_id 
 					AND t_visit_refer_in_out.visit_refer_in_out_active = '1'
 					INNER JOIN t_visit_payment ON t_visit_payment.t_visit_id = t_visit.t_visit_id 
 					AND t_visit_payment.visit_payment_active = '1' 
@@ -143,6 +144,7 @@ CASE
 				--	AND t_accident.accident_active = '1' 
 					AND LENGTH ( t_visit.visit_staff_doctor_discharge_date_time ) > 10 
 					AND t_visit.visit_vn=':seq'
+					AND LENGTH(t_visit.visit_vn) >1
 					AND t_visit.f_visit_type_id IN ( '0', '1' ) 
 				GROUP BY
 					t_visit.visit_hn,

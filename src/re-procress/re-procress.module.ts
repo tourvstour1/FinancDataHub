@@ -41,6 +41,7 @@ import { ReProcressController } from './re-procress.controller';
         DruModule,
         LabfuModule,],
     controllers: [ReProcressController],
-    providers: [ReProcressService, PrismaHospital, PrismaFinance]
+    providers: [ReProcressService, PrismaHospital, PrismaFinance],
+
 })
 export class ReProcressModule { }

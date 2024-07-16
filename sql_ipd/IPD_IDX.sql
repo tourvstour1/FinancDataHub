@@ -39,6 +39,7 @@ FROM
 		AND t_visit.f_visit_type_id = '1' 
 		AND LENGTH ( t_visit.visit_staff_doctor_discharge_date_time ) > 10 
 		AND t_visit.visit_vn=':an'
+		AND LENGTH(t_visit.visit_vn) > 1
 	GROUP BY
 		t_visit.visit_vn,
 		diag,

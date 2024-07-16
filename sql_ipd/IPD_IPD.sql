@@ -99,6 +99,7 @@ WHERE
 	AND t_visit.f_visit_status_id <> '4' 
 	AND LENGTH ( t_visit.visit_staff_doctor_discharge_date_time ) > 10 
 AND t_visit.visit_vn=':an'
+AND LENGTH(t_visit.visit_vn) > 1
 GROUP BY
 	t_patient.patient_hn,
 	t_visit.visit_vn,

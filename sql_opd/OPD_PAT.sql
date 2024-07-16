@@ -104,9 +104,8 @@ FROM
 									t_visit.visit_vn AS vn_an 
 								FROM
 									t_visit
-									INNER JOIN t_billing ON t_billing.t_visit_id = t_visit.t_visit_id 
-									AND t_billing.billing_active = '1' 
-								--	AND t_billing.billing_payer_share <> 0
+									left JOIN t_billing ON t_billing.t_visit_id = t_visit.t_visit_id 
+					--				AND t_billing.billing_active = '1' --	AND t_billing.billing_payer_share <> 0
 									INNER JOIN t_patient ON t_visit.t_patient_id = t_patient.t_patient_id
 									INNER JOIN t_health_family ON t_patient.t_health_family_id = t_health_family.t_health_family_id
 									LEFT JOIN f_patient_prefix ON f_patient_prefix.f_patient_prefix_id = t_patient.f_patient_prefix_id
@@ -116,32 +115,19 @@ FROM
 									LEFT JOIN f_patient_nation ON t_patient.f_patient_nation_id = f_patient_nation.f_patient_nation_id
 									INNER JOIN b_map_rp1853_nation ON f_patient_nation.f_patient_nation_id = b_map_rp1853_nation.f_patient_nation_id
 									INNER JOIN t_visit_payment ON t_visit_payment.t_visit_id = t_visit.t_visit_id 
-									AND t_visit_payment.visit_payment_active = '1' 
-									AND t_visit_payment.visit_payment_priority = '0'
+								--	AND t_visit_payment.visit_payment_active = '1' 
+									--AND t_visit_payment.visit_payment_priority = '0'
 									INNER JOIN b_contract_plans ON t_visit_payment.b_contract_plans_id = b_contract_plans.b_contract_plans_id
 									INNER JOIN b_map_rp1853_instype ON b_contract_plans.b_contract_plans_id = b_map_rp1853_instype.b_contract_plans_id
-									LEFT JOIN r_rp1853_instype ON b_map_rp1853_instype.r_rp1853_instype_id = r_rp1853_instype.ID 
-								--	AND regexp_like ( r_rp1853_instype.maininscl, UPPER ( 'ucs|ofc|sss|lgo|ssi|nhs' ) )
+									LEFT JOIN r_rp1853_instype ON b_map_rp1853_instype.r_rp1853_instype_id = r_rp1853_instype.ID --	AND regexp_like ( r_rp1853_instype.maininscl, UPPER ( 'ucs|ofc|sss|lgo|ssi|nhs' ) )
 									LEFT JOIN t_person_foreigner ON t_health_family.t_health_family_id = t_person_foreigner.t_person_id
 									CROSS JOIN b_site 
 								WHERE
 									t_visit.f_visit_status_id <> '4' 
 									AND t_visit.f_visit_type_id <> 'S' 
-									AND t_patient.patient_hn IN (
-									SELECT
-										t_patient.patient_hn AS hn 
-									FROM
-										t_patient
-										INNER JOIN t_visit ON ( t_patient.t_patient_id = t_visit.t_patient_id ) 
-									WHERE
-										t_visit.f_visit_status_id <> '4' 
-										AND LENGTH ( t_visit.visit_staff_doctor_discharge_date_time ) > 10 
-										AND SUBSTRING ( t_visit.visit_staff_doctor_discharge_date_time, 1, 10 ) <> '' 
-											AND t_visit.visit_vn =':seq'
-										AND t_visit.f_visit_type_id <> 's' 
-									GROUP BY
-										t_patient.patient_hn 
-									) 
+									AND LENGTH ( t_visit.visit_staff_doctor_discharge_date_time ) > 10 
+									AND t_visit.visit_vn =':seq'
+									AND LENGTH(t_visit.visit_vn) > 1
 								GROUP BY
 									hcode,
 									t_patient.patient_hn,

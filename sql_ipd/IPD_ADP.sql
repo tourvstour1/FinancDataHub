@@ -207,6 +207,7 @@ FROM
 					AND LENGTH (t_visit.visit_staff_doctor_discharge_date_time) > 10
 					AND SUBSTRING (	t_visit.visit_staff_doctor_discharge_date_time,1,10) <> ''
 					AND t_visit.visit_vn=':an'
+					AND LENGTH(t_visit.visit_vn) > 1
 					GROUP BY
 					t_visit.visit_hn,
 					t_visit.f_visit_type_id,

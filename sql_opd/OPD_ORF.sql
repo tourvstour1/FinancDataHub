@@ -44,8 +44,8 @@ FROM
 			AND t_visit.f_visit_status_id <> '4' 
 			AND LENGTH ( t_visit.visit_staff_doctor_discharge_date_time ) > 10 
 			AND SUBSTRING ( t_visit.visit_staff_doctor_discharge_date_time, 1, 10 ) <> '' 
-			AND SUBSTRING ( t_visit.visit_staff_doctor_discharge_date_time, 1, 10 ) >= ':startDate' 
-			AND SUBSTRING ( t_visit.visit_staff_doctor_discharge_date_time, 1, 10 ) <= ':endDate' 
+			AND t_visit.visit_vn =':seq'
+			AND LENGTH(t_visit.visit_vn) > 1
 			AND t_visit.f_visit_type_id = '0' 
 		GROUP BY
 			t_visit_refer_in_out.t_visit_id,
@@ -105,7 +105,8 @@ FROM
 	WHERE
 		t_visit.f_visit_status_id <> '4' 
 		AND LENGTH ( t_visit.visit_staff_doctor_discharge_date_time ) > 10 
-			AND t_visit.visit_vn =':seq'
+		AND t_visit.visit_vn =':seq'
+		AND LENGTH(t_visit.visit_vn) > 1
 		AND t_visit.f_visit_type_id = '0' 
 	GROUP BY
 		t_patient.patient_hn,

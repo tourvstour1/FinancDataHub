@@ -63,8 +63,8 @@ export class ProcessService {
       status: 'proces',
     };
 
-    readdir(path, (err, files) => {
-      files.forEach(async (file) => {
+    readdir(path, async (err, files) => {
+      files.forEach(async(file) => { 
         try {
           const sqlString = this.rowQuery.genQueryReport(
             file,
@@ -248,7 +248,7 @@ export class ProcessService {
         } catch (err) {
           console.error('err file' + file + '\n' + err);
         }
-      });
+      })
     });
   };
 
