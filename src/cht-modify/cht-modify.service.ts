@@ -15,6 +15,7 @@ export class ChtModifyService {
         for (let vn in seq) {
             let result: InitChtModel[] = []
             if (! await this.checkOpdNull(seq[vn])) return
+
             const getAdpCht = await this.getNewOpdAdpCht(seq[vn], getTypeAdp)
             const getDruCht = await this.getNewOpdDruCht(seq[vn], getTypeAdp)
             result = result.concat(getDruCht, getAdpCht)
@@ -245,7 +246,7 @@ export class ChtModifyService {
         if (checkOpd !== null) {
             return false
         } else {
-            await this.re.opdReProcess(an)
+            await this.re.ipdReProcess(an)
             return true
         }
     }
