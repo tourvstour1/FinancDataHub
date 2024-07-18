@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import {
-  ConnectedSocket,
-  WebSocketGateway,
-  WebSocketServer,
-} from '@nestjs/websockets';
+import { WebSocketGateway, WebSocketServer, } from '@nestjs/websockets';
 import { Socket } from 'socket.io';
 
-@WebSocketGateway({ path: '/app.io/', transports: ['websocket'] })
+@WebSocketGateway({
+  path: '/app.io/',
+  transports: ['websocket'],
+  allowEIO3: true
+})
 @Injectable()
 export class EventService {
   @WebSocketServer()
