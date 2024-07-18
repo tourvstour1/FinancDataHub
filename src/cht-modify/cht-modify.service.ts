@@ -242,8 +242,8 @@ export class ChtModifyService {
 
 
     private checkIpdNull = async (an: string) => {
-        const checkOpd = await this.prisma.t_ipd.findFirst({ where: { an: an } })
-        if (checkOpd !== null) {
+        const checkIpd = await this.prisma.t_ipd.findFirst({ where: { an: an } })
+        if (checkIpd !== null) {
             return false
         } else {
             await this.re.ipdReProcess(an)

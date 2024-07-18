@@ -20,9 +20,8 @@ export class Edit16fService {
       },
     });
     const hnList: string[] = []
-
     const seqList: string[] = []
-
+    
     opd.forEach((i) => {
       if (i.hn !== '') {
         hnList.push(i.hn)

@@ -20,6 +20,7 @@ import { OpdModule } from 'src/f16/opd/opd.module';
 import { OrfModule } from 'src/f16/orf/orf.module';
 import { PatModule } from 'src/f16/pat/pat.module';
 import { ReProcressController } from './re-procress.controller';
+import { JwtService } from '@nestjs/jwt';
 
 
 @Module({
@@ -41,7 +42,7 @@ import { ReProcressController } from './re-procress.controller';
         DruModule,
         LabfuModule,],
     controllers: [ReProcressController],
-    providers: [ReProcressService, PrismaHospital, PrismaFinance],
+    providers: [ReProcressService, PrismaHospital, PrismaFinance,JwtService],
 
 })
 export class ReProcressModule { }

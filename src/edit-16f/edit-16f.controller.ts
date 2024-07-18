@@ -1,11 +1,15 @@
-import { Body, Controller, Post, Res } from '@nestjs/common';
+import { Body, Controller, Post, Res, UseGuards } from '@nestjs/common';
 import { An16f, Seq16f, OpdUpdate, IpdUpdate } from './edit-16.body';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { Edit16fService } from './edit-16f.service';
 import { Response } from 'express';
 import { CheckErrorService } from 'src/check-error/check-error.service';
 import { ChtModifyService } from 'src/cht-modify/cht-modify.service';
+import { AuthGuard } from 'src/auth/auth.guard';
 
+
+@UseGuards(AuthGuard)
+@ApiBearerAuth()
 @ApiTags('edit16f')
 @Controller('edit-16f')
 export class Edit16fController {

@@ -6,8 +6,8 @@ import { ReProcressService } from './re-procress.service';
 import { ApiResponst } from 'src/app.entity';
 import { AuthGuard } from 'src/auth/auth.guard';
 
-// @UseGuards(AuthGuard)
-// @ApiBearerAuth()
+@UseGuards(AuthGuard)
+@ApiBearerAuth()
 @ApiTags('re-procress')
 @Controller('re-procress')
 export class ReProcressController {

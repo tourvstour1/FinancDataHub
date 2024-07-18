@@ -7,8 +7,8 @@ import { Edit16fService } from 'src/edit-16f/edit-16f.service';
 import { CheckErrorService } from 'src/check-error/check-error.service';
 import { AuthGuard } from 'src/auth/auth.guard';
 
-// @UseGuards(AuthGuard)
-// @ApiBearerAuth()
+@UseGuards(AuthGuard)
+@ApiBearerAuth()
 @ApiTags('work')
 @Controller('work')
 export class WorkListController {

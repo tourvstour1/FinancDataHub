@@ -1,9 +1,13 @@
-import { Body, Controller, Post, Res } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { Body, Controller, Post, Res, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
 import { OpdClaim, IpdClaim } from './claim-fdn.body';
 import { ClaimFdhService } from './claim-fdh.service';
+import { AuthGuard } from 'src/auth/auth.guard';
 
+
+@UseGuards(AuthGuard)
+@ApiBearerAuth()
 @ApiTags('claim-fdh')
 @Controller('claim-fdh')
 export class ClaimFdhController {

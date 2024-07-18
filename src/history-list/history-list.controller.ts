@@ -1,9 +1,12 @@
-import { Body, Controller, Post, Res } from '@nestjs/common';
+import { Body, Controller, Post, Res, UseGuards } from '@nestjs/common';
 import { OpdClaimNumber, IpdClaimNumber, OpdClaimService, IpdClaimService } from './history-list.entity';
 import { Response } from 'express';
 import { HistoryListService } from './history-list.service';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from 'src/auth/auth.guard';
 
+@UseGuards(AuthGuard)
+@ApiBearerAuth()
 @ApiTags('history')
 @Controller('history-list')
 export class HistoryListController {
