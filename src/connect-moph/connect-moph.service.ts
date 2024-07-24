@@ -142,7 +142,7 @@ export class ConnectMophService {
 
 
   logClaim = (pathName: string, claimtype: string) => {
-    const claimNumber = pathName.split('\\').slice(-1)[0]
+    const claimNumber = (pathName.replaceAll('\\','/')).split('/').slice(-1)[0]
     const dateSent = new Date().toISOString().split('T')[0].replaceAll('-', '')
     const filePath = resolve(__dirname, `../out/${claimtype}/`, pathName);
 

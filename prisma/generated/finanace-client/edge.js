@@ -874,7 +874,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "K:\\moph-financ\\prisma\\generated\\finanace-client",
+      "value": "/home/epidem/fdh-nhso/server/prisma/generated/finanace-client",
       "fromEnvVar": null
     },
     "config": {
@@ -883,7 +883,7 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "debian-openssl-3.0.x",
         "native": true
       }
     ],
