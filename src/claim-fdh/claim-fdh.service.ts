@@ -11,8 +11,6 @@ export class ClaimFdhService {
   toTextIpd = async (table: IpdClaimType) => {
     return new Promise(async (resolves, reject) => {
       const directory = resolve(__dirname, '../../out/ipd/');
-      console.log(directory);
-
       const rep = new Date()
         .toLocaleDateString('th', {
           year: 'numeric',
@@ -26,7 +24,7 @@ export class ClaimFdhService {
         .replaceAll(':', '')
         .replaceAll(' ', '');
 
-      const pathName = directory + '/ipd' + rep;
+      const pathName = directory + '\\ipd' + rep;
       if (!existsSync(pathName)) {
         mkdirSync(pathName);
       }
@@ -89,8 +87,6 @@ export class ClaimFdhService {
   toTextOpd = async (table: OpdClaimTyep) => {
     return new Promise(async (resolves, reject) => {
       const directory = resolve(__dirname, '../../out/opd/');
-      console.log(directory);
-
       const rep = new Date()
         .toLocaleDateString('th', {
           year: 'numeric',
@@ -104,7 +100,7 @@ export class ClaimFdhService {
         .replaceAll(':', '')
         .replaceAll(' ', '');
 
-      const pathName = directory + '/opd' + rep;
+      const pathName = directory + '\\opd' + rep;
       if (!existsSync(pathName)) {
         mkdirSync(pathName);
       }
