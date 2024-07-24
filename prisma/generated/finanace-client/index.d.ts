@@ -149,15 +149,15 @@ export type adp_free_schedule = $Result.DefaultSelection<Prisma.$adp_free_schedu
  */
 export type t_employee = $Result.DefaultSelection<Prisma.$t_employeePayload>
 /**
- * Model adp_free_schedule_backup
- * 
- */
-export type adp_free_schedule_backup = $Result.DefaultSelection<Prisma.$adp_free_schedule_backupPayload>
-/**
  * Model adp_type
  * 
  */
 export type adp_type = $Result.DefaultSelection<Prisma.$adp_typePayload>
+/**
+ * Model adp_free_schedule_copy1
+ * 
+ */
+export type adp_free_schedule_copy1 = $Result.DefaultSelection<Prisma.$adp_free_schedule_copy1Payload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -552,16 +552,6 @@ export class PrismaClient<
   get t_employee(): Prisma.t_employeeDelegate<ExtArgs>;
 
   /**
-   * `prisma.adp_free_schedule_backup`: Exposes CRUD operations for the **adp_free_schedule_backup** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Adp_free_schedule_backups
-    * const adp_free_schedule_backups = await prisma.adp_free_schedule_backup.findMany()
-    * ```
-    */
-  get adp_free_schedule_backup(): Prisma.adp_free_schedule_backupDelegate<ExtArgs>;
-
-  /**
    * `prisma.adp_type`: Exposes CRUD operations for the **adp_type** model.
     * Example usage:
     * ```ts
@@ -570,6 +560,16 @@ export class PrismaClient<
     * ```
     */
   get adp_type(): Prisma.adp_typeDelegate<ExtArgs>;
+
+  /**
+   * `prisma.adp_free_schedule_copy1`: Exposes CRUD operations for the **adp_free_schedule_copy1** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Adp_free_schedule_copy1s
+    * const adp_free_schedule_copy1s = await prisma.adp_free_schedule_copy1.findMany()
+    * ```
+    */
+  get adp_free_schedule_copy1(): Prisma.adp_free_schedule_copy1Delegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -628,7 +628,7 @@ export namespace Prisma {
 
   /**
    * Prisma Client JS version: 5.15.0
-   * Query Engine version: 12e25d8d06f6ea5a0252864dd9a03b1bb51f3022
+   * Query Engine version: 473ed3124229e22d881cb7addf559799debae1ab
    */
   export type PrismaVersion = {
     client: string
@@ -1074,8 +1074,8 @@ export namespace Prisma {
     drug_free_schedule: 'drug_free_schedule',
     adp_free_schedule: 'adp_free_schedule',
     t_employee: 't_employee',
-    adp_free_schedule_backup: 'adp_free_schedule_backup',
-    adp_type: 'adp_type'
+    adp_type: 'adp_type',
+    adp_free_schedule_copy1: 'adp_free_schedule_copy1'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1092,7 +1092,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 't_ins' | 't_pat' | 't_opd' | 't_orf' | 't_odx' | 't_oop' | 't_ipd' | 't_irf' | 't_idx' | 't_iop' | 't_cht' | 't_cha' | 't_aer' | 't_adp' | 't_lvd' | 't_dru' | 't_labfu' | 'f_claim_status' | 'opd_claim_status' | 'ipd_claim_status' | 't_code_error' | 'item_group' | 'item_main' | 'lab_main' | 'drug_free_schedule' | 'adp_free_schedule' | 't_employee' | 'adp_free_schedule_backup' | 'adp_type'
+      modelProps: 't_ins' | 't_pat' | 't_opd' | 't_orf' | 't_odx' | 't_oop' | 't_ipd' | 't_irf' | 't_idx' | 't_iop' | 't_cht' | 't_cha' | 't_aer' | 't_adp' | 't_lvd' | 't_dru' | 't_labfu' | 'f_claim_status' | 'opd_claim_status' | 'ipd_claim_status' | 't_code_error' | 'item_group' | 'item_main' | 'lab_main' | 'drug_free_schedule' | 'adp_free_schedule' | 't_employee' | 'adp_type' | 'adp_free_schedule_copy1'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -1127,10 +1127,6 @@ export namespace Prisma {
           createMany: {
             args: Prisma.t_insCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.t_insCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$t_insPayload>[]
           }
           delete: {
             args: Prisma.t_insDeleteArgs<ExtArgs>,
@@ -1198,10 +1194,6 @@ export namespace Prisma {
             args: Prisma.t_patCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
-          createManyAndReturn: {
-            args: Prisma.t_patCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$t_patPayload>[]
-          }
           delete: {
             args: Prisma.t_patDeleteArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$t_patPayload>
@@ -1267,10 +1259,6 @@ export namespace Prisma {
           createMany: {
             args: Prisma.t_opdCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.t_opdCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$t_opdPayload>[]
           }
           delete: {
             args: Prisma.t_opdDeleteArgs<ExtArgs>,
@@ -1338,10 +1326,6 @@ export namespace Prisma {
             args: Prisma.t_orfCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
-          createManyAndReturn: {
-            args: Prisma.t_orfCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$t_orfPayload>[]
-          }
           delete: {
             args: Prisma.t_orfDeleteArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$t_orfPayload>
@@ -1407,10 +1391,6 @@ export namespace Prisma {
           createMany: {
             args: Prisma.t_odxCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.t_odxCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$t_odxPayload>[]
           }
           delete: {
             args: Prisma.t_odxDeleteArgs<ExtArgs>,
@@ -1478,10 +1458,6 @@ export namespace Prisma {
             args: Prisma.t_oopCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
-          createManyAndReturn: {
-            args: Prisma.t_oopCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$t_oopPayload>[]
-          }
           delete: {
             args: Prisma.t_oopDeleteArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$t_oopPayload>
@@ -1547,10 +1523,6 @@ export namespace Prisma {
           createMany: {
             args: Prisma.t_ipdCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.t_ipdCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$t_ipdPayload>[]
           }
           delete: {
             args: Prisma.t_ipdDeleteArgs<ExtArgs>,
@@ -1618,10 +1590,6 @@ export namespace Prisma {
             args: Prisma.t_irfCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
-          createManyAndReturn: {
-            args: Prisma.t_irfCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$t_irfPayload>[]
-          }
           delete: {
             args: Prisma.t_irfDeleteArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$t_irfPayload>
@@ -1687,10 +1655,6 @@ export namespace Prisma {
           createMany: {
             args: Prisma.t_idxCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.t_idxCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$t_idxPayload>[]
           }
           delete: {
             args: Prisma.t_idxDeleteArgs<ExtArgs>,
@@ -1758,10 +1722,6 @@ export namespace Prisma {
             args: Prisma.t_iopCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
-          createManyAndReturn: {
-            args: Prisma.t_iopCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$t_iopPayload>[]
-          }
           delete: {
             args: Prisma.t_iopDeleteArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$t_iopPayload>
@@ -1827,10 +1787,6 @@ export namespace Prisma {
           createMany: {
             args: Prisma.t_chtCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.t_chtCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$t_chtPayload>[]
           }
           delete: {
             args: Prisma.t_chtDeleteArgs<ExtArgs>,
@@ -1898,10 +1854,6 @@ export namespace Prisma {
             args: Prisma.t_chaCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
-          createManyAndReturn: {
-            args: Prisma.t_chaCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$t_chaPayload>[]
-          }
           delete: {
             args: Prisma.t_chaDeleteArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$t_chaPayload>
@@ -1967,10 +1919,6 @@ export namespace Prisma {
           createMany: {
             args: Prisma.t_aerCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.t_aerCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$t_aerPayload>[]
           }
           delete: {
             args: Prisma.t_aerDeleteArgs<ExtArgs>,
@@ -2038,10 +1986,6 @@ export namespace Prisma {
             args: Prisma.t_adpCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
-          createManyAndReturn: {
-            args: Prisma.t_adpCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$t_adpPayload>[]
-          }
           delete: {
             args: Prisma.t_adpDeleteArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$t_adpPayload>
@@ -2107,10 +2051,6 @@ export namespace Prisma {
           createMany: {
             args: Prisma.t_lvdCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.t_lvdCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$t_lvdPayload>[]
           }
           delete: {
             args: Prisma.t_lvdDeleteArgs<ExtArgs>,
@@ -2178,10 +2118,6 @@ export namespace Prisma {
             args: Prisma.t_druCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
-          createManyAndReturn: {
-            args: Prisma.t_druCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$t_druPayload>[]
-          }
           delete: {
             args: Prisma.t_druDeleteArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$t_druPayload>
@@ -2247,10 +2183,6 @@ export namespace Prisma {
           createMany: {
             args: Prisma.t_labfuCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.t_labfuCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$t_labfuPayload>[]
           }
           delete: {
             args: Prisma.t_labfuDeleteArgs<ExtArgs>,
@@ -2318,10 +2250,6 @@ export namespace Prisma {
             args: Prisma.f_claim_statusCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
-          createManyAndReturn: {
-            args: Prisma.f_claim_statusCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$f_claim_statusPayload>[]
-          }
           delete: {
             args: Prisma.f_claim_statusDeleteArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$f_claim_statusPayload>
@@ -2387,10 +2315,6 @@ export namespace Prisma {
           createMany: {
             args: Prisma.opd_claim_statusCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.opd_claim_statusCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$opd_claim_statusPayload>[]
           }
           delete: {
             args: Prisma.opd_claim_statusDeleteArgs<ExtArgs>,
@@ -2458,10 +2382,6 @@ export namespace Prisma {
             args: Prisma.ipd_claim_statusCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
-          createManyAndReturn: {
-            args: Prisma.ipd_claim_statusCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ipd_claim_statusPayload>[]
-          }
           delete: {
             args: Prisma.ipd_claim_statusDeleteArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$ipd_claim_statusPayload>
@@ -2527,10 +2447,6 @@ export namespace Prisma {
           createMany: {
             args: Prisma.t_code_errorCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.t_code_errorCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$t_code_errorPayload>[]
           }
           delete: {
             args: Prisma.t_code_errorDeleteArgs<ExtArgs>,
@@ -2598,10 +2514,6 @@ export namespace Prisma {
             args: Prisma.item_groupCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
-          createManyAndReturn: {
-            args: Prisma.item_groupCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$item_groupPayload>[]
-          }
           delete: {
             args: Prisma.item_groupDeleteArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$item_groupPayload>
@@ -2667,10 +2579,6 @@ export namespace Prisma {
           createMany: {
             args: Prisma.item_mainCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.item_mainCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$item_mainPayload>[]
           }
           delete: {
             args: Prisma.item_mainDeleteArgs<ExtArgs>,
@@ -2738,10 +2646,6 @@ export namespace Prisma {
             args: Prisma.lab_mainCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
-          createManyAndReturn: {
-            args: Prisma.lab_mainCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$lab_mainPayload>[]
-          }
           delete: {
             args: Prisma.lab_mainDeleteArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$lab_mainPayload>
@@ -2807,10 +2711,6 @@ export namespace Prisma {
           createMany: {
             args: Prisma.drug_free_scheduleCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.drug_free_scheduleCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$drug_free_schedulePayload>[]
           }
           delete: {
             args: Prisma.drug_free_scheduleDeleteArgs<ExtArgs>,
@@ -2878,10 +2778,6 @@ export namespace Prisma {
             args: Prisma.adp_free_scheduleCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
-          createManyAndReturn: {
-            args: Prisma.adp_free_scheduleCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$adp_free_schedulePayload>[]
-          }
           delete: {
             args: Prisma.adp_free_scheduleDeleteArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$adp_free_schedulePayload>
@@ -2948,10 +2844,6 @@ export namespace Prisma {
             args: Prisma.t_employeeCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
-          createManyAndReturn: {
-            args: Prisma.t_employeeCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$t_employeePayload>[]
-          }
           delete: {
             args: Prisma.t_employeeDeleteArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$t_employeePayload>
@@ -2983,76 +2875,6 @@ export namespace Prisma {
           count: {
             args: Prisma.t_employeeCountArgs<ExtArgs>,
             result: $Utils.Optional<T_employeeCountAggregateOutputType> | number
-          }
-        }
-      }
-      adp_free_schedule_backup: {
-        payload: Prisma.$adp_free_schedule_backupPayload<ExtArgs>
-        fields: Prisma.adp_free_schedule_backupFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.adp_free_schedule_backupFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_backupPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.adp_free_schedule_backupFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_backupPayload>
-          }
-          findFirst: {
-            args: Prisma.adp_free_schedule_backupFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_backupPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.adp_free_schedule_backupFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_backupPayload>
-          }
-          findMany: {
-            args: Prisma.adp_free_schedule_backupFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_backupPayload>[]
-          }
-          create: {
-            args: Prisma.adp_free_schedule_backupCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_backupPayload>
-          }
-          createMany: {
-            args: Prisma.adp_free_schedule_backupCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.adp_free_schedule_backupCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_backupPayload>[]
-          }
-          delete: {
-            args: Prisma.adp_free_schedule_backupDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_backupPayload>
-          }
-          update: {
-            args: Prisma.adp_free_schedule_backupUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_backupPayload>
-          }
-          deleteMany: {
-            args: Prisma.adp_free_schedule_backupDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          updateMany: {
-            args: Prisma.adp_free_schedule_backupUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          upsert: {
-            args: Prisma.adp_free_schedule_backupUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_backupPayload>
-          }
-          aggregate: {
-            args: Prisma.Adp_free_schedule_backupAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateAdp_free_schedule_backup>
-          }
-          groupBy: {
-            args: Prisma.adp_free_schedule_backupGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<Adp_free_schedule_backupGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.adp_free_schedule_backupCountArgs<ExtArgs>,
-            result: $Utils.Optional<Adp_free_schedule_backupCountAggregateOutputType> | number
           }
         }
       }
@@ -3088,10 +2910,6 @@ export namespace Prisma {
             args: Prisma.adp_typeCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
-          createManyAndReturn: {
-            args: Prisma.adp_typeCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$adp_typePayload>[]
-          }
           delete: {
             args: Prisma.adp_typeDeleteArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$adp_typePayload>
@@ -3123,6 +2941,72 @@ export namespace Prisma {
           count: {
             args: Prisma.adp_typeCountArgs<ExtArgs>,
             result: $Utils.Optional<Adp_typeCountAggregateOutputType> | number
+          }
+        }
+      }
+      adp_free_schedule_copy1: {
+        payload: Prisma.$adp_free_schedule_copy1Payload<ExtArgs>
+        fields: Prisma.adp_free_schedule_copy1FieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.adp_free_schedule_copy1FindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_copy1Payload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.adp_free_schedule_copy1FindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_copy1Payload>
+          }
+          findFirst: {
+            args: Prisma.adp_free_schedule_copy1FindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_copy1Payload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.adp_free_schedule_copy1FindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_copy1Payload>
+          }
+          findMany: {
+            args: Prisma.adp_free_schedule_copy1FindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_copy1Payload>[]
+          }
+          create: {
+            args: Prisma.adp_free_schedule_copy1CreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_copy1Payload>
+          }
+          createMany: {
+            args: Prisma.adp_free_schedule_copy1CreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.adp_free_schedule_copy1DeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_copy1Payload>
+          }
+          update: {
+            args: Prisma.adp_free_schedule_copy1UpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_copy1Payload>
+          }
+          deleteMany: {
+            args: Prisma.adp_free_schedule_copy1DeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.adp_free_schedule_copy1UpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.adp_free_schedule_copy1UpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_copy1Payload>
+          }
+          aggregate: {
+            args: Prisma.Adp_free_schedule_copy1AggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateAdp_free_schedule_copy1>
+          }
+          groupBy: {
+            args: Prisma.adp_free_schedule_copy1GroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Adp_free_schedule_copy1GroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.adp_free_schedule_copy1CountArgs<ExtArgs>,
+            result: $Utils.Optional<Adp_free_schedule_copy1CountAggregateOutputType> | number
           }
         }
       }
@@ -3611,28 +3495,6 @@ export namespace Prisma {
     htype?: boolean
   }, ExtArgs["result"]["t_ins"]>
 
-  export type t_insSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    hn?: boolean
-    inscl?: boolean
-    subtype?: boolean
-    cid?: boolean
-    hcode?: boolean
-    dateexp?: boolean
-    hospmain?: boolean
-    hospsub?: boolean
-    govcode?: boolean
-    govname?: boolean
-    permitno?: boolean
-    docno?: boolean
-    ownrpid?: boolean
-    ownname?: boolean
-    an?: boolean
-    seq?: boolean
-    subinscl?: boolean
-    relinscl?: boolean
-    htype?: boolean
-  }, ExtArgs["result"]["t_ins"]>
 
   export type t_insSelectScalar = {
     id?: boolean
@@ -3812,32 +3674,6 @@ export namespace Prisma {
     createMany<T extends t_insCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, t_insCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many T_ins and returns the data saved in the database.
-     * @param {t_insCreateManyAndReturnArgs} args - Arguments to create many T_ins.
-     * @example
-     * // Create many T_ins
-     * const t_ins = await prisma.t_ins.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many T_ins and only return the `id`
-     * const t_insWithIdOnly = await prisma.t_ins.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends t_insCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, t_insCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$t_insPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a T_ins.
@@ -4312,21 +4148,6 @@ export namespace Prisma {
   }
 
   /**
-   * t_ins createManyAndReturn
-   */
-  export type t_insCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the t_ins
-     */
-    select?: t_insSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many t_ins.
-     */
-    data: t_insCreateManyInput | t_insCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * t_ins update
    */
   export type t_insUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4672,24 +4493,6 @@ export namespace Prisma {
     idtype?: boolean
   }, ExtArgs["result"]["t_pat"]>
 
-  export type t_patSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    hcode?: boolean
-    hn?: boolean
-    changwat?: boolean
-    amphur?: boolean
-    dob?: boolean
-    sex?: boolean
-    marriage?: boolean
-    occupa?: boolean
-    nation?: boolean
-    person_id?: boolean
-    namepat?: boolean
-    title?: boolean
-    fname?: boolean
-    lname?: boolean
-    idtype?: boolean
-  }, ExtArgs["result"]["t_pat"]>
 
   export type t_patSelectScalar = {
     id?: boolean
@@ -4861,32 +4664,6 @@ export namespace Prisma {
     createMany<T extends t_patCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, t_patCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many T_pats and returns the data saved in the database.
-     * @param {t_patCreateManyAndReturnArgs} args - Arguments to create many T_pats.
-     * @example
-     * // Create many T_pats
-     * const t_pat = await prisma.t_pat.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many T_pats and only return the `id`
-     * const t_patWithIdOnly = await prisma.t_pat.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends t_patCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, t_patCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$t_patPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a T_pat.
@@ -5357,21 +5134,6 @@ export namespace Prisma {
   }
 
   /**
-   * t_pat createManyAndReturn
-   */
-  export type t_patCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the t_pat
-     */
-    select?: t_patSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many t_pats.
-     */
-    data: t_patCreateManyInput | t_patCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * t_pat update
    */
   export type t_patUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5717,24 +5479,6 @@ export namespace Prisma {
     typeout?: boolean
   }, ExtArgs["result"]["t_opd"]>
 
-  export type t_opdSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    hn?: boolean
-    clinic?: boolean
-    dateopd?: boolean
-    timeopd?: boolean
-    seq?: boolean
-    uuc?: boolean
-    detail?: boolean
-    btemp?: boolean
-    sbp?: boolean
-    dbp?: boolean
-    pr?: boolean
-    rr?: boolean
-    optype?: boolean
-    typein?: boolean
-    typeout?: boolean
-  }, ExtArgs["result"]["t_opd"]>
 
   export type t_opdSelectScalar = {
     id?: boolean
@@ -5906,32 +5650,6 @@ export namespace Prisma {
     createMany<T extends t_opdCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, t_opdCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many T_opds and returns the data saved in the database.
-     * @param {t_opdCreateManyAndReturnArgs} args - Arguments to create many T_opds.
-     * @example
-     * // Create many T_opds
-     * const t_opd = await prisma.t_opd.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many T_opds and only return the `id`
-     * const t_opdWithIdOnly = await prisma.t_opd.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends t_opdCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, t_opdCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$t_opdPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a T_opd.
@@ -6402,21 +6120,6 @@ export namespace Prisma {
   }
 
   /**
-   * t_opd createManyAndReturn
-   */
-  export type t_opdCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the t_opd
-     */
-    select?: t_opdSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many t_opds.
-     */
-    data: t_opdCreateManyInput | t_opdCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * t_opd update
    */
   export type t_opdUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6698,16 +6401,6 @@ export namespace Prisma {
     referdate?: boolean
   }, ExtArgs["result"]["t_orf"]>
 
-  export type t_orfSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    hn?: boolean
-    dateopd?: boolean
-    clinic?: boolean
-    refer?: boolean
-    refertype?: boolean
-    seq?: boolean
-    referdate?: boolean
-  }, ExtArgs["result"]["t_orf"]>
 
   export type t_orfSelectScalar = {
     id?: boolean
@@ -6863,32 +6556,6 @@ export namespace Prisma {
     createMany<T extends t_orfCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, t_orfCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many T_orfs and returns the data saved in the database.
-     * @param {t_orfCreateManyAndReturnArgs} args - Arguments to create many T_orfs.
-     * @example
-     * // Create many T_orfs
-     * const t_orf = await prisma.t_orf.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many T_orfs and only return the `id`
-     * const t_orfWithIdOnly = await prisma.t_orf.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends t_orfCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, t_orfCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$t_orfPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a T_orf.
@@ -7351,21 +7018,6 @@ export namespace Prisma {
   }
 
   /**
-   * t_orf createManyAndReturn
-   */
-  export type t_orfCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the t_orf
-     */
-    select?: t_orfSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many t_orfs.
-     */
-    data: t_orfCreateManyInput | t_orfCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * t_orf update
    */
   export type t_orfUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7655,17 +7307,6 @@ export namespace Prisma {
     seq?: boolean
   }, ExtArgs["result"]["t_odx"]>
 
-  export type t_odxSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    hn?: boolean
-    datedx?: boolean
-    clinic?: boolean
-    diag?: boolean
-    dxtype?: boolean
-    drdx?: boolean
-    person_id?: boolean
-    seq?: boolean
-  }, ExtArgs["result"]["t_odx"]>
 
   export type t_odxSelectScalar = {
     id?: boolean
@@ -7823,32 +7464,6 @@ export namespace Prisma {
     createMany<T extends t_odxCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, t_odxCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many T_odxes and returns the data saved in the database.
-     * @param {t_odxCreateManyAndReturnArgs} args - Arguments to create many T_odxes.
-     * @example
-     * // Create many T_odxes
-     * const t_odx = await prisma.t_odx.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many T_odxes and only return the `id`
-     * const t_odxWithIdOnly = await prisma.t_odx.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends t_odxCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, t_odxCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$t_odxPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a T_odx.
@@ -8312,21 +7927,6 @@ export namespace Prisma {
   }
 
   /**
-   * t_odx createManyAndReturn
-   */
-  export type t_odxCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the t_odx
-     */
-    select?: t_odxSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many t_odxes.
-     */
-    data: t_odxCreateManyInput | t_odxCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * t_odx update
    */
   export type t_odxUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8616,17 +8216,6 @@ export namespace Prisma {
     servprice?: boolean
   }, ExtArgs["result"]["t_oop"]>
 
-  export type t_oopSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    hn?: boolean
-    dateopd?: boolean
-    clinic?: boolean
-    oper?: boolean
-    dropid?: boolean
-    person_id?: boolean
-    seq?: boolean
-    servprice?: boolean
-  }, ExtArgs["result"]["t_oop"]>
 
   export type t_oopSelectScalar = {
     id?: boolean
@@ -8784,32 +8373,6 @@ export namespace Prisma {
     createMany<T extends t_oopCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, t_oopCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many T_oops and returns the data saved in the database.
-     * @param {t_oopCreateManyAndReturnArgs} args - Arguments to create many T_oops.
-     * @example
-     * // Create many T_oops
-     * const t_oop = await prisma.t_oop.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many T_oops and only return the `id`
-     * const t_oopWithIdOnly = await prisma.t_oop.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends t_oopCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, t_oopCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$t_oopPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a T_oop.
@@ -9273,21 +8836,6 @@ export namespace Prisma {
   }
 
   /**
-   * t_oop createManyAndReturn
-   */
-  export type t_oopCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the t_oop
-     */
-    select?: t_oopSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many t_oops.
-     */
-    data: t_oopCreateManyInput | t_oopCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * t_oop update
    */
   export type t_oopUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9617,22 +9165,6 @@ export namespace Prisma {
     svctype?: boolean
   }, ExtArgs["result"]["t_ipd"]>
 
-  export type t_ipdSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    hn?: boolean
-    an?: boolean
-    dateadm?: boolean
-    timeadm?: boolean
-    datedsc?: boolean
-    timedsc?: boolean
-    dischs?: boolean
-    discht?: boolean
-    warddsc?: boolean
-    dept?: boolean
-    adm_w?: boolean
-    uuc?: boolean
-    svctype?: boolean
-  }, ExtArgs["result"]["t_ipd"]>
 
   export type t_ipdSelectScalar = {
     id?: boolean
@@ -9800,32 +9332,6 @@ export namespace Prisma {
     createMany<T extends t_ipdCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, t_ipdCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many T_ipds and returns the data saved in the database.
-     * @param {t_ipdCreateManyAndReturnArgs} args - Arguments to create many T_ipds.
-     * @example
-     * // Create many T_ipds
-     * const t_ipd = await prisma.t_ipd.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many T_ipds and only return the `id`
-     * const t_ipdWithIdOnly = await prisma.t_ipd.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends t_ipdCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, t_ipdCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$t_ipdPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a T_ipd.
@@ -10294,21 +9800,6 @@ export namespace Prisma {
   }
 
   /**
-   * t_ipd createManyAndReturn
-   */
-  export type t_ipdCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the t_ipd
-     */
-    select?: t_ipdSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many t_ipds.
-     */
-    data: t_ipdCreateManyInput | t_ipdCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * t_ipd update
    */
   export type t_ipdUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10558,12 +10049,6 @@ export namespace Prisma {
     refertype?: boolean
   }, ExtArgs["result"]["t_irf"]>
 
-  export type t_irfSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    an?: boolean
-    refer?: boolean
-    refertype?: boolean
-  }, ExtArgs["result"]["t_irf"]>
 
   export type t_irfSelectScalar = {
     id?: boolean
@@ -10711,32 +10196,6 @@ export namespace Prisma {
     createMany<T extends t_irfCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, t_irfCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many T_irfs and returns the data saved in the database.
-     * @param {t_irfCreateManyAndReturnArgs} args - Arguments to create many T_irfs.
-     * @example
-     * // Create many T_irfs
-     * const t_irf = await prisma.t_irf.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many T_irfs and only return the `id`
-     * const t_irfWithIdOnly = await prisma.t_irf.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends t_irfCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, t_irfCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$t_irfPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a T_irf.
@@ -11195,21 +10654,6 @@ export namespace Prisma {
   }
 
   /**
-   * t_irf createManyAndReturn
-   */
-  export type t_irfCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the t_irf
-     */
-    select?: t_irfSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many t_irfs.
-     */
-    data: t_irfCreateManyInput | t_irfCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * t_irf update
    */
   export type t_irfUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11467,13 +10911,6 @@ export namespace Prisma {
     drdx?: boolean
   }, ExtArgs["result"]["t_idx"]>
 
-  export type t_idxSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    an?: boolean
-    diag?: boolean
-    dxtype?: boolean
-    drdx?: boolean
-  }, ExtArgs["result"]["t_idx"]>
 
   export type t_idxSelectScalar = {
     id?: boolean
@@ -11623,32 +11060,6 @@ export namespace Prisma {
     createMany<T extends t_idxCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, t_idxCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many T_idxes and returns the data saved in the database.
-     * @param {t_idxCreateManyAndReturnArgs} args - Arguments to create many T_idxes.
-     * @example
-     * // Create many T_idxes
-     * const t_idx = await prisma.t_idx.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many T_idxes and only return the `id`
-     * const t_idxWithIdOnly = await prisma.t_idx.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends t_idxCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, t_idxCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$t_idxPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a T_idx.
@@ -12108,21 +11519,6 @@ export namespace Prisma {
   }
 
   /**
-   * t_idx createManyAndReturn
-   */
-  export type t_idxCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the t_idx
-     */
-    select?: t_idxSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many t_idxes.
-     */
-    data: t_idxCreateManyInput | t_idxCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * t_idx update
    */
   export type t_idxUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -12412,17 +11808,6 @@ export namespace Prisma {
     timeout?: boolean
   }, ExtArgs["result"]["t_iop"]>
 
-  export type t_iopSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    an?: boolean
-    oper?: boolean
-    optype?: boolean
-    dropid?: boolean
-    datein?: boolean
-    timein?: boolean
-    dateout?: boolean
-    timeout?: boolean
-  }, ExtArgs["result"]["t_iop"]>
 
   export type t_iopSelectScalar = {
     id?: boolean
@@ -12580,32 +11965,6 @@ export namespace Prisma {
     createMany<T extends t_iopCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, t_iopCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many T_iops and returns the data saved in the database.
-     * @param {t_iopCreateManyAndReturnArgs} args - Arguments to create many T_iops.
-     * @example
-     * // Create many T_iops
-     * const t_iop = await prisma.t_iop.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many T_iops and only return the `id`
-     * const t_iopWithIdOnly = await prisma.t_iop.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends t_iopCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, t_iopCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$t_iopPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a T_iop.
@@ -13069,21 +12428,6 @@ export namespace Prisma {
   }
 
   /**
-   * t_iop createManyAndReturn
-   */
-  export type t_iopCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the t_iop
-     */
-    select?: t_iopSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many t_iops.
-     */
-    data: t_iopCreateManyInput | t_iopCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * t_iop update
    */
   export type t_iopUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -13397,20 +12741,6 @@ export namespace Prisma {
     invoice_lt?: boolean
   }, ExtArgs["result"]["t_cht"]>
 
-  export type t_chtSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    hn?: boolean
-    an?: boolean
-    date?: boolean
-    total?: boolean
-    paid?: boolean
-    pttype?: boolean
-    person_id?: boolean
-    seq?: boolean
-    opd_memo?: boolean
-    invoice_no?: boolean
-    invoice_lt?: boolean
-  }, ExtArgs["result"]["t_cht"]>
 
   export type t_chtSelectScalar = {
     id?: boolean
@@ -13574,32 +12904,6 @@ export namespace Prisma {
     createMany<T extends t_chtCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, t_chtCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many T_chts and returns the data saved in the database.
-     * @param {t_chtCreateManyAndReturnArgs} args - Arguments to create many T_chts.
-     * @example
-     * // Create many T_chts
-     * const t_cht = await prisma.t_cht.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many T_chts and only return the `id`
-     * const t_chtWithIdOnly = await prisma.t_cht.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends t_chtCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, t_chtCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$t_chtPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a T_cht.
@@ -14066,21 +13370,6 @@ export namespace Prisma {
   }
 
   /**
-   * t_cht createManyAndReturn
-   */
-  export type t_chtCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the t_cht
-     */
-    select?: t_chtSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many t_chts.
-     */
-    data: t_chtCreateManyInput | t_chtCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * t_cht update
    */
   export type t_chtUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -14362,16 +13651,6 @@ export namespace Prisma {
     seq?: boolean
   }, ExtArgs["result"]["t_cha"]>
 
-  export type t_chaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    hn?: boolean
-    an?: boolean
-    date?: boolean
-    chrgitem?: boolean
-    amount?: boolean
-    person_id?: boolean
-    seq?: boolean
-  }, ExtArgs["result"]["t_cha"]>
 
   export type t_chaSelectScalar = {
     id?: boolean
@@ -14527,32 +13806,6 @@ export namespace Prisma {
     createMany<T extends t_chaCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, t_chaCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many T_chas and returns the data saved in the database.
-     * @param {t_chaCreateManyAndReturnArgs} args - Arguments to create many T_chas.
-     * @example
-     * // Create many T_chas
-     * const t_cha = await prisma.t_cha.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many T_chas and only return the `id`
-     * const t_chaWithIdOnly = await prisma.t_cha.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends t_chaCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, t_chaCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$t_chaPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a T_cha.
@@ -15015,21 +14268,6 @@ export namespace Prisma {
   }
 
   /**
-   * t_cha createManyAndReturn
-   */
-  export type t_chaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the t_cha
-     */
-    select?: t_chaSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many t_chas.
-     */
-    data: t_chaCreateManyInput | t_chaCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * t_cha update
    */
   export type t_chaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -15399,27 +14637,6 @@ export namespace Prisma {
     talert?: boolean
   }, ExtArgs["result"]["t_aer"]>
 
-  export type t_aerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    hn?: boolean
-    an?: boolean
-    dateopd?: boolean
-    authae?: boolean
-    aedate?: boolean
-    aetime?: boolean
-    aetype?: boolean
-    refer_no?: boolean
-    refmaini?: boolean
-    ireftype?: boolean
-    refmaino?: boolean
-    oreftype?: boolean
-    ucae?: boolean
-    emtype?: boolean
-    seq?: boolean
-    aestatus?: boolean
-    dalert?: boolean
-    talert?: boolean
-  }, ExtArgs["result"]["t_aer"]>
 
   export type t_aerSelectScalar = {
     id?: boolean
@@ -15597,32 +14814,6 @@ export namespace Prisma {
     createMany<T extends t_aerCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, t_aerCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many T_aers and returns the data saved in the database.
-     * @param {t_aerCreateManyAndReturnArgs} args - Arguments to create many T_aers.
-     * @example
-     * // Create many T_aers
-     * const t_aer = await prisma.t_aer.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many T_aers and only return the `id`
-     * const t_aerWithIdOnly = await prisma.t_aer.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends t_aerCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, t_aerCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$t_aerPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a T_aer.
@@ -16096,21 +15287,6 @@ export namespace Prisma {
   }
 
   /**
-   * t_aer createManyAndReturn
-   */
-  export type t_aerCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the t_aer
-     */
-    select?: t_aerSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many t_aers.
-     */
-    data: t_aerCreateManyInput | t_aerCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * t_aer update
    */
   export type t_aerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -16536,34 +15712,6 @@ export namespace Prisma {
     lmp?: boolean
   }, ExtArgs["result"]["t_adp"]>
 
-  export type t_adpSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    hn?: boolean
-    an?: boolean
-    dateopd?: boolean
-    type?: boolean
-    code?: boolean
-    qty?: boolean
-    rate?: boolean
-    seq?: boolean
-    cagcode?: boolean
-    dose?: boolean
-    ca_type?: boolean
-    serialno?: boolean
-    totcopay?: boolean
-    use_status?: boolean
-    total?: boolean
-    tmltcode?: boolean
-    status1?: boolean
-    bi?: boolean
-    clinic?: boolean
-    itemsrc?: boolean
-    provider?: boolean
-    gravida?: boolean
-    ga_week?: boolean
-    dcip_e_screen?: boolean
-    lmp?: boolean
-  }, ExtArgs["result"]["t_adp"]>
 
   export type t_adpSelectScalar = {
     id?: boolean
@@ -16755,32 +15903,6 @@ export namespace Prisma {
     createMany<T extends t_adpCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, t_adpCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many T_adps and returns the data saved in the database.
-     * @param {t_adpCreateManyAndReturnArgs} args - Arguments to create many T_adps.
-     * @example
-     * // Create many T_adps
-     * const t_adp = await prisma.t_adp.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many T_adps and only return the `id`
-     * const t_adpWithIdOnly = await prisma.t_adp.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends t_adpCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, t_adpCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$t_adpPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a T_adp.
@@ -17261,21 +16383,6 @@ export namespace Prisma {
   }
 
   /**
-   * t_adp createManyAndReturn
-   */
-  export type t_adpCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the t_adp
-     */
-    select?: t_adpSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many t_adps.
-     */
-    data: t_adpCreateManyInput | t_adpCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * t_adp update
    */
   export type t_adpUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -17557,16 +16664,6 @@ export namespace Prisma {
     qtyday?: boolean
   }, ExtArgs["result"]["t_lvd"]>
 
-  export type t_lvdSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    seqlvd?: boolean
-    an?: boolean
-    dateout?: boolean
-    timeout?: boolean
-    datein?: boolean
-    timein?: boolean
-    qtyday?: boolean
-  }, ExtArgs["result"]["t_lvd"]>
 
   export type t_lvdSelectScalar = {
     id?: boolean
@@ -17722,32 +16819,6 @@ export namespace Prisma {
     createMany<T extends t_lvdCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, t_lvdCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many T_lvds and returns the data saved in the database.
-     * @param {t_lvdCreateManyAndReturnArgs} args - Arguments to create many T_lvds.
-     * @example
-     * // Create many T_lvds
-     * const t_lvd = await prisma.t_lvd.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many T_lvds and only return the `id`
-     * const t_lvdWithIdOnly = await prisma.t_lvd.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends t_lvdCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, t_lvdCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$t_lvdPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a T_lvd.
@@ -18210,21 +17281,6 @@ export namespace Prisma {
   }
 
   /**
-   * t_lvd createManyAndReturn
-   */
-  export type t_lvdCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the t_lvd
-     */
-    select?: t_lvdSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many t_lvds.
-     */
-    data: t_lvdCreateManyInput | t_lvdCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * t_lvd update
    */
   export type t_lvdUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -18634,32 +17690,6 @@ export namespace Prisma {
     provider?: boolean
   }, ExtArgs["result"]["t_dru"]>
 
-  export type t_druSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    hcode?: boolean
-    hn?: boolean
-    an?: boolean
-    clinic?: boolean
-    person_id?: boolean
-    date_serv?: boolean
-    did?: boolean
-    didname?: boolean
-    amount?: boolean
-    drugprice?: boolean
-    drugcost?: boolean
-    didstd?: boolean
-    unit?: boolean
-    unit_pack?: boolean
-    seq?: boolean
-    drugremark?: boolean
-    pa_no?: boolean
-    totcopay?: boolean
-    use_status?: boolean
-    total?: boolean
-    sigcode?: boolean
-    sigtext?: boolean
-    provider?: boolean
-  }, ExtArgs["result"]["t_dru"]>
 
   export type t_druSelectScalar = {
     id?: boolean
@@ -18847,32 +17877,6 @@ export namespace Prisma {
     createMany<T extends t_druCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, t_druCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many T_drus and returns the data saved in the database.
-     * @param {t_druCreateManyAndReturnArgs} args - Arguments to create many T_drus.
-     * @example
-     * // Create many T_drus
-     * const t_dru = await prisma.t_dru.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many T_drus and only return the `id`
-     * const t_druWithIdOnly = await prisma.t_dru.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends t_druCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, t_druCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$t_druPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a T_dru.
@@ -19351,21 +18355,6 @@ export namespace Prisma {
   }
 
   /**
-   * t_dru createManyAndReturn
-   */
-  export type t_druCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the t_dru
-     */
-    select?: t_druSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many t_drus.
-     */
-    data: t_druCreateManyInput | t_druCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * t_dru update
    */
   export type t_druUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -19647,16 +18636,6 @@ export namespace Prisma {
     labresult?: boolean
   }, ExtArgs["result"]["t_labfu"]>
 
-  export type t_labfuSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    hcode?: boolean
-    hn?: boolean
-    person_id?: boolean
-    dateserv?: boolean
-    seq?: boolean
-    labtest?: boolean
-    labresult?: boolean
-  }, ExtArgs["result"]["t_labfu"]>
 
   export type t_labfuSelectScalar = {
     id?: boolean
@@ -19812,32 +18791,6 @@ export namespace Prisma {
     createMany<T extends t_labfuCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, t_labfuCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many T_labfus and returns the data saved in the database.
-     * @param {t_labfuCreateManyAndReturnArgs} args - Arguments to create many T_labfus.
-     * @example
-     * // Create many T_labfus
-     * const t_labfu = await prisma.t_labfu.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many T_labfus and only return the `id`
-     * const t_labfuWithIdOnly = await prisma.t_labfu.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends t_labfuCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, t_labfuCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$t_labfuPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a T_labfu.
@@ -20300,21 +19253,6 @@ export namespace Prisma {
   }
 
   /**
-   * t_labfu createManyAndReturn
-   */
-  export type t_labfuCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the t_labfu
-     */
-    select?: t_labfuSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many t_labfus.
-     */
-    data: t_labfuCreateManyInput | t_labfuCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * t_labfu update
    */
   export type t_labfuUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -20559,11 +19497,6 @@ export namespace Prisma {
     _count?: boolean | F_claim_statusCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["f_claim_status"]>
 
-  export type f_claim_statusSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    status_code?: boolean
-    description?: boolean
-  }, ExtArgs["result"]["f_claim_status"]>
 
   export type f_claim_statusSelectScalar = {
     id?: boolean
@@ -20576,7 +19509,6 @@ export namespace Prisma {
     opd_claim_status?: boolean | f_claim_status$opd_claim_statusArgs<ExtArgs>
     _count?: boolean | F_claim_statusCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type f_claim_statusIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $f_claim_statusPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "f_claim_status"
@@ -20718,32 +19650,6 @@ export namespace Prisma {
     createMany<T extends f_claim_statusCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, f_claim_statusCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many F_claim_statuses and returns the data saved in the database.
-     * @param {f_claim_statusCreateManyAndReturnArgs} args - Arguments to create many F_claim_statuses.
-     * @example
-     * // Create many F_claim_statuses
-     * const f_claim_status = await prisma.f_claim_status.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many F_claim_statuses and only return the `id`
-     * const f_claim_statusWithIdOnly = await prisma.f_claim_status.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends f_claim_statusCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, f_claim_statusCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$f_claim_statusPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a F_claim_status.
@@ -21228,21 +20134,6 @@ export namespace Prisma {
   }
 
   /**
-   * f_claim_status createManyAndReturn
-   */
-  export type f_claim_statusCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the f_claim_status
-     */
-    select?: f_claim_statusSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many f_claim_statuses.
-     */
-    data: f_claim_statusCreateManyInput | f_claim_statusCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * f_claim_status update
    */
   export type f_claim_statusUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -21408,6 +20299,8 @@ export namespace Prisma {
     opd_claim_number: string | null
     staff_number_claim: string | null
     sent_date: string | null
+    hn: string | null
+    fhd_clain_code: string | null
   }
 
   export type Opd_claim_statusMaxAggregateOutputType = {
@@ -21418,6 +20311,8 @@ export namespace Prisma {
     opd_claim_number: string | null
     staff_number_claim: string | null
     sent_date: string | null
+    hn: string | null
+    fhd_clain_code: string | null
   }
 
   export type Opd_claim_statusCountAggregateOutputType = {
@@ -21428,6 +20323,8 @@ export namespace Prisma {
     opd_claim_number: number
     staff_number_claim: number
     sent_date: number
+    hn: number
+    fhd_clain_code: number
     _all: number
   }
 
@@ -21440,6 +20337,8 @@ export namespace Prisma {
     opd_claim_number?: true
     staff_number_claim?: true
     sent_date?: true
+    hn?: true
+    fhd_clain_code?: true
   }
 
   export type Opd_claim_statusMaxAggregateInputType = {
@@ -21450,6 +20349,8 @@ export namespace Prisma {
     opd_claim_number?: true
     staff_number_claim?: true
     sent_date?: true
+    hn?: true
+    fhd_clain_code?: true
   }
 
   export type Opd_claim_statusCountAggregateInputType = {
@@ -21460,6 +20361,8 @@ export namespace Prisma {
     opd_claim_number?: true
     staff_number_claim?: true
     sent_date?: true
+    hn?: true
+    fhd_clain_code?: true
     _all?: true
   }
 
@@ -21543,6 +20446,8 @@ export namespace Prisma {
     opd_claim_number: string | null
     staff_number_claim: string | null
     sent_date: string | null
+    hn: string | null
+    fhd_clain_code: string | null
     _count: Opd_claim_statusCountAggregateOutputType | null
     _min: Opd_claim_statusMinAggregateOutputType | null
     _max: Opd_claim_statusMaxAggregateOutputType | null
@@ -21570,19 +20475,11 @@ export namespace Prisma {
     opd_claim_number?: boolean
     staff_number_claim?: boolean
     sent_date?: boolean
+    hn?: boolean
+    fhd_clain_code?: boolean
     status?: boolean | f_claim_statusDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["opd_claim_status"]>
 
-  export type opd_claim_statusSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    status_code?: boolean
-    seq?: boolean
-    opd_claim_date?: boolean
-    opd_claim_number?: boolean
-    staff_number_claim?: boolean
-    sent_date?: boolean
-    status?: boolean | f_claim_statusDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["opd_claim_status"]>
 
   export type opd_claim_statusSelectScalar = {
     id?: boolean
@@ -21592,12 +20489,11 @@ export namespace Prisma {
     opd_claim_number?: boolean
     staff_number_claim?: boolean
     sent_date?: boolean
+    hn?: boolean
+    fhd_clain_code?: boolean
   }
 
   export type opd_claim_statusInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    status?: boolean | f_claim_statusDefaultArgs<ExtArgs>
-  }
-  export type opd_claim_statusIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     status?: boolean | f_claim_statusDefaultArgs<ExtArgs>
   }
 
@@ -21614,6 +20510,8 @@ export namespace Prisma {
       opd_claim_number: string | null
       staff_number_claim: string | null
       sent_date: string | null
+      hn: string | null
+      fhd_clain_code: string | null
     }, ExtArgs["result"]["opd_claim_status"]>
     composites: {}
   }
@@ -21744,32 +20642,6 @@ export namespace Prisma {
     createMany<T extends opd_claim_statusCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, opd_claim_statusCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Opd_claim_statuses and returns the data saved in the database.
-     * @param {opd_claim_statusCreateManyAndReturnArgs} args - Arguments to create many Opd_claim_statuses.
-     * @example
-     * // Create many Opd_claim_statuses
-     * const opd_claim_status = await prisma.opd_claim_status.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Opd_claim_statuses and only return the `id`
-     * const opd_claim_statusWithIdOnly = await prisma.opd_claim_status.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends opd_claim_statusCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, opd_claim_statusCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$opd_claim_statusPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a Opd_claim_status.
@@ -22041,6 +20913,8 @@ export namespace Prisma {
     readonly opd_claim_number: FieldRef<"opd_claim_status", 'String'>
     readonly staff_number_claim: FieldRef<"opd_claim_status", 'String'>
     readonly sent_date: FieldRef<"opd_claim_status", 'String'>
+    readonly hn: FieldRef<"opd_claim_status", 'String'>
+    readonly fhd_clain_code: FieldRef<"opd_claim_status", 'String'>
   }
     
 
@@ -22256,25 +21130,6 @@ export namespace Prisma {
   }
 
   /**
-   * opd_claim_status createManyAndReturn
-   */
-  export type opd_claim_statusCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the opd_claim_status
-     */
-    select?: opd_claim_statusSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many opd_claim_statuses.
-     */
-    data: opd_claim_statusCreateManyInput | opd_claim_statusCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: opd_claim_statusIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
    * opd_claim_status update
    */
   export type opd_claim_statusUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -22400,6 +21255,8 @@ export namespace Prisma {
     ipd_claim_number: string | null
     staff_number_claim: string | null
     sent_date: string | null
+    hn: string | null
+    fhd_clain_code: string | null
   }
 
   export type Ipd_claim_statusMaxAggregateOutputType = {
@@ -22410,6 +21267,8 @@ export namespace Prisma {
     ipd_claim_number: string | null
     staff_number_claim: string | null
     sent_date: string | null
+    hn: string | null
+    fhd_clain_code: string | null
   }
 
   export type Ipd_claim_statusCountAggregateOutputType = {
@@ -22420,6 +21279,8 @@ export namespace Prisma {
     ipd_claim_number: number
     staff_number_claim: number
     sent_date: number
+    hn: number
+    fhd_clain_code: number
     _all: number
   }
 
@@ -22432,6 +21293,8 @@ export namespace Prisma {
     ipd_claim_number?: true
     staff_number_claim?: true
     sent_date?: true
+    hn?: true
+    fhd_clain_code?: true
   }
 
   export type Ipd_claim_statusMaxAggregateInputType = {
@@ -22442,6 +21305,8 @@ export namespace Prisma {
     ipd_claim_number?: true
     staff_number_claim?: true
     sent_date?: true
+    hn?: true
+    fhd_clain_code?: true
   }
 
   export type Ipd_claim_statusCountAggregateInputType = {
@@ -22452,6 +21317,8 @@ export namespace Prisma {
     ipd_claim_number?: true
     staff_number_claim?: true
     sent_date?: true
+    hn?: true
+    fhd_clain_code?: true
     _all?: true
   }
 
@@ -22535,6 +21402,8 @@ export namespace Prisma {
     ipd_claim_number: string | null
     staff_number_claim: string | null
     sent_date: string | null
+    hn: string | null
+    fhd_clain_code: string | null
     _count: Ipd_claim_statusCountAggregateOutputType | null
     _min: Ipd_claim_statusMinAggregateOutputType | null
     _max: Ipd_claim_statusMaxAggregateOutputType | null
@@ -22562,19 +21431,11 @@ export namespace Prisma {
     ipd_claim_number?: boolean
     staff_number_claim?: boolean
     sent_date?: boolean
+    hn?: boolean
+    fhd_clain_code?: boolean
     status?: boolean | f_claim_statusDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["ipd_claim_status"]>
 
-  export type ipd_claim_statusSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    status_code?: boolean
-    an?: boolean
-    ipd_claim_date?: boolean
-    ipd_claim_number?: boolean
-    staff_number_claim?: boolean
-    sent_date?: boolean
-    status?: boolean | f_claim_statusDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["ipd_claim_status"]>
 
   export type ipd_claim_statusSelectScalar = {
     id?: boolean
@@ -22584,12 +21445,11 @@ export namespace Prisma {
     ipd_claim_number?: boolean
     staff_number_claim?: boolean
     sent_date?: boolean
+    hn?: boolean
+    fhd_clain_code?: boolean
   }
 
   export type ipd_claim_statusInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    status?: boolean | f_claim_statusDefaultArgs<ExtArgs>
-  }
-  export type ipd_claim_statusIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     status?: boolean | f_claim_statusDefaultArgs<ExtArgs>
   }
 
@@ -22606,6 +21466,8 @@ export namespace Prisma {
       ipd_claim_number: string | null
       staff_number_claim: string | null
       sent_date: string | null
+      hn: string | null
+      fhd_clain_code: string | null
     }, ExtArgs["result"]["ipd_claim_status"]>
     composites: {}
   }
@@ -22736,32 +21598,6 @@ export namespace Prisma {
     createMany<T extends ipd_claim_statusCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, ipd_claim_statusCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Ipd_claim_statuses and returns the data saved in the database.
-     * @param {ipd_claim_statusCreateManyAndReturnArgs} args - Arguments to create many Ipd_claim_statuses.
-     * @example
-     * // Create many Ipd_claim_statuses
-     * const ipd_claim_status = await prisma.ipd_claim_status.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Ipd_claim_statuses and only return the `id`
-     * const ipd_claim_statusWithIdOnly = await prisma.ipd_claim_status.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends ipd_claim_statusCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, ipd_claim_statusCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ipd_claim_statusPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a Ipd_claim_status.
@@ -23033,6 +21869,8 @@ export namespace Prisma {
     readonly ipd_claim_number: FieldRef<"ipd_claim_status", 'String'>
     readonly staff_number_claim: FieldRef<"ipd_claim_status", 'String'>
     readonly sent_date: FieldRef<"ipd_claim_status", 'String'>
+    readonly hn: FieldRef<"ipd_claim_status", 'String'>
+    readonly fhd_clain_code: FieldRef<"ipd_claim_status", 'String'>
   }
     
 
@@ -23245,25 +22083,6 @@ export namespace Prisma {
      */
     data: ipd_claim_statusCreateManyInput | ipd_claim_statusCreateManyInput[]
     skipDuplicates?: boolean
-  }
-
-  /**
-   * ipd_claim_status createManyAndReturn
-   */
-  export type ipd_claim_statusCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ipd_claim_status
-     */
-    select?: ipd_claim_statusSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many ipd_claim_statuses.
-     */
-    data: ipd_claim_statusCreateManyInput | ipd_claim_statusCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ipd_claim_statusIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -23610,17 +22429,6 @@ export namespace Prisma {
     ref_column_condition?: boolean
   }, ExtArgs["result"]["t_code_error"]>
 
-  export type t_code_errorSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    code_error?: boolean
-    code_error_description?: boolean
-    main_table?: boolean
-    ref_table?: boolean
-    t_code_error_active?: boolean
-    main_column?: boolean
-    ref_column?: boolean
-    ref_column_condition?: boolean
-  }, ExtArgs["result"]["t_code_error"]>
 
   export type t_code_errorSelectScalar = {
     id?: boolean
@@ -23778,32 +22586,6 @@ export namespace Prisma {
     createMany<T extends t_code_errorCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, t_code_errorCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many T_code_errors and returns the data saved in the database.
-     * @param {t_code_errorCreateManyAndReturnArgs} args - Arguments to create many T_code_errors.
-     * @example
-     * // Create many T_code_errors
-     * const t_code_error = await prisma.t_code_error.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many T_code_errors and only return the `id`
-     * const t_code_errorWithIdOnly = await prisma.t_code_error.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends t_code_errorCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, t_code_errorCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$t_code_errorPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a T_code_error.
@@ -24267,21 +23049,6 @@ export namespace Prisma {
   }
 
   /**
-   * t_code_error createManyAndReturn
-   */
-  export type t_code_errorCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the t_code_error
-     */
-    select?: t_code_errorSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many t_code_errors.
-     */
-    data: t_code_errorCreateManyInput | t_code_errorCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * t_code_error update
    */
   export type t_code_errorUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -24569,12 +23336,6 @@ export namespace Prisma {
     id?: boolean
   }, ExtArgs["result"]["item_group"]>
 
-  export type item_groupSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    item_group_code?: boolean
-    item_group_name?: boolean
-    item_group_active?: boolean
-    id?: boolean
-  }, ExtArgs["result"]["item_group"]>
 
   export type item_groupSelectScalar = {
     item_group_code?: boolean
@@ -24722,32 +23483,6 @@ export namespace Prisma {
     createMany<T extends item_groupCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, item_groupCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Item_groups and returns the data saved in the database.
-     * @param {item_groupCreateManyAndReturnArgs} args - Arguments to create many Item_groups.
-     * @example
-     * // Create many Item_groups
-     * const item_group = await prisma.item_group.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Item_groups and only return the `item_group_code`
-     * const item_groupWithItem_group_codeOnly = await prisma.item_group.createManyAndReturn({ 
-     *   select: { item_group_code: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends item_groupCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, item_groupCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$item_groupPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a Item_group.
@@ -25206,21 +23941,6 @@ export namespace Prisma {
   }
 
   /**
-   * item_group createManyAndReturn
-   */
-  export type item_groupCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the item_group
-     */
-    select?: item_groupSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many item_groups.
-     */
-    data: item_groupCreateManyInput | item_groupCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * item_group update
    */
   export type item_groupUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -25480,9 +24200,6 @@ export namespace Prisma {
     id?: boolean
   }, ExtArgs["result"]["item_main"]>
 
-  export type item_mainSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-  }, ExtArgs["result"]["item_main"]>
 
   export type item_mainSelectScalar = {
     id?: boolean
@@ -25624,32 +24341,6 @@ export namespace Prisma {
     createMany<T extends item_mainCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, item_mainCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Item_mains and returns the data saved in the database.
-     * @param {item_mainCreateManyAndReturnArgs} args - Arguments to create many Item_mains.
-     * @example
-     * // Create many Item_mains
-     * const item_main = await prisma.item_main.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Item_mains and only return the `id`
-     * const item_mainWithIdOnly = await prisma.item_main.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends item_mainCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, item_mainCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$item_mainPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a Item_main.
@@ -26105,21 +24796,6 @@ export namespace Prisma {
   }
 
   /**
-   * item_main createManyAndReturn
-   */
-  export type item_mainCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the item_main
-     */
-    select?: item_mainSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many item_mains.
-     */
-    data: item_mainCreateManyInput | item_mainCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * item_main update
    */
   export type item_mainUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -26379,9 +25055,6 @@ export namespace Prisma {
     id?: boolean
   }, ExtArgs["result"]["lab_main"]>
 
-  export type lab_mainSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-  }, ExtArgs["result"]["lab_main"]>
 
   export type lab_mainSelectScalar = {
     id?: boolean
@@ -26523,32 +25196,6 @@ export namespace Prisma {
     createMany<T extends lab_mainCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, lab_mainCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Lab_mains and returns the data saved in the database.
-     * @param {lab_mainCreateManyAndReturnArgs} args - Arguments to create many Lab_mains.
-     * @example
-     * // Create many Lab_mains
-     * const lab_main = await prisma.lab_main.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Lab_mains and only return the `id`
-     * const lab_mainWithIdOnly = await prisma.lab_main.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends lab_mainCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, lab_mainCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$lab_mainPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a Lab_main.
@@ -27004,21 +25651,6 @@ export namespace Prisma {
   }
 
   /**
-   * lab_main createManyAndReturn
-   */
-  export type lab_mainCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the lab_main
-     */
-    select?: lab_mainSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many lab_mains.
-     */
-    data: lab_mainCreateManyInput | lab_mainCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * lab_main update
    */
   export type lab_mainUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -27342,17 +25974,6 @@ export namespace Prisma {
     id?: boolean
   }, ExtArgs["result"]["drug_free_schedule"]>
 
-  export type drug_free_scheduleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    gpuid?: boolean
-    generic_name?: boolean
-    strength?: boolean
-    dosageform?: boolean
-    contvalue?: boolean
-    contunit?: boolean
-    disp_unit?: boolean
-    price?: boolean
-    id?: boolean
-  }, ExtArgs["result"]["drug_free_schedule"]>
 
   export type drug_free_scheduleSelectScalar = {
     gpuid?: boolean
@@ -27510,32 +26131,6 @@ export namespace Prisma {
     createMany<T extends drug_free_scheduleCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, drug_free_scheduleCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Drug_free_schedules and returns the data saved in the database.
-     * @param {drug_free_scheduleCreateManyAndReturnArgs} args - Arguments to create many Drug_free_schedules.
-     * @example
-     * // Create many Drug_free_schedules
-     * const drug_free_schedule = await prisma.drug_free_schedule.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Drug_free_schedules and only return the `gpuid`
-     * const drug_free_scheduleWithGpuidOnly = await prisma.drug_free_schedule.createManyAndReturn({ 
-     *   select: { gpuid: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends drug_free_scheduleCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, drug_free_scheduleCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$drug_free_schedulePayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a Drug_free_schedule.
@@ -27999,21 +26594,6 @@ export namespace Prisma {
   }
 
   /**
-   * drug_free_schedule createManyAndReturn
-   */
-  export type drug_free_scheduleCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the drug_free_schedule
-     */
-    select?: drug_free_scheduleSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many drug_free_schedules.
-     */
-    data: drug_free_scheduleCreateManyInput | drug_free_scheduleCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * drug_free_schedule update
    */
   export type drug_free_scheduleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -28313,14 +26893,6 @@ export namespace Prisma {
     id?: boolean
   }, ExtArgs["result"]["adp_free_schedule"]>
 
-  export type adp_free_scheduleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    item_code?: boolean
-    item_name?: boolean
-    unit?: boolean
-    type?: boolean
-    price?: boolean
-    id?: boolean
-  }, ExtArgs["result"]["adp_free_schedule"]>
 
   export type adp_free_scheduleSelectScalar = {
     item_code?: boolean
@@ -28472,32 +27044,6 @@ export namespace Prisma {
     createMany<T extends adp_free_scheduleCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, adp_free_scheduleCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Adp_free_schedules and returns the data saved in the database.
-     * @param {adp_free_scheduleCreateManyAndReturnArgs} args - Arguments to create many Adp_free_schedules.
-     * @example
-     * // Create many Adp_free_schedules
-     * const adp_free_schedule = await prisma.adp_free_schedule.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Adp_free_schedules and only return the `item_code`
-     * const adp_free_scheduleWithItem_codeOnly = await prisma.adp_free_schedule.createManyAndReturn({ 
-     *   select: { item_code: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends adp_free_scheduleCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, adp_free_scheduleCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$adp_free_schedulePayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a Adp_free_schedule.
@@ -28958,21 +27504,6 @@ export namespace Prisma {
   }
 
   /**
-   * adp_free_schedule createManyAndReturn
-   */
-  export type adp_free_scheduleCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the adp_free_schedule
-     */
-    select?: adp_free_scheduleSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many adp_free_schedules.
-     */
-    data: adp_free_scheduleCreateManyInput | adp_free_scheduleCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * adp_free_schedule update
    */
   export type adp_free_scheduleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -29280,15 +27811,6 @@ export namespace Prisma {
     active?: boolean
   }, ExtArgs["result"]["t_employee"]>
 
-  export type t_employeeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    employee_username?: boolean
-    employee_password?: boolean
-    employee_firstname?: boolean
-    employee_lastname?: boolean
-    employee_hospital_code?: boolean
-    active?: boolean
-  }, ExtArgs["result"]["t_employee"]>
 
   export type t_employeeSelectScalar = {
     id?: boolean
@@ -29442,32 +27964,6 @@ export namespace Prisma {
     createMany<T extends t_employeeCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, t_employeeCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many T_employees and returns the data saved in the database.
-     * @param {t_employeeCreateManyAndReturnArgs} args - Arguments to create many T_employees.
-     * @example
-     * // Create many T_employees
-     * const t_employee = await prisma.t_employee.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many T_employees and only return the `id`
-     * const t_employeeWithIdOnly = await prisma.t_employee.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends t_employeeCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, t_employeeCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$t_employeePayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a T_employee.
@@ -29929,21 +28425,6 @@ export namespace Prisma {
   }
 
   /**
-   * t_employee createManyAndReturn
-   */
-  export type t_employeeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the t_employee
-     */
-    select?: t_employeeSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many t_employees.
-     */
-    data: t_employeeCreateManyInput | t_employeeCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * t_employee update
    */
   export type t_employeeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -30032,965 +28513,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the t_employee
      */
     select?: t_employeeSelect<ExtArgs> | null
-  }
-
-
-  /**
-   * Model adp_free_schedule_backup
-   */
-
-  export type AggregateAdp_free_schedule_backup = {
-    _count: Adp_free_schedule_backupCountAggregateOutputType | null
-    _avg: Adp_free_schedule_backupAvgAggregateOutputType | null
-    _sum: Adp_free_schedule_backupSumAggregateOutputType | null
-    _min: Adp_free_schedule_backupMinAggregateOutputType | null
-    _max: Adp_free_schedule_backupMaxAggregateOutputType | null
-  }
-
-  export type Adp_free_schedule_backupAvgAggregateOutputType = {
-    id: number | null
-  }
-
-  export type Adp_free_schedule_backupSumAggregateOutputType = {
-    id: number | null
-  }
-
-  export type Adp_free_schedule_backupMinAggregateOutputType = {
-    item_code: string | null
-    item_name: string | null
-    unit: string | null
-    type: string | null
-    price: string | null
-    id: number | null
-  }
-
-  export type Adp_free_schedule_backupMaxAggregateOutputType = {
-    item_code: string | null
-    item_name: string | null
-    unit: string | null
-    type: string | null
-    price: string | null
-    id: number | null
-  }
-
-  export type Adp_free_schedule_backupCountAggregateOutputType = {
-    item_code: number
-    item_name: number
-    unit: number
-    type: number
-    price: number
-    id: number
-    _all: number
-  }
-
-
-  export type Adp_free_schedule_backupAvgAggregateInputType = {
-    id?: true
-  }
-
-  export type Adp_free_schedule_backupSumAggregateInputType = {
-    id?: true
-  }
-
-  export type Adp_free_schedule_backupMinAggregateInputType = {
-    item_code?: true
-    item_name?: true
-    unit?: true
-    type?: true
-    price?: true
-    id?: true
-  }
-
-  export type Adp_free_schedule_backupMaxAggregateInputType = {
-    item_code?: true
-    item_name?: true
-    unit?: true
-    type?: true
-    price?: true
-    id?: true
-  }
-
-  export type Adp_free_schedule_backupCountAggregateInputType = {
-    item_code?: true
-    item_name?: true
-    unit?: true
-    type?: true
-    price?: true
-    id?: true
-    _all?: true
-  }
-
-  export type Adp_free_schedule_backupAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which adp_free_schedule_backup to aggregate.
-     */
-    where?: adp_free_schedule_backupWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of adp_free_schedule_backups to fetch.
-     */
-    orderBy?: adp_free_schedule_backupOrderByWithRelationAndSearchRelevanceInput | adp_free_schedule_backupOrderByWithRelationAndSearchRelevanceInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: adp_free_schedule_backupWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` adp_free_schedule_backups from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` adp_free_schedule_backups.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned adp_free_schedule_backups
-    **/
-    _count?: true | Adp_free_schedule_backupCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Adp_free_schedule_backupAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Adp_free_schedule_backupSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Adp_free_schedule_backupMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Adp_free_schedule_backupMaxAggregateInputType
-  }
-
-  export type GetAdp_free_schedule_backupAggregateType<T extends Adp_free_schedule_backupAggregateArgs> = {
-        [P in keyof T & keyof AggregateAdp_free_schedule_backup]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateAdp_free_schedule_backup[P]>
-      : GetScalarType<T[P], AggregateAdp_free_schedule_backup[P]>
-  }
-
-
-
-
-  export type adp_free_schedule_backupGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: adp_free_schedule_backupWhereInput
-    orderBy?: adp_free_schedule_backupOrderByWithAggregationInput | adp_free_schedule_backupOrderByWithAggregationInput[]
-    by: Adp_free_schedule_backupScalarFieldEnum[] | Adp_free_schedule_backupScalarFieldEnum
-    having?: adp_free_schedule_backupScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Adp_free_schedule_backupCountAggregateInputType | true
-    _avg?: Adp_free_schedule_backupAvgAggregateInputType
-    _sum?: Adp_free_schedule_backupSumAggregateInputType
-    _min?: Adp_free_schedule_backupMinAggregateInputType
-    _max?: Adp_free_schedule_backupMaxAggregateInputType
-  }
-
-  export type Adp_free_schedule_backupGroupByOutputType = {
-    item_code: string
-    item_name: string
-    unit: string
-    type: string
-    price: string
-    id: number
-    _count: Adp_free_schedule_backupCountAggregateOutputType | null
-    _avg: Adp_free_schedule_backupAvgAggregateOutputType | null
-    _sum: Adp_free_schedule_backupSumAggregateOutputType | null
-    _min: Adp_free_schedule_backupMinAggregateOutputType | null
-    _max: Adp_free_schedule_backupMaxAggregateOutputType | null
-  }
-
-  type GetAdp_free_schedule_backupGroupByPayload<T extends adp_free_schedule_backupGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Adp_free_schedule_backupGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Adp_free_schedule_backupGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Adp_free_schedule_backupGroupByOutputType[P]>
-            : GetScalarType<T[P], Adp_free_schedule_backupGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type adp_free_schedule_backupSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    item_code?: boolean
-    item_name?: boolean
-    unit?: boolean
-    type?: boolean
-    price?: boolean
-    id?: boolean
-  }, ExtArgs["result"]["adp_free_schedule_backup"]>
-
-  export type adp_free_schedule_backupSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    item_code?: boolean
-    item_name?: boolean
-    unit?: boolean
-    type?: boolean
-    price?: boolean
-    id?: boolean
-  }, ExtArgs["result"]["adp_free_schedule_backup"]>
-
-  export type adp_free_schedule_backupSelectScalar = {
-    item_code?: boolean
-    item_name?: boolean
-    unit?: boolean
-    type?: boolean
-    price?: boolean
-    id?: boolean
-  }
-
-
-  export type $adp_free_schedule_backupPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "adp_free_schedule_backup"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      item_code: string
-      item_name: string
-      unit: string
-      type: string
-      price: string
-      id: number
-    }, ExtArgs["result"]["adp_free_schedule_backup"]>
-    composites: {}
-  }
-
-  type adp_free_schedule_backupGetPayload<S extends boolean | null | undefined | adp_free_schedule_backupDefaultArgs> = $Result.GetResult<Prisma.$adp_free_schedule_backupPayload, S>
-
-  type adp_free_schedule_backupCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<adp_free_schedule_backupFindManyArgs, 'select' | 'include' | 'distinct' | 'relationLoadStrategy'> & {
-      select?: Adp_free_schedule_backupCountAggregateInputType | true
-    }
-
-  export interface adp_free_schedule_backupDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['adp_free_schedule_backup'], meta: { name: 'adp_free_schedule_backup' } }
-    /**
-     * Find zero or one Adp_free_schedule_backup that matches the filter.
-     * @param {adp_free_schedule_backupFindUniqueArgs} args - Arguments to find a Adp_free_schedule_backup
-     * @example
-     * // Get one Adp_free_schedule_backup
-     * const adp_free_schedule_backup = await prisma.adp_free_schedule_backup.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends adp_free_schedule_backupFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, adp_free_schedule_backupFindUniqueArgs<ExtArgs>>
-    ): Prisma__adp_free_schedule_backupClient<$Result.GetResult<Prisma.$adp_free_schedule_backupPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
-
-    /**
-     * Find one Adp_free_schedule_backup that matches the filter or throw an error with `error.code='P2025'` 
-     * if no matches were found.
-     * @param {adp_free_schedule_backupFindUniqueOrThrowArgs} args - Arguments to find a Adp_free_schedule_backup
-     * @example
-     * // Get one Adp_free_schedule_backup
-     * const adp_free_schedule_backup = await prisma.adp_free_schedule_backup.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends adp_free_schedule_backupFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, adp_free_schedule_backupFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__adp_free_schedule_backupClient<$Result.GetResult<Prisma.$adp_free_schedule_backupPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find the first Adp_free_schedule_backup that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {adp_free_schedule_backupFindFirstArgs} args - Arguments to find a Adp_free_schedule_backup
-     * @example
-     * // Get one Adp_free_schedule_backup
-     * const adp_free_schedule_backup = await prisma.adp_free_schedule_backup.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends adp_free_schedule_backupFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, adp_free_schedule_backupFindFirstArgs<ExtArgs>>
-    ): Prisma__adp_free_schedule_backupClient<$Result.GetResult<Prisma.$adp_free_schedule_backupPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
-
-    /**
-     * Find the first Adp_free_schedule_backup that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {adp_free_schedule_backupFindFirstOrThrowArgs} args - Arguments to find a Adp_free_schedule_backup
-     * @example
-     * // Get one Adp_free_schedule_backup
-     * const adp_free_schedule_backup = await prisma.adp_free_schedule_backup.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends adp_free_schedule_backupFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, adp_free_schedule_backupFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__adp_free_schedule_backupClient<$Result.GetResult<Prisma.$adp_free_schedule_backupPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find zero or more Adp_free_schedule_backups that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {adp_free_schedule_backupFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Adp_free_schedule_backups
-     * const adp_free_schedule_backups = await prisma.adp_free_schedule_backup.findMany()
-     * 
-     * // Get first 10 Adp_free_schedule_backups
-     * const adp_free_schedule_backups = await prisma.adp_free_schedule_backup.findMany({ take: 10 })
-     * 
-     * // Only select the `item_code`
-     * const adp_free_schedule_backupWithItem_codeOnly = await prisma.adp_free_schedule_backup.findMany({ select: { item_code: true } })
-     * 
-    **/
-    findMany<T extends adp_free_schedule_backupFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, adp_free_schedule_backupFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$adp_free_schedule_backupPayload<ExtArgs>, T, 'findMany'>>
-
-    /**
-     * Create a Adp_free_schedule_backup.
-     * @param {adp_free_schedule_backupCreateArgs} args - Arguments to create a Adp_free_schedule_backup.
-     * @example
-     * // Create one Adp_free_schedule_backup
-     * const Adp_free_schedule_backup = await prisma.adp_free_schedule_backup.create({
-     *   data: {
-     *     // ... data to create a Adp_free_schedule_backup
-     *   }
-     * })
-     * 
-    **/
-    create<T extends adp_free_schedule_backupCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, adp_free_schedule_backupCreateArgs<ExtArgs>>
-    ): Prisma__adp_free_schedule_backupClient<$Result.GetResult<Prisma.$adp_free_schedule_backupPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
-
-    /**
-     * Create many Adp_free_schedule_backups.
-     * @param {adp_free_schedule_backupCreateManyArgs} args - Arguments to create many Adp_free_schedule_backups.
-     * @example
-     * // Create many Adp_free_schedule_backups
-     * const adp_free_schedule_backup = await prisma.adp_free_schedule_backup.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-    **/
-    createMany<T extends adp_free_schedule_backupCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, adp_free_schedule_backupCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Adp_free_schedule_backups and returns the data saved in the database.
-     * @param {adp_free_schedule_backupCreateManyAndReturnArgs} args - Arguments to create many Adp_free_schedule_backups.
-     * @example
-     * // Create many Adp_free_schedule_backups
-     * const adp_free_schedule_backup = await prisma.adp_free_schedule_backup.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Adp_free_schedule_backups and only return the `item_code`
-     * const adp_free_schedule_backupWithItem_codeOnly = await prisma.adp_free_schedule_backup.createManyAndReturn({ 
-     *   select: { item_code: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends adp_free_schedule_backupCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, adp_free_schedule_backupCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$adp_free_schedule_backupPayload<ExtArgs>, T, 'createManyAndReturn'>>
-
-    /**
-     * Delete a Adp_free_schedule_backup.
-     * @param {adp_free_schedule_backupDeleteArgs} args - Arguments to delete one Adp_free_schedule_backup.
-     * @example
-     * // Delete one Adp_free_schedule_backup
-     * const Adp_free_schedule_backup = await prisma.adp_free_schedule_backup.delete({
-     *   where: {
-     *     // ... filter to delete one Adp_free_schedule_backup
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends adp_free_schedule_backupDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, adp_free_schedule_backupDeleteArgs<ExtArgs>>
-    ): Prisma__adp_free_schedule_backupClient<$Result.GetResult<Prisma.$adp_free_schedule_backupPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
-
-    /**
-     * Update one Adp_free_schedule_backup.
-     * @param {adp_free_schedule_backupUpdateArgs} args - Arguments to update one Adp_free_schedule_backup.
-     * @example
-     * // Update one Adp_free_schedule_backup
-     * const adp_free_schedule_backup = await prisma.adp_free_schedule_backup.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends adp_free_schedule_backupUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, adp_free_schedule_backupUpdateArgs<ExtArgs>>
-    ): Prisma__adp_free_schedule_backupClient<$Result.GetResult<Prisma.$adp_free_schedule_backupPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
-
-    /**
-     * Delete zero or more Adp_free_schedule_backups.
-     * @param {adp_free_schedule_backupDeleteManyArgs} args - Arguments to filter Adp_free_schedule_backups to delete.
-     * @example
-     * // Delete a few Adp_free_schedule_backups
-     * const { count } = await prisma.adp_free_schedule_backup.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends adp_free_schedule_backupDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, adp_free_schedule_backupDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Adp_free_schedule_backups.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {adp_free_schedule_backupUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Adp_free_schedule_backups
-     * const adp_free_schedule_backup = await prisma.adp_free_schedule_backup.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends adp_free_schedule_backupUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, adp_free_schedule_backupUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Adp_free_schedule_backup.
-     * @param {adp_free_schedule_backupUpsertArgs} args - Arguments to update or create a Adp_free_schedule_backup.
-     * @example
-     * // Update or create a Adp_free_schedule_backup
-     * const adp_free_schedule_backup = await prisma.adp_free_schedule_backup.upsert({
-     *   create: {
-     *     // ... data to create a Adp_free_schedule_backup
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Adp_free_schedule_backup we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends adp_free_schedule_backupUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, adp_free_schedule_backupUpsertArgs<ExtArgs>>
-    ): Prisma__adp_free_schedule_backupClient<$Result.GetResult<Prisma.$adp_free_schedule_backupPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
-
-    /**
-     * Count the number of Adp_free_schedule_backups.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {adp_free_schedule_backupCountArgs} args - Arguments to filter Adp_free_schedule_backups to count.
-     * @example
-     * // Count the number of Adp_free_schedule_backups
-     * const count = await prisma.adp_free_schedule_backup.count({
-     *   where: {
-     *     // ... the filter for the Adp_free_schedule_backups we want to count
-     *   }
-     * })
-    **/
-    count<T extends adp_free_schedule_backupCountArgs>(
-      args?: Subset<T, adp_free_schedule_backupCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Adp_free_schedule_backupCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Adp_free_schedule_backup.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Adp_free_schedule_backupAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Adp_free_schedule_backupAggregateArgs>(args: Subset<T, Adp_free_schedule_backupAggregateArgs>): Prisma.PrismaPromise<GetAdp_free_schedule_backupAggregateType<T>>
-
-    /**
-     * Group by Adp_free_schedule_backup.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {adp_free_schedule_backupGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends adp_free_schedule_backupGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: adp_free_schedule_backupGroupByArgs['orderBy'] }
-        : { orderBy?: adp_free_schedule_backupGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, adp_free_schedule_backupGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAdp_free_schedule_backupGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the adp_free_schedule_backup model
-   */
-  readonly fields: adp_free_schedule_backupFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for adp_free_schedule_backup.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__adp_free_schedule_backupClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-
-
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
-  }
-
-
-
-  /**
-   * Fields of the adp_free_schedule_backup model
-   */ 
-  interface adp_free_schedule_backupFieldRefs {
-    readonly item_code: FieldRef<"adp_free_schedule_backup", 'String'>
-    readonly item_name: FieldRef<"adp_free_schedule_backup", 'String'>
-    readonly unit: FieldRef<"adp_free_schedule_backup", 'String'>
-    readonly type: FieldRef<"adp_free_schedule_backup", 'String'>
-    readonly price: FieldRef<"adp_free_schedule_backup", 'String'>
-    readonly id: FieldRef<"adp_free_schedule_backup", 'Int'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * adp_free_schedule_backup findUnique
-   */
-  export type adp_free_schedule_backupFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the adp_free_schedule_backup
-     */
-    select?: adp_free_schedule_backupSelect<ExtArgs> | null
-    /**
-     * Filter, which adp_free_schedule_backup to fetch.
-     */
-    where: adp_free_schedule_backupWhereUniqueInput
-    relationLoadStrategy?: RelationLoadStrategy
-  }
-
-  /**
-   * adp_free_schedule_backup findUniqueOrThrow
-   */
-  export type adp_free_schedule_backupFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the adp_free_schedule_backup
-     */
-    select?: adp_free_schedule_backupSelect<ExtArgs> | null
-    /**
-     * Filter, which adp_free_schedule_backup to fetch.
-     */
-    where: adp_free_schedule_backupWhereUniqueInput
-    relationLoadStrategy?: RelationLoadStrategy
-  }
-
-  /**
-   * adp_free_schedule_backup findFirst
-   */
-  export type adp_free_schedule_backupFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the adp_free_schedule_backup
-     */
-    select?: adp_free_schedule_backupSelect<ExtArgs> | null
-    /**
-     * Filter, which adp_free_schedule_backup to fetch.
-     */
-    where?: adp_free_schedule_backupWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of adp_free_schedule_backups to fetch.
-     */
-    orderBy?: adp_free_schedule_backupOrderByWithRelationAndSearchRelevanceInput | adp_free_schedule_backupOrderByWithRelationAndSearchRelevanceInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for adp_free_schedule_backups.
-     */
-    cursor?: adp_free_schedule_backupWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` adp_free_schedule_backups from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` adp_free_schedule_backups.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of adp_free_schedule_backups.
-     */
-    distinct?: Adp_free_schedule_backupScalarFieldEnum | Adp_free_schedule_backupScalarFieldEnum[]
-    relationLoadStrategy?: RelationLoadStrategy
-  }
-
-  /**
-   * adp_free_schedule_backup findFirstOrThrow
-   */
-  export type adp_free_schedule_backupFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the adp_free_schedule_backup
-     */
-    select?: adp_free_schedule_backupSelect<ExtArgs> | null
-    /**
-     * Filter, which adp_free_schedule_backup to fetch.
-     */
-    where?: adp_free_schedule_backupWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of adp_free_schedule_backups to fetch.
-     */
-    orderBy?: adp_free_schedule_backupOrderByWithRelationAndSearchRelevanceInput | adp_free_schedule_backupOrderByWithRelationAndSearchRelevanceInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for adp_free_schedule_backups.
-     */
-    cursor?: adp_free_schedule_backupWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` adp_free_schedule_backups from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` adp_free_schedule_backups.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of adp_free_schedule_backups.
-     */
-    distinct?: Adp_free_schedule_backupScalarFieldEnum | Adp_free_schedule_backupScalarFieldEnum[]
-    relationLoadStrategy?: RelationLoadStrategy
-  }
-
-  /**
-   * adp_free_schedule_backup findMany
-   */
-  export type adp_free_schedule_backupFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the adp_free_schedule_backup
-     */
-    select?: adp_free_schedule_backupSelect<ExtArgs> | null
-    /**
-     * Filter, which adp_free_schedule_backups to fetch.
-     */
-    where?: adp_free_schedule_backupWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of adp_free_schedule_backups to fetch.
-     */
-    orderBy?: adp_free_schedule_backupOrderByWithRelationAndSearchRelevanceInput | adp_free_schedule_backupOrderByWithRelationAndSearchRelevanceInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing adp_free_schedule_backups.
-     */
-    cursor?: adp_free_schedule_backupWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` adp_free_schedule_backups from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` adp_free_schedule_backups.
-     */
-    skip?: number
-    distinct?: Adp_free_schedule_backupScalarFieldEnum | Adp_free_schedule_backupScalarFieldEnum[]
-    relationLoadStrategy?: RelationLoadStrategy
-  }
-
-  /**
-   * adp_free_schedule_backup create
-   */
-  export type adp_free_schedule_backupCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the adp_free_schedule_backup
-     */
-    select?: adp_free_schedule_backupSelect<ExtArgs> | null
-    /**
-     * The data needed to create a adp_free_schedule_backup.
-     */
-    data: XOR<adp_free_schedule_backupCreateInput, adp_free_schedule_backupUncheckedCreateInput>
-    relationLoadStrategy?: RelationLoadStrategy
-  }
-
-  /**
-   * adp_free_schedule_backup createMany
-   */
-  export type adp_free_schedule_backupCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many adp_free_schedule_backups.
-     */
-    data: adp_free_schedule_backupCreateManyInput | adp_free_schedule_backupCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * adp_free_schedule_backup createManyAndReturn
-   */
-  export type adp_free_schedule_backupCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the adp_free_schedule_backup
-     */
-    select?: adp_free_schedule_backupSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many adp_free_schedule_backups.
-     */
-    data: adp_free_schedule_backupCreateManyInput | adp_free_schedule_backupCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * adp_free_schedule_backup update
-   */
-  export type adp_free_schedule_backupUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the adp_free_schedule_backup
-     */
-    select?: adp_free_schedule_backupSelect<ExtArgs> | null
-    /**
-     * The data needed to update a adp_free_schedule_backup.
-     */
-    data: XOR<adp_free_schedule_backupUpdateInput, adp_free_schedule_backupUncheckedUpdateInput>
-    /**
-     * Choose, which adp_free_schedule_backup to update.
-     */
-    where: adp_free_schedule_backupWhereUniqueInput
-    relationLoadStrategy?: RelationLoadStrategy
-  }
-
-  /**
-   * adp_free_schedule_backup updateMany
-   */
-  export type adp_free_schedule_backupUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update adp_free_schedule_backups.
-     */
-    data: XOR<adp_free_schedule_backupUpdateManyMutationInput, adp_free_schedule_backupUncheckedUpdateManyInput>
-    /**
-     * Filter which adp_free_schedule_backups to update
-     */
-    where?: adp_free_schedule_backupWhereInput
-  }
-
-  /**
-   * adp_free_schedule_backup upsert
-   */
-  export type adp_free_schedule_backupUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the adp_free_schedule_backup
-     */
-    select?: adp_free_schedule_backupSelect<ExtArgs> | null
-    /**
-     * The filter to search for the adp_free_schedule_backup to update in case it exists.
-     */
-    where: adp_free_schedule_backupWhereUniqueInput
-    /**
-     * In case the adp_free_schedule_backup found by the `where` argument doesn't exist, create a new adp_free_schedule_backup with this data.
-     */
-    create: XOR<adp_free_schedule_backupCreateInput, adp_free_schedule_backupUncheckedCreateInput>
-    /**
-     * In case the adp_free_schedule_backup was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<adp_free_schedule_backupUpdateInput, adp_free_schedule_backupUncheckedUpdateInput>
-    relationLoadStrategy?: RelationLoadStrategy
-  }
-
-  /**
-   * adp_free_schedule_backup delete
-   */
-  export type adp_free_schedule_backupDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the adp_free_schedule_backup
-     */
-    select?: adp_free_schedule_backupSelect<ExtArgs> | null
-    /**
-     * Filter which adp_free_schedule_backup to delete.
-     */
-    where: adp_free_schedule_backupWhereUniqueInput
-    relationLoadStrategy?: RelationLoadStrategy
-  }
-
-  /**
-   * adp_free_schedule_backup deleteMany
-   */
-  export type adp_free_schedule_backupDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which adp_free_schedule_backups to delete
-     */
-    where?: adp_free_schedule_backupWhereInput
-  }
-
-  /**
-   * adp_free_schedule_backup without action
-   */
-  export type adp_free_schedule_backupDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the adp_free_schedule_backup
-     */
-    select?: adp_free_schedule_backupSelect<ExtArgs> | null
   }
 
 
@@ -31194,13 +28716,6 @@ export namespace Prisma {
     adp_hospital_code?: boolean
   }, ExtArgs["result"]["adp_type"]>
 
-  export type adp_typeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    adp_catalogy_id?: boolean
-    adp_name?: boolean
-    adp_type_number?: boolean
-    adp_nhso_name?: boolean
-    adp_hospital_code?: boolean
-  }, ExtArgs["result"]["adp_type"]>
 
   export type adp_typeSelectScalar = {
     adp_catalogy_id?: boolean
@@ -31350,32 +28865,6 @@ export namespace Prisma {
     createMany<T extends adp_typeCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, adp_typeCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Adp_types and returns the data saved in the database.
-     * @param {adp_typeCreateManyAndReturnArgs} args - Arguments to create many Adp_types.
-     * @example
-     * // Create many Adp_types
-     * const adp_type = await prisma.adp_type.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Adp_types and only return the `adp_catalogy_id`
-     * const adp_typeWithAdp_catalogy_idOnly = await prisma.adp_type.createManyAndReturn({ 
-     *   select: { adp_catalogy_id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends adp_typeCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, adp_typeCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$adp_typePayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a Adp_type.
@@ -31835,21 +29324,6 @@ export namespace Prisma {
   }
 
   /**
-   * adp_type createManyAndReturn
-   */
-  export type adp_typeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the adp_type
-     */
-    select?: adp_typeSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many adp_types.
-     */
-    data: adp_typeCreateManyInput | adp_typeCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * adp_type update
    */
   export type adp_typeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -31938,6 +29412,916 @@ export namespace Prisma {
      * Select specific fields to fetch from the adp_type
      */
     select?: adp_typeSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * Model adp_free_schedule_copy1
+   */
+
+  export type AggregateAdp_free_schedule_copy1 = {
+    _count: Adp_free_schedule_copy1CountAggregateOutputType | null
+    _avg: Adp_free_schedule_copy1AvgAggregateOutputType | null
+    _sum: Adp_free_schedule_copy1SumAggregateOutputType | null
+    _min: Adp_free_schedule_copy1MinAggregateOutputType | null
+    _max: Adp_free_schedule_copy1MaxAggregateOutputType | null
+  }
+
+  export type Adp_free_schedule_copy1AvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type Adp_free_schedule_copy1SumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type Adp_free_schedule_copy1MinAggregateOutputType = {
+    item_code: string | null
+    item_name: string | null
+    unit: string | null
+    type: string | null
+    price: string | null
+    id: number | null
+  }
+
+  export type Adp_free_schedule_copy1MaxAggregateOutputType = {
+    item_code: string | null
+    item_name: string | null
+    unit: string | null
+    type: string | null
+    price: string | null
+    id: number | null
+  }
+
+  export type Adp_free_schedule_copy1CountAggregateOutputType = {
+    item_code: number
+    item_name: number
+    unit: number
+    type: number
+    price: number
+    id: number
+    _all: number
+  }
+
+
+  export type Adp_free_schedule_copy1AvgAggregateInputType = {
+    id?: true
+  }
+
+  export type Adp_free_schedule_copy1SumAggregateInputType = {
+    id?: true
+  }
+
+  export type Adp_free_schedule_copy1MinAggregateInputType = {
+    item_code?: true
+    item_name?: true
+    unit?: true
+    type?: true
+    price?: true
+    id?: true
+  }
+
+  export type Adp_free_schedule_copy1MaxAggregateInputType = {
+    item_code?: true
+    item_name?: true
+    unit?: true
+    type?: true
+    price?: true
+    id?: true
+  }
+
+  export type Adp_free_schedule_copy1CountAggregateInputType = {
+    item_code?: true
+    item_name?: true
+    unit?: true
+    type?: true
+    price?: true
+    id?: true
+    _all?: true
+  }
+
+  export type Adp_free_schedule_copy1AggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which adp_free_schedule_copy1 to aggregate.
+     */
+    where?: adp_free_schedule_copy1WhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of adp_free_schedule_copy1s to fetch.
+     */
+    orderBy?: adp_free_schedule_copy1OrderByWithRelationAndSearchRelevanceInput | adp_free_schedule_copy1OrderByWithRelationAndSearchRelevanceInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: adp_free_schedule_copy1WhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` adp_free_schedule_copy1s from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` adp_free_schedule_copy1s.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned adp_free_schedule_copy1s
+    **/
+    _count?: true | Adp_free_schedule_copy1CountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Adp_free_schedule_copy1AvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Adp_free_schedule_copy1SumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Adp_free_schedule_copy1MinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Adp_free_schedule_copy1MaxAggregateInputType
+  }
+
+  export type GetAdp_free_schedule_copy1AggregateType<T extends Adp_free_schedule_copy1AggregateArgs> = {
+        [P in keyof T & keyof AggregateAdp_free_schedule_copy1]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAdp_free_schedule_copy1[P]>
+      : GetScalarType<T[P], AggregateAdp_free_schedule_copy1[P]>
+  }
+
+
+
+
+  export type adp_free_schedule_copy1GroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: adp_free_schedule_copy1WhereInput
+    orderBy?: adp_free_schedule_copy1OrderByWithAggregationInput | adp_free_schedule_copy1OrderByWithAggregationInput[]
+    by: Adp_free_schedule_copy1ScalarFieldEnum[] | Adp_free_schedule_copy1ScalarFieldEnum
+    having?: adp_free_schedule_copy1ScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Adp_free_schedule_copy1CountAggregateInputType | true
+    _avg?: Adp_free_schedule_copy1AvgAggregateInputType
+    _sum?: Adp_free_schedule_copy1SumAggregateInputType
+    _min?: Adp_free_schedule_copy1MinAggregateInputType
+    _max?: Adp_free_schedule_copy1MaxAggregateInputType
+  }
+
+  export type Adp_free_schedule_copy1GroupByOutputType = {
+    item_code: string
+    item_name: string
+    unit: string
+    type: string
+    price: string
+    id: number
+    _count: Adp_free_schedule_copy1CountAggregateOutputType | null
+    _avg: Adp_free_schedule_copy1AvgAggregateOutputType | null
+    _sum: Adp_free_schedule_copy1SumAggregateOutputType | null
+    _min: Adp_free_schedule_copy1MinAggregateOutputType | null
+    _max: Adp_free_schedule_copy1MaxAggregateOutputType | null
+  }
+
+  type GetAdp_free_schedule_copy1GroupByPayload<T extends adp_free_schedule_copy1GroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Adp_free_schedule_copy1GroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Adp_free_schedule_copy1GroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Adp_free_schedule_copy1GroupByOutputType[P]>
+            : GetScalarType<T[P], Adp_free_schedule_copy1GroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type adp_free_schedule_copy1Select<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    item_code?: boolean
+    item_name?: boolean
+    unit?: boolean
+    type?: boolean
+    price?: boolean
+    id?: boolean
+  }, ExtArgs["result"]["adp_free_schedule_copy1"]>
+
+
+  export type adp_free_schedule_copy1SelectScalar = {
+    item_code?: boolean
+    item_name?: boolean
+    unit?: boolean
+    type?: boolean
+    price?: boolean
+    id?: boolean
+  }
+
+
+  export type $adp_free_schedule_copy1Payload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "adp_free_schedule_copy1"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      item_code: string
+      item_name: string
+      unit: string
+      type: string
+      price: string
+      id: number
+    }, ExtArgs["result"]["adp_free_schedule_copy1"]>
+    composites: {}
+  }
+
+  type adp_free_schedule_copy1GetPayload<S extends boolean | null | undefined | adp_free_schedule_copy1DefaultArgs> = $Result.GetResult<Prisma.$adp_free_schedule_copy1Payload, S>
+
+  type adp_free_schedule_copy1CountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<adp_free_schedule_copy1FindManyArgs, 'select' | 'include' | 'distinct' | 'relationLoadStrategy'> & {
+      select?: Adp_free_schedule_copy1CountAggregateInputType | true
+    }
+
+  export interface adp_free_schedule_copy1Delegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['adp_free_schedule_copy1'], meta: { name: 'adp_free_schedule_copy1' } }
+    /**
+     * Find zero or one Adp_free_schedule_copy1 that matches the filter.
+     * @param {adp_free_schedule_copy1FindUniqueArgs} args - Arguments to find a Adp_free_schedule_copy1
+     * @example
+     * // Get one Adp_free_schedule_copy1
+     * const adp_free_schedule_copy1 = await prisma.adp_free_schedule_copy1.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends adp_free_schedule_copy1FindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, adp_free_schedule_copy1FindUniqueArgs<ExtArgs>>
+    ): Prisma__adp_free_schedule_copy1Client<$Result.GetResult<Prisma.$adp_free_schedule_copy1Payload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Adp_free_schedule_copy1 that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {adp_free_schedule_copy1FindUniqueOrThrowArgs} args - Arguments to find a Adp_free_schedule_copy1
+     * @example
+     * // Get one Adp_free_schedule_copy1
+     * const adp_free_schedule_copy1 = await prisma.adp_free_schedule_copy1.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends adp_free_schedule_copy1FindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, adp_free_schedule_copy1FindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__adp_free_schedule_copy1Client<$Result.GetResult<Prisma.$adp_free_schedule_copy1Payload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Adp_free_schedule_copy1 that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {adp_free_schedule_copy1FindFirstArgs} args - Arguments to find a Adp_free_schedule_copy1
+     * @example
+     * // Get one Adp_free_schedule_copy1
+     * const adp_free_schedule_copy1 = await prisma.adp_free_schedule_copy1.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends adp_free_schedule_copy1FindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, adp_free_schedule_copy1FindFirstArgs<ExtArgs>>
+    ): Prisma__adp_free_schedule_copy1Client<$Result.GetResult<Prisma.$adp_free_schedule_copy1Payload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Adp_free_schedule_copy1 that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {adp_free_schedule_copy1FindFirstOrThrowArgs} args - Arguments to find a Adp_free_schedule_copy1
+     * @example
+     * // Get one Adp_free_schedule_copy1
+     * const adp_free_schedule_copy1 = await prisma.adp_free_schedule_copy1.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends adp_free_schedule_copy1FindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, adp_free_schedule_copy1FindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__adp_free_schedule_copy1Client<$Result.GetResult<Prisma.$adp_free_schedule_copy1Payload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Adp_free_schedule_copy1s that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {adp_free_schedule_copy1FindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Adp_free_schedule_copy1s
+     * const adp_free_schedule_copy1s = await prisma.adp_free_schedule_copy1.findMany()
+     * 
+     * // Get first 10 Adp_free_schedule_copy1s
+     * const adp_free_schedule_copy1s = await prisma.adp_free_schedule_copy1.findMany({ take: 10 })
+     * 
+     * // Only select the `item_code`
+     * const adp_free_schedule_copy1WithItem_codeOnly = await prisma.adp_free_schedule_copy1.findMany({ select: { item_code: true } })
+     * 
+    **/
+    findMany<T extends adp_free_schedule_copy1FindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, adp_free_schedule_copy1FindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$adp_free_schedule_copy1Payload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Adp_free_schedule_copy1.
+     * @param {adp_free_schedule_copy1CreateArgs} args - Arguments to create a Adp_free_schedule_copy1.
+     * @example
+     * // Create one Adp_free_schedule_copy1
+     * const Adp_free_schedule_copy1 = await prisma.adp_free_schedule_copy1.create({
+     *   data: {
+     *     // ... data to create a Adp_free_schedule_copy1
+     *   }
+     * })
+     * 
+    **/
+    create<T extends adp_free_schedule_copy1CreateArgs<ExtArgs>>(
+      args: SelectSubset<T, adp_free_schedule_copy1CreateArgs<ExtArgs>>
+    ): Prisma__adp_free_schedule_copy1Client<$Result.GetResult<Prisma.$adp_free_schedule_copy1Payload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Adp_free_schedule_copy1s.
+     * @param {adp_free_schedule_copy1CreateManyArgs} args - Arguments to create many Adp_free_schedule_copy1s.
+     * @example
+     * // Create many Adp_free_schedule_copy1s
+     * const adp_free_schedule_copy1 = await prisma.adp_free_schedule_copy1.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+    **/
+    createMany<T extends adp_free_schedule_copy1CreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, adp_free_schedule_copy1CreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Adp_free_schedule_copy1.
+     * @param {adp_free_schedule_copy1DeleteArgs} args - Arguments to delete one Adp_free_schedule_copy1.
+     * @example
+     * // Delete one Adp_free_schedule_copy1
+     * const Adp_free_schedule_copy1 = await prisma.adp_free_schedule_copy1.delete({
+     *   where: {
+     *     // ... filter to delete one Adp_free_schedule_copy1
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends adp_free_schedule_copy1DeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, adp_free_schedule_copy1DeleteArgs<ExtArgs>>
+    ): Prisma__adp_free_schedule_copy1Client<$Result.GetResult<Prisma.$adp_free_schedule_copy1Payload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Adp_free_schedule_copy1.
+     * @param {adp_free_schedule_copy1UpdateArgs} args - Arguments to update one Adp_free_schedule_copy1.
+     * @example
+     * // Update one Adp_free_schedule_copy1
+     * const adp_free_schedule_copy1 = await prisma.adp_free_schedule_copy1.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends adp_free_schedule_copy1UpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, adp_free_schedule_copy1UpdateArgs<ExtArgs>>
+    ): Prisma__adp_free_schedule_copy1Client<$Result.GetResult<Prisma.$adp_free_schedule_copy1Payload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Adp_free_schedule_copy1s.
+     * @param {adp_free_schedule_copy1DeleteManyArgs} args - Arguments to filter Adp_free_schedule_copy1s to delete.
+     * @example
+     * // Delete a few Adp_free_schedule_copy1s
+     * const { count } = await prisma.adp_free_schedule_copy1.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends adp_free_schedule_copy1DeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, adp_free_schedule_copy1DeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Adp_free_schedule_copy1s.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {adp_free_schedule_copy1UpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Adp_free_schedule_copy1s
+     * const adp_free_schedule_copy1 = await prisma.adp_free_schedule_copy1.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends adp_free_schedule_copy1UpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, adp_free_schedule_copy1UpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Adp_free_schedule_copy1.
+     * @param {adp_free_schedule_copy1UpsertArgs} args - Arguments to update or create a Adp_free_schedule_copy1.
+     * @example
+     * // Update or create a Adp_free_schedule_copy1
+     * const adp_free_schedule_copy1 = await prisma.adp_free_schedule_copy1.upsert({
+     *   create: {
+     *     // ... data to create a Adp_free_schedule_copy1
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Adp_free_schedule_copy1 we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends adp_free_schedule_copy1UpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, adp_free_schedule_copy1UpsertArgs<ExtArgs>>
+    ): Prisma__adp_free_schedule_copy1Client<$Result.GetResult<Prisma.$adp_free_schedule_copy1Payload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Adp_free_schedule_copy1s.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {adp_free_schedule_copy1CountArgs} args - Arguments to filter Adp_free_schedule_copy1s to count.
+     * @example
+     * // Count the number of Adp_free_schedule_copy1s
+     * const count = await prisma.adp_free_schedule_copy1.count({
+     *   where: {
+     *     // ... the filter for the Adp_free_schedule_copy1s we want to count
+     *   }
+     * })
+    **/
+    count<T extends adp_free_schedule_copy1CountArgs>(
+      args?: Subset<T, adp_free_schedule_copy1CountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Adp_free_schedule_copy1CountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Adp_free_schedule_copy1.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Adp_free_schedule_copy1AggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Adp_free_schedule_copy1AggregateArgs>(args: Subset<T, Adp_free_schedule_copy1AggregateArgs>): Prisma.PrismaPromise<GetAdp_free_schedule_copy1AggregateType<T>>
+
+    /**
+     * Group by Adp_free_schedule_copy1.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {adp_free_schedule_copy1GroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends adp_free_schedule_copy1GroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: adp_free_schedule_copy1GroupByArgs['orderBy'] }
+        : { orderBy?: adp_free_schedule_copy1GroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, adp_free_schedule_copy1GroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAdp_free_schedule_copy1GroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the adp_free_schedule_copy1 model
+   */
+  readonly fields: adp_free_schedule_copy1FieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for adp_free_schedule_copy1.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__adp_free_schedule_copy1Client<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the adp_free_schedule_copy1 model
+   */ 
+  interface adp_free_schedule_copy1FieldRefs {
+    readonly item_code: FieldRef<"adp_free_schedule_copy1", 'String'>
+    readonly item_name: FieldRef<"adp_free_schedule_copy1", 'String'>
+    readonly unit: FieldRef<"adp_free_schedule_copy1", 'String'>
+    readonly type: FieldRef<"adp_free_schedule_copy1", 'String'>
+    readonly price: FieldRef<"adp_free_schedule_copy1", 'String'>
+    readonly id: FieldRef<"adp_free_schedule_copy1", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * adp_free_schedule_copy1 findUnique
+   */
+  export type adp_free_schedule_copy1FindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the adp_free_schedule_copy1
+     */
+    select?: adp_free_schedule_copy1Select<ExtArgs> | null
+    /**
+     * Filter, which adp_free_schedule_copy1 to fetch.
+     */
+    where: adp_free_schedule_copy1WhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * adp_free_schedule_copy1 findUniqueOrThrow
+   */
+  export type adp_free_schedule_copy1FindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the adp_free_schedule_copy1
+     */
+    select?: adp_free_schedule_copy1Select<ExtArgs> | null
+    /**
+     * Filter, which adp_free_schedule_copy1 to fetch.
+     */
+    where: adp_free_schedule_copy1WhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * adp_free_schedule_copy1 findFirst
+   */
+  export type adp_free_schedule_copy1FindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the adp_free_schedule_copy1
+     */
+    select?: adp_free_schedule_copy1Select<ExtArgs> | null
+    /**
+     * Filter, which adp_free_schedule_copy1 to fetch.
+     */
+    where?: adp_free_schedule_copy1WhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of adp_free_schedule_copy1s to fetch.
+     */
+    orderBy?: adp_free_schedule_copy1OrderByWithRelationAndSearchRelevanceInput | adp_free_schedule_copy1OrderByWithRelationAndSearchRelevanceInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for adp_free_schedule_copy1s.
+     */
+    cursor?: adp_free_schedule_copy1WhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` adp_free_schedule_copy1s from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` adp_free_schedule_copy1s.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of adp_free_schedule_copy1s.
+     */
+    distinct?: Adp_free_schedule_copy1ScalarFieldEnum | Adp_free_schedule_copy1ScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * adp_free_schedule_copy1 findFirstOrThrow
+   */
+  export type adp_free_schedule_copy1FindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the adp_free_schedule_copy1
+     */
+    select?: adp_free_schedule_copy1Select<ExtArgs> | null
+    /**
+     * Filter, which adp_free_schedule_copy1 to fetch.
+     */
+    where?: adp_free_schedule_copy1WhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of adp_free_schedule_copy1s to fetch.
+     */
+    orderBy?: adp_free_schedule_copy1OrderByWithRelationAndSearchRelevanceInput | adp_free_schedule_copy1OrderByWithRelationAndSearchRelevanceInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for adp_free_schedule_copy1s.
+     */
+    cursor?: adp_free_schedule_copy1WhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` adp_free_schedule_copy1s from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` adp_free_schedule_copy1s.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of adp_free_schedule_copy1s.
+     */
+    distinct?: Adp_free_schedule_copy1ScalarFieldEnum | Adp_free_schedule_copy1ScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * adp_free_schedule_copy1 findMany
+   */
+  export type adp_free_schedule_copy1FindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the adp_free_schedule_copy1
+     */
+    select?: adp_free_schedule_copy1Select<ExtArgs> | null
+    /**
+     * Filter, which adp_free_schedule_copy1s to fetch.
+     */
+    where?: adp_free_schedule_copy1WhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of adp_free_schedule_copy1s to fetch.
+     */
+    orderBy?: adp_free_schedule_copy1OrderByWithRelationAndSearchRelevanceInput | adp_free_schedule_copy1OrderByWithRelationAndSearchRelevanceInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing adp_free_schedule_copy1s.
+     */
+    cursor?: adp_free_schedule_copy1WhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` adp_free_schedule_copy1s from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` adp_free_schedule_copy1s.
+     */
+    skip?: number
+    distinct?: Adp_free_schedule_copy1ScalarFieldEnum | Adp_free_schedule_copy1ScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * adp_free_schedule_copy1 create
+   */
+  export type adp_free_schedule_copy1CreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the adp_free_schedule_copy1
+     */
+    select?: adp_free_schedule_copy1Select<ExtArgs> | null
+    /**
+     * The data needed to create a adp_free_schedule_copy1.
+     */
+    data: XOR<adp_free_schedule_copy1CreateInput, adp_free_schedule_copy1UncheckedCreateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * adp_free_schedule_copy1 createMany
+   */
+  export type adp_free_schedule_copy1CreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many adp_free_schedule_copy1s.
+     */
+    data: adp_free_schedule_copy1CreateManyInput | adp_free_schedule_copy1CreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * adp_free_schedule_copy1 update
+   */
+  export type adp_free_schedule_copy1UpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the adp_free_schedule_copy1
+     */
+    select?: adp_free_schedule_copy1Select<ExtArgs> | null
+    /**
+     * The data needed to update a adp_free_schedule_copy1.
+     */
+    data: XOR<adp_free_schedule_copy1UpdateInput, adp_free_schedule_copy1UncheckedUpdateInput>
+    /**
+     * Choose, which adp_free_schedule_copy1 to update.
+     */
+    where: adp_free_schedule_copy1WhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * adp_free_schedule_copy1 updateMany
+   */
+  export type adp_free_schedule_copy1UpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update adp_free_schedule_copy1s.
+     */
+    data: XOR<adp_free_schedule_copy1UpdateManyMutationInput, adp_free_schedule_copy1UncheckedUpdateManyInput>
+    /**
+     * Filter which adp_free_schedule_copy1s to update
+     */
+    where?: adp_free_schedule_copy1WhereInput
+  }
+
+  /**
+   * adp_free_schedule_copy1 upsert
+   */
+  export type adp_free_schedule_copy1UpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the adp_free_schedule_copy1
+     */
+    select?: adp_free_schedule_copy1Select<ExtArgs> | null
+    /**
+     * The filter to search for the adp_free_schedule_copy1 to update in case it exists.
+     */
+    where: adp_free_schedule_copy1WhereUniqueInput
+    /**
+     * In case the adp_free_schedule_copy1 found by the `where` argument doesn't exist, create a new adp_free_schedule_copy1 with this data.
+     */
+    create: XOR<adp_free_schedule_copy1CreateInput, adp_free_schedule_copy1UncheckedCreateInput>
+    /**
+     * In case the adp_free_schedule_copy1 was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<adp_free_schedule_copy1UpdateInput, adp_free_schedule_copy1UncheckedUpdateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * adp_free_schedule_copy1 delete
+   */
+  export type adp_free_schedule_copy1DeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the adp_free_schedule_copy1
+     */
+    select?: adp_free_schedule_copy1Select<ExtArgs> | null
+    /**
+     * Filter which adp_free_schedule_copy1 to delete.
+     */
+    where: adp_free_schedule_copy1WhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * adp_free_schedule_copy1 deleteMany
+   */
+  export type adp_free_schedule_copy1DeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which adp_free_schedule_copy1s to delete
+     */
+    where?: adp_free_schedule_copy1WhereInput
+  }
+
+  /**
+   * adp_free_schedule_copy1 without action
+   */
+  export type adp_free_schedule_copy1DefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the adp_free_schedule_copy1
+     */
+    select?: adp_free_schedule_copy1Select<ExtArgs> | null
   }
 
 
@@ -32296,7 +30680,9 @@ export namespace Prisma {
     opd_claim_date: 'opd_claim_date',
     opd_claim_number: 'opd_claim_number',
     staff_number_claim: 'staff_number_claim',
-    sent_date: 'sent_date'
+    sent_date: 'sent_date',
+    hn: 'hn',
+    fhd_clain_code: 'fhd_clain_code'
   };
 
   export type Opd_claim_statusScalarFieldEnum = (typeof Opd_claim_statusScalarFieldEnum)[keyof typeof Opd_claim_statusScalarFieldEnum]
@@ -32309,7 +30695,9 @@ export namespace Prisma {
     ipd_claim_date: 'ipd_claim_date',
     ipd_claim_number: 'ipd_claim_number',
     staff_number_claim: 'staff_number_claim',
-    sent_date: 'sent_date'
+    sent_date: 'sent_date',
+    hn: 'hn',
+    fhd_clain_code: 'fhd_clain_code'
   };
 
   export type Ipd_claim_statusScalarFieldEnum = (typeof Ipd_claim_statusScalarFieldEnum)[keyof typeof Ipd_claim_statusScalarFieldEnum]
@@ -32394,18 +30782,6 @@ export namespace Prisma {
   export type T_employeeScalarFieldEnum = (typeof T_employeeScalarFieldEnum)[keyof typeof T_employeeScalarFieldEnum]
 
 
-  export const Adp_free_schedule_backupScalarFieldEnum: {
-    item_code: 'item_code',
-    item_name: 'item_name',
-    unit: 'unit',
-    type: 'type',
-    price: 'price',
-    id: 'id'
-  };
-
-  export type Adp_free_schedule_backupScalarFieldEnum = (typeof Adp_free_schedule_backupScalarFieldEnum)[keyof typeof Adp_free_schedule_backupScalarFieldEnum]
-
-
   export const Adp_typeScalarFieldEnum: {
     adp_catalogy_id: 'adp_catalogy_id',
     adp_name: 'adp_name',
@@ -32415,6 +30791,18 @@ export namespace Prisma {
   };
 
   export type Adp_typeScalarFieldEnum = (typeof Adp_typeScalarFieldEnum)[keyof typeof Adp_typeScalarFieldEnum]
+
+
+  export const Adp_free_schedule_copy1ScalarFieldEnum: {
+    item_code: 'item_code',
+    item_name: 'item_name',
+    unit: 'unit',
+    type: 'type',
+    price: 'price',
+    id: 'id'
+  };
+
+  export type Adp_free_schedule_copy1ScalarFieldEnum = (typeof Adp_free_schedule_copy1ScalarFieldEnum)[keyof typeof Adp_free_schedule_copy1ScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -32774,7 +31162,9 @@ export namespace Prisma {
     opd_claim_date: 'opd_claim_date',
     opd_claim_number: 'opd_claim_number',
     staff_number_claim: 'staff_number_claim',
-    sent_date: 'sent_date'
+    sent_date: 'sent_date',
+    hn: 'hn',
+    fhd_clain_code: 'fhd_clain_code'
   };
 
   export type opd_claim_statusOrderByRelevanceFieldEnum = (typeof opd_claim_statusOrderByRelevanceFieldEnum)[keyof typeof opd_claim_statusOrderByRelevanceFieldEnum]
@@ -32787,7 +31177,9 @@ export namespace Prisma {
     ipd_claim_date: 'ipd_claim_date',
     ipd_claim_number: 'ipd_claim_number',
     staff_number_claim: 'staff_number_claim',
-    sent_date: 'sent_date'
+    sent_date: 'sent_date',
+    hn: 'hn',
+    fhd_clain_code: 'fhd_clain_code'
   };
 
   export type ipd_claim_statusOrderByRelevanceFieldEnum = (typeof ipd_claim_statusOrderByRelevanceFieldEnum)[keyof typeof ipd_claim_statusOrderByRelevanceFieldEnum]
@@ -32851,17 +31243,6 @@ export namespace Prisma {
   export type t_employeeOrderByRelevanceFieldEnum = (typeof t_employeeOrderByRelevanceFieldEnum)[keyof typeof t_employeeOrderByRelevanceFieldEnum]
 
 
-  export const adp_free_schedule_backupOrderByRelevanceFieldEnum: {
-    item_code: 'item_code',
-    item_name: 'item_name',
-    unit: 'unit',
-    type: 'type',
-    price: 'price'
-  };
-
-  export type adp_free_schedule_backupOrderByRelevanceFieldEnum = (typeof adp_free_schedule_backupOrderByRelevanceFieldEnum)[keyof typeof adp_free_schedule_backupOrderByRelevanceFieldEnum]
-
-
   export const adp_typeOrderByRelevanceFieldEnum: {
     adp_name: 'adp_name',
     adp_nhso_name: 'adp_nhso_name',
@@ -32869,6 +31250,17 @@ export namespace Prisma {
   };
 
   export type adp_typeOrderByRelevanceFieldEnum = (typeof adp_typeOrderByRelevanceFieldEnum)[keyof typeof adp_typeOrderByRelevanceFieldEnum]
+
+
+  export const adp_free_schedule_copy1OrderByRelevanceFieldEnum: {
+    item_code: 'item_code',
+    item_name: 'item_name',
+    unit: 'unit',
+    type: 'type',
+    price: 'price'
+  };
+
+  export type adp_free_schedule_copy1OrderByRelevanceFieldEnum = (typeof adp_free_schedule_copy1OrderByRelevanceFieldEnum)[keyof typeof adp_free_schedule_copy1OrderByRelevanceFieldEnum]
 
 
   /**
@@ -34532,6 +32924,8 @@ export namespace Prisma {
     opd_claim_number?: StringNullableFilter<"opd_claim_status"> | string | null
     staff_number_claim?: StringNullableFilter<"opd_claim_status"> | string | null
     sent_date?: StringNullableFilter<"opd_claim_status"> | string | null
+    hn?: StringNullableFilter<"opd_claim_status"> | string | null
+    fhd_clain_code?: StringNullableFilter<"opd_claim_status"> | string | null
     status?: XOR<F_claim_statusRelationFilter, f_claim_statusWhereInput>
   }
 
@@ -34543,6 +32937,8 @@ export namespace Prisma {
     opd_claim_number?: SortOrderInput | SortOrder
     staff_number_claim?: SortOrderInput | SortOrder
     sent_date?: SortOrderInput | SortOrder
+    hn?: SortOrderInput | SortOrder
+    fhd_clain_code?: SortOrderInput | SortOrder
     status?: f_claim_statusOrderByWithRelationAndSearchRelevanceInput
     _relevance?: opd_claim_statusOrderByRelevanceInput
   }
@@ -34558,6 +32954,8 @@ export namespace Prisma {
     opd_claim_number?: StringNullableFilter<"opd_claim_status"> | string | null
     staff_number_claim?: StringNullableFilter<"opd_claim_status"> | string | null
     sent_date?: StringNullableFilter<"opd_claim_status"> | string | null
+    hn?: StringNullableFilter<"opd_claim_status"> | string | null
+    fhd_clain_code?: StringNullableFilter<"opd_claim_status"> | string | null
     status?: XOR<F_claim_statusRelationFilter, f_claim_statusWhereInput>
   }, "id">
 
@@ -34569,6 +32967,8 @@ export namespace Prisma {
     opd_claim_number?: SortOrderInput | SortOrder
     staff_number_claim?: SortOrderInput | SortOrder
     sent_date?: SortOrderInput | SortOrder
+    hn?: SortOrderInput | SortOrder
+    fhd_clain_code?: SortOrderInput | SortOrder
     _count?: opd_claim_statusCountOrderByAggregateInput
     _max?: opd_claim_statusMaxOrderByAggregateInput
     _min?: opd_claim_statusMinOrderByAggregateInput
@@ -34585,6 +32985,8 @@ export namespace Prisma {
     opd_claim_number?: StringNullableWithAggregatesFilter<"opd_claim_status"> | string | null
     staff_number_claim?: StringNullableWithAggregatesFilter<"opd_claim_status"> | string | null
     sent_date?: StringNullableWithAggregatesFilter<"opd_claim_status"> | string | null
+    hn?: StringNullableWithAggregatesFilter<"opd_claim_status"> | string | null
+    fhd_clain_code?: StringNullableWithAggregatesFilter<"opd_claim_status"> | string | null
   }
 
   export type ipd_claim_statusWhereInput = {
@@ -34598,6 +33000,8 @@ export namespace Prisma {
     ipd_claim_number?: StringNullableFilter<"ipd_claim_status"> | string | null
     staff_number_claim?: StringNullableFilter<"ipd_claim_status"> | string | null
     sent_date?: StringNullableFilter<"ipd_claim_status"> | string | null
+    hn?: StringNullableFilter<"ipd_claim_status"> | string | null
+    fhd_clain_code?: StringNullableFilter<"ipd_claim_status"> | string | null
     status?: XOR<F_claim_statusRelationFilter, f_claim_statusWhereInput>
   }
 
@@ -34609,6 +33013,8 @@ export namespace Prisma {
     ipd_claim_number?: SortOrderInput | SortOrder
     staff_number_claim?: SortOrderInput | SortOrder
     sent_date?: SortOrderInput | SortOrder
+    hn?: SortOrderInput | SortOrder
+    fhd_clain_code?: SortOrderInput | SortOrder
     status?: f_claim_statusOrderByWithRelationAndSearchRelevanceInput
     _relevance?: ipd_claim_statusOrderByRelevanceInput
   }
@@ -34624,6 +33030,8 @@ export namespace Prisma {
     ipd_claim_number?: StringNullableFilter<"ipd_claim_status"> | string | null
     staff_number_claim?: StringNullableFilter<"ipd_claim_status"> | string | null
     sent_date?: StringNullableFilter<"ipd_claim_status"> | string | null
+    hn?: StringNullableFilter<"ipd_claim_status"> | string | null
+    fhd_clain_code?: StringNullableFilter<"ipd_claim_status"> | string | null
     status?: XOR<F_claim_statusRelationFilter, f_claim_statusWhereInput>
   }, "id">
 
@@ -34635,6 +33043,8 @@ export namespace Prisma {
     ipd_claim_number?: SortOrderInput | SortOrder
     staff_number_claim?: SortOrderInput | SortOrder
     sent_date?: SortOrderInput | SortOrder
+    hn?: SortOrderInput | SortOrder
+    fhd_clain_code?: SortOrderInput | SortOrder
     _count?: ipd_claim_statusCountOrderByAggregateInput
     _max?: ipd_claim_statusMaxOrderByAggregateInput
     _min?: ipd_claim_statusMinOrderByAggregateInput
@@ -34651,6 +33061,8 @@ export namespace Prisma {
     ipd_claim_number?: StringNullableWithAggregatesFilter<"ipd_claim_status"> | string | null
     staff_number_claim?: StringNullableWithAggregatesFilter<"ipd_claim_status"> | string | null
     sent_date?: StringNullableWithAggregatesFilter<"ipd_claim_status"> | string | null
+    hn?: StringNullableWithAggregatesFilter<"ipd_claim_status"> | string | null
+    fhd_clain_code?: StringNullableWithAggregatesFilter<"ipd_claim_status"> | string | null
   }
 
   export type t_code_errorWhereInput = {
@@ -35046,66 +33458,6 @@ export namespace Prisma {
     active?: IntWithAggregatesFilter<"t_employee"> | number
   }
 
-  export type adp_free_schedule_backupWhereInput = {
-    AND?: adp_free_schedule_backupWhereInput | adp_free_schedule_backupWhereInput[]
-    OR?: adp_free_schedule_backupWhereInput[]
-    NOT?: adp_free_schedule_backupWhereInput | adp_free_schedule_backupWhereInput[]
-    item_code?: StringFilter<"adp_free_schedule_backup"> | string
-    item_name?: StringFilter<"adp_free_schedule_backup"> | string
-    unit?: StringFilter<"adp_free_schedule_backup"> | string
-    type?: StringFilter<"adp_free_schedule_backup"> | string
-    price?: StringFilter<"adp_free_schedule_backup"> | string
-    id?: IntFilter<"adp_free_schedule_backup"> | number
-  }
-
-  export type adp_free_schedule_backupOrderByWithRelationAndSearchRelevanceInput = {
-    item_code?: SortOrder
-    item_name?: SortOrder
-    unit?: SortOrder
-    type?: SortOrder
-    price?: SortOrder
-    id?: SortOrder
-    _relevance?: adp_free_schedule_backupOrderByRelevanceInput
-  }
-
-  export type adp_free_schedule_backupWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: adp_free_schedule_backupWhereInput | adp_free_schedule_backupWhereInput[]
-    OR?: adp_free_schedule_backupWhereInput[]
-    NOT?: adp_free_schedule_backupWhereInput | adp_free_schedule_backupWhereInput[]
-    item_code?: StringFilter<"adp_free_schedule_backup"> | string
-    item_name?: StringFilter<"adp_free_schedule_backup"> | string
-    unit?: StringFilter<"adp_free_schedule_backup"> | string
-    type?: StringFilter<"adp_free_schedule_backup"> | string
-    price?: StringFilter<"adp_free_schedule_backup"> | string
-  }, "id">
-
-  export type adp_free_schedule_backupOrderByWithAggregationInput = {
-    item_code?: SortOrder
-    item_name?: SortOrder
-    unit?: SortOrder
-    type?: SortOrder
-    price?: SortOrder
-    id?: SortOrder
-    _count?: adp_free_schedule_backupCountOrderByAggregateInput
-    _avg?: adp_free_schedule_backupAvgOrderByAggregateInput
-    _max?: adp_free_schedule_backupMaxOrderByAggregateInput
-    _min?: adp_free_schedule_backupMinOrderByAggregateInput
-    _sum?: adp_free_schedule_backupSumOrderByAggregateInput
-  }
-
-  export type adp_free_schedule_backupScalarWhereWithAggregatesInput = {
-    AND?: adp_free_schedule_backupScalarWhereWithAggregatesInput | adp_free_schedule_backupScalarWhereWithAggregatesInput[]
-    OR?: adp_free_schedule_backupScalarWhereWithAggregatesInput[]
-    NOT?: adp_free_schedule_backupScalarWhereWithAggregatesInput | adp_free_schedule_backupScalarWhereWithAggregatesInput[]
-    item_code?: StringWithAggregatesFilter<"adp_free_schedule_backup"> | string
-    item_name?: StringWithAggregatesFilter<"adp_free_schedule_backup"> | string
-    unit?: StringWithAggregatesFilter<"adp_free_schedule_backup"> | string
-    type?: StringWithAggregatesFilter<"adp_free_schedule_backup"> | string
-    price?: StringWithAggregatesFilter<"adp_free_schedule_backup"> | string
-    id?: IntWithAggregatesFilter<"adp_free_schedule_backup"> | number
-  }
-
   export type adp_typeWhereInput = {
     AND?: adp_typeWhereInput | adp_typeWhereInput[]
     OR?: adp_typeWhereInput[]
@@ -35159,6 +33511,66 @@ export namespace Prisma {
     adp_type_number?: IntNullableListFilter<"adp_type">
     adp_nhso_name?: StringNullableWithAggregatesFilter<"adp_type"> | string | null
     adp_hospital_code?: StringNullableWithAggregatesFilter<"adp_type"> | string | null
+  }
+
+  export type adp_free_schedule_copy1WhereInput = {
+    AND?: adp_free_schedule_copy1WhereInput | adp_free_schedule_copy1WhereInput[]
+    OR?: adp_free_schedule_copy1WhereInput[]
+    NOT?: adp_free_schedule_copy1WhereInput | adp_free_schedule_copy1WhereInput[]
+    item_code?: StringFilter<"adp_free_schedule_copy1"> | string
+    item_name?: StringFilter<"adp_free_schedule_copy1"> | string
+    unit?: StringFilter<"adp_free_schedule_copy1"> | string
+    type?: StringFilter<"adp_free_schedule_copy1"> | string
+    price?: StringFilter<"adp_free_schedule_copy1"> | string
+    id?: IntFilter<"adp_free_schedule_copy1"> | number
+  }
+
+  export type adp_free_schedule_copy1OrderByWithRelationAndSearchRelevanceInput = {
+    item_code?: SortOrder
+    item_name?: SortOrder
+    unit?: SortOrder
+    type?: SortOrder
+    price?: SortOrder
+    id?: SortOrder
+    _relevance?: adp_free_schedule_copy1OrderByRelevanceInput
+  }
+
+  export type adp_free_schedule_copy1WhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: adp_free_schedule_copy1WhereInput | adp_free_schedule_copy1WhereInput[]
+    OR?: adp_free_schedule_copy1WhereInput[]
+    NOT?: adp_free_schedule_copy1WhereInput | adp_free_schedule_copy1WhereInput[]
+    item_code?: StringFilter<"adp_free_schedule_copy1"> | string
+    item_name?: StringFilter<"adp_free_schedule_copy1"> | string
+    unit?: StringFilter<"adp_free_schedule_copy1"> | string
+    type?: StringFilter<"adp_free_schedule_copy1"> | string
+    price?: StringFilter<"adp_free_schedule_copy1"> | string
+  }, "id">
+
+  export type adp_free_schedule_copy1OrderByWithAggregationInput = {
+    item_code?: SortOrder
+    item_name?: SortOrder
+    unit?: SortOrder
+    type?: SortOrder
+    price?: SortOrder
+    id?: SortOrder
+    _count?: adp_free_schedule_copy1CountOrderByAggregateInput
+    _avg?: adp_free_schedule_copy1AvgOrderByAggregateInput
+    _max?: adp_free_schedule_copy1MaxOrderByAggregateInput
+    _min?: adp_free_schedule_copy1MinOrderByAggregateInput
+    _sum?: adp_free_schedule_copy1SumOrderByAggregateInput
+  }
+
+  export type adp_free_schedule_copy1ScalarWhereWithAggregatesInput = {
+    AND?: adp_free_schedule_copy1ScalarWhereWithAggregatesInput | adp_free_schedule_copy1ScalarWhereWithAggregatesInput[]
+    OR?: adp_free_schedule_copy1ScalarWhereWithAggregatesInput[]
+    NOT?: adp_free_schedule_copy1ScalarWhereWithAggregatesInput | adp_free_schedule_copy1ScalarWhereWithAggregatesInput[]
+    item_code?: StringWithAggregatesFilter<"adp_free_schedule_copy1"> | string
+    item_name?: StringWithAggregatesFilter<"adp_free_schedule_copy1"> | string
+    unit?: StringWithAggregatesFilter<"adp_free_schedule_copy1"> | string
+    type?: StringWithAggregatesFilter<"adp_free_schedule_copy1"> | string
+    price?: StringWithAggregatesFilter<"adp_free_schedule_copy1"> | string
+    id?: IntWithAggregatesFilter<"adp_free_schedule_copy1"> | number
   }
 
   export type t_insCreateInput = {
@@ -37080,6 +35492,8 @@ export namespace Prisma {
     opd_claim_number?: string | null
     staff_number_claim?: string | null
     sent_date?: string | null
+    hn?: string | null
+    fhd_clain_code?: string | null
     status: f_claim_statusCreateNestedOneWithoutOpd_claim_statusInput
   }
 
@@ -37091,6 +35505,8 @@ export namespace Prisma {
     opd_claim_number?: string | null
     staff_number_claim?: string | null
     sent_date?: string | null
+    hn?: string | null
+    fhd_clain_code?: string | null
   }
 
   export type opd_claim_statusUpdateInput = {
@@ -37100,6 +35516,8 @@ export namespace Prisma {
     opd_claim_number?: NullableStringFieldUpdateOperationsInput | string | null
     staff_number_claim?: NullableStringFieldUpdateOperationsInput | string | null
     sent_date?: NullableStringFieldUpdateOperationsInput | string | null
+    hn?: NullableStringFieldUpdateOperationsInput | string | null
+    fhd_clain_code?: NullableStringFieldUpdateOperationsInput | string | null
     status?: f_claim_statusUpdateOneRequiredWithoutOpd_claim_statusNestedInput
   }
 
@@ -37111,6 +35529,8 @@ export namespace Prisma {
     opd_claim_number?: NullableStringFieldUpdateOperationsInput | string | null
     staff_number_claim?: NullableStringFieldUpdateOperationsInput | string | null
     sent_date?: NullableStringFieldUpdateOperationsInput | string | null
+    hn?: NullableStringFieldUpdateOperationsInput | string | null
+    fhd_clain_code?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type opd_claim_statusCreateManyInput = {
@@ -37121,6 +35541,8 @@ export namespace Prisma {
     opd_claim_number?: string | null
     staff_number_claim?: string | null
     sent_date?: string | null
+    hn?: string | null
+    fhd_clain_code?: string | null
   }
 
   export type opd_claim_statusUpdateManyMutationInput = {
@@ -37130,6 +35552,8 @@ export namespace Prisma {
     opd_claim_number?: NullableStringFieldUpdateOperationsInput | string | null
     staff_number_claim?: NullableStringFieldUpdateOperationsInput | string | null
     sent_date?: NullableStringFieldUpdateOperationsInput | string | null
+    hn?: NullableStringFieldUpdateOperationsInput | string | null
+    fhd_clain_code?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type opd_claim_statusUncheckedUpdateManyInput = {
@@ -37140,6 +35564,8 @@ export namespace Prisma {
     opd_claim_number?: NullableStringFieldUpdateOperationsInput | string | null
     staff_number_claim?: NullableStringFieldUpdateOperationsInput | string | null
     sent_date?: NullableStringFieldUpdateOperationsInput | string | null
+    hn?: NullableStringFieldUpdateOperationsInput | string | null
+    fhd_clain_code?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ipd_claim_statusCreateInput = {
@@ -37149,6 +35575,8 @@ export namespace Prisma {
     ipd_claim_number?: string | null
     staff_number_claim?: string | null
     sent_date?: string | null
+    hn?: string | null
+    fhd_clain_code?: string | null
     status: f_claim_statusCreateNestedOneWithoutIpd_claim_statusInput
   }
 
@@ -37160,6 +35588,8 @@ export namespace Prisma {
     ipd_claim_number?: string | null
     staff_number_claim?: string | null
     sent_date?: string | null
+    hn?: string | null
+    fhd_clain_code?: string | null
   }
 
   export type ipd_claim_statusUpdateInput = {
@@ -37169,6 +35599,8 @@ export namespace Prisma {
     ipd_claim_number?: NullableStringFieldUpdateOperationsInput | string | null
     staff_number_claim?: NullableStringFieldUpdateOperationsInput | string | null
     sent_date?: NullableStringFieldUpdateOperationsInput | string | null
+    hn?: NullableStringFieldUpdateOperationsInput | string | null
+    fhd_clain_code?: NullableStringFieldUpdateOperationsInput | string | null
     status?: f_claim_statusUpdateOneRequiredWithoutIpd_claim_statusNestedInput
   }
 
@@ -37180,6 +35612,8 @@ export namespace Prisma {
     ipd_claim_number?: NullableStringFieldUpdateOperationsInput | string | null
     staff_number_claim?: NullableStringFieldUpdateOperationsInput | string | null
     sent_date?: NullableStringFieldUpdateOperationsInput | string | null
+    hn?: NullableStringFieldUpdateOperationsInput | string | null
+    fhd_clain_code?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ipd_claim_statusCreateManyInput = {
@@ -37190,6 +35624,8 @@ export namespace Prisma {
     ipd_claim_number?: string | null
     staff_number_claim?: string | null
     sent_date?: string | null
+    hn?: string | null
+    fhd_clain_code?: string | null
   }
 
   export type ipd_claim_statusUpdateManyMutationInput = {
@@ -37199,6 +35635,8 @@ export namespace Prisma {
     ipd_claim_number?: NullableStringFieldUpdateOperationsInput | string | null
     staff_number_claim?: NullableStringFieldUpdateOperationsInput | string | null
     sent_date?: NullableStringFieldUpdateOperationsInput | string | null
+    hn?: NullableStringFieldUpdateOperationsInput | string | null
+    fhd_clain_code?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ipd_claim_statusUncheckedUpdateManyInput = {
@@ -37209,6 +35647,8 @@ export namespace Prisma {
     ipd_claim_number?: NullableStringFieldUpdateOperationsInput | string | null
     staff_number_claim?: NullableStringFieldUpdateOperationsInput | string | null
     sent_date?: NullableStringFieldUpdateOperationsInput | string | null
+    hn?: NullableStringFieldUpdateOperationsInput | string | null
+    fhd_clain_code?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type t_code_errorCreateInput = {
@@ -37481,6 +35921,7 @@ export namespace Prisma {
     unit: string
     type: string
     price: string
+    id: number
   }
 
   export type adp_free_scheduleUncheckedCreateInput = {
@@ -37489,7 +35930,7 @@ export namespace Prisma {
     unit: string
     type: string
     price: string
-    id?: number
+    id: number
   }
 
   export type adp_free_scheduleUpdateInput = {
@@ -37498,6 +35939,7 @@ export namespace Prisma {
     unit?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
+    id?: IntFieldUpdateOperationsInput | number
   }
 
   export type adp_free_scheduleUncheckedUpdateInput = {
@@ -37515,7 +35957,7 @@ export namespace Prisma {
     unit: string
     type: string
     price: string
-    id?: number
+    id: number
   }
 
   export type adp_free_scheduleUpdateManyMutationInput = {
@@ -37524,6 +35966,7 @@ export namespace Prisma {
     unit?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
+    id?: IntFieldUpdateOperationsInput | number
   }
 
   export type adp_free_scheduleUncheckedUpdateManyInput = {
@@ -37605,66 +36048,6 @@ export namespace Prisma {
     active?: IntFieldUpdateOperationsInput | number
   }
 
-  export type adp_free_schedule_backupCreateInput = {
-    item_code: string
-    item_name: string
-    unit: string
-    type: string
-    price: string
-  }
-
-  export type adp_free_schedule_backupUncheckedCreateInput = {
-    item_code: string
-    item_name: string
-    unit: string
-    type: string
-    price: string
-    id?: number
-  }
-
-  export type adp_free_schedule_backupUpdateInput = {
-    item_code?: StringFieldUpdateOperationsInput | string
-    item_name?: StringFieldUpdateOperationsInput | string
-    unit?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    price?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type adp_free_schedule_backupUncheckedUpdateInput = {
-    item_code?: StringFieldUpdateOperationsInput | string
-    item_name?: StringFieldUpdateOperationsInput | string
-    unit?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    price?: StringFieldUpdateOperationsInput | string
-    id?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type adp_free_schedule_backupCreateManyInput = {
-    item_code: string
-    item_name: string
-    unit: string
-    type: string
-    price: string
-    id?: number
-  }
-
-  export type adp_free_schedule_backupUpdateManyMutationInput = {
-    item_code?: StringFieldUpdateOperationsInput | string
-    item_name?: StringFieldUpdateOperationsInput | string
-    unit?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    price?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type adp_free_schedule_backupUncheckedUpdateManyInput = {
-    item_code?: StringFieldUpdateOperationsInput | string
-    item_name?: StringFieldUpdateOperationsInput | string
-    unit?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    price?: StringFieldUpdateOperationsInput | string
-    id?: IntFieldUpdateOperationsInput | number
-  }
-
   export type adp_typeCreateInput = {
     adp_catalogy_id: number
     adp_name: string
@@ -37719,6 +36102,69 @@ export namespace Prisma {
     adp_type_number?: adp_typeUpdateadp_type_numberInput | number[]
     adp_nhso_name?: NullableStringFieldUpdateOperationsInput | string | null
     adp_hospital_code?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type adp_free_schedule_copy1CreateInput = {
+    item_code: string
+    item_name: string
+    unit: string
+    type: string
+    price: string
+    id: number
+  }
+
+  export type adp_free_schedule_copy1UncheckedCreateInput = {
+    item_code: string
+    item_name: string
+    unit: string
+    type: string
+    price: string
+    id: number
+  }
+
+  export type adp_free_schedule_copy1UpdateInput = {
+    item_code?: StringFieldUpdateOperationsInput | string
+    item_name?: StringFieldUpdateOperationsInput | string
+    unit?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type adp_free_schedule_copy1UncheckedUpdateInput = {
+    item_code?: StringFieldUpdateOperationsInput | string
+    item_name?: StringFieldUpdateOperationsInput | string
+    unit?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type adp_free_schedule_copy1CreateManyInput = {
+    item_code: string
+    item_name: string
+    unit: string
+    type: string
+    price: string
+    id: number
+  }
+
+  export type adp_free_schedule_copy1UpdateManyMutationInput = {
+    item_code?: StringFieldUpdateOperationsInput | string
+    item_name?: StringFieldUpdateOperationsInput | string
+    unit?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type adp_free_schedule_copy1UncheckedUpdateManyInput = {
+    item_code?: StringFieldUpdateOperationsInput | string
+    item_name?: StringFieldUpdateOperationsInput | string
+    unit?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    id?: IntFieldUpdateOperationsInput | number
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -38759,6 +37205,8 @@ export namespace Prisma {
     opd_claim_number?: SortOrder
     staff_number_claim?: SortOrder
     sent_date?: SortOrder
+    hn?: SortOrder
+    fhd_clain_code?: SortOrder
   }
 
   export type opd_claim_statusMaxOrderByAggregateInput = {
@@ -38769,6 +37217,8 @@ export namespace Prisma {
     opd_claim_number?: SortOrder
     staff_number_claim?: SortOrder
     sent_date?: SortOrder
+    hn?: SortOrder
+    fhd_clain_code?: SortOrder
   }
 
   export type opd_claim_statusMinOrderByAggregateInput = {
@@ -38779,6 +37229,8 @@ export namespace Prisma {
     opd_claim_number?: SortOrder
     staff_number_claim?: SortOrder
     sent_date?: SortOrder
+    hn?: SortOrder
+    fhd_clain_code?: SortOrder
   }
 
   export type ipd_claim_statusOrderByRelevanceInput = {
@@ -38795,6 +37247,8 @@ export namespace Prisma {
     ipd_claim_number?: SortOrder
     staff_number_claim?: SortOrder
     sent_date?: SortOrder
+    hn?: SortOrder
+    fhd_clain_code?: SortOrder
   }
 
   export type ipd_claim_statusMaxOrderByAggregateInput = {
@@ -38805,6 +37259,8 @@ export namespace Prisma {
     ipd_claim_number?: SortOrder
     staff_number_claim?: SortOrder
     sent_date?: SortOrder
+    hn?: SortOrder
+    fhd_clain_code?: SortOrder
   }
 
   export type ipd_claim_statusMinOrderByAggregateInput = {
@@ -38815,6 +37271,8 @@ export namespace Prisma {
     ipd_claim_number?: SortOrder
     staff_number_claim?: SortOrder
     sent_date?: SortOrder
+    hn?: SortOrder
+    fhd_clain_code?: SortOrder
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -39137,47 +37595,6 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type adp_free_schedule_backupOrderByRelevanceInput = {
-    fields: adp_free_schedule_backupOrderByRelevanceFieldEnum | adp_free_schedule_backupOrderByRelevanceFieldEnum[]
-    sort: SortOrder
-    search: string
-  }
-
-  export type adp_free_schedule_backupCountOrderByAggregateInput = {
-    item_code?: SortOrder
-    item_name?: SortOrder
-    unit?: SortOrder
-    type?: SortOrder
-    price?: SortOrder
-    id?: SortOrder
-  }
-
-  export type adp_free_schedule_backupAvgOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type adp_free_schedule_backupMaxOrderByAggregateInput = {
-    item_code?: SortOrder
-    item_name?: SortOrder
-    unit?: SortOrder
-    type?: SortOrder
-    price?: SortOrder
-    id?: SortOrder
-  }
-
-  export type adp_free_schedule_backupMinOrderByAggregateInput = {
-    item_code?: SortOrder
-    item_name?: SortOrder
-    unit?: SortOrder
-    type?: SortOrder
-    price?: SortOrder
-    id?: SortOrder
-  }
-
-  export type adp_free_schedule_backupSumOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
   export type IntNullableListFilter<$PrismaModel = never> = {
     equals?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     has?: number | IntFieldRefInput<$PrismaModel> | null
@@ -39222,6 +37639,47 @@ export namespace Prisma {
   export type adp_typeSumOrderByAggregateInput = {
     adp_catalogy_id?: SortOrder
     adp_type_number?: SortOrder
+  }
+
+  export type adp_free_schedule_copy1OrderByRelevanceInput = {
+    fields: adp_free_schedule_copy1OrderByRelevanceFieldEnum | adp_free_schedule_copy1OrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type adp_free_schedule_copy1CountOrderByAggregateInput = {
+    item_code?: SortOrder
+    item_name?: SortOrder
+    unit?: SortOrder
+    type?: SortOrder
+    price?: SortOrder
+    id?: SortOrder
+  }
+
+  export type adp_free_schedule_copy1AvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type adp_free_schedule_copy1MaxOrderByAggregateInput = {
+    item_code?: SortOrder
+    item_name?: SortOrder
+    unit?: SortOrder
+    type?: SortOrder
+    price?: SortOrder
+    id?: SortOrder
+  }
+
+  export type adp_free_schedule_copy1MinOrderByAggregateInput = {
+    item_code?: SortOrder
+    item_name?: SortOrder
+    unit?: SortOrder
+    type?: SortOrder
+    price?: SortOrder
+    id?: SortOrder
+  }
+
+  export type adp_free_schedule_copy1SumOrderByAggregateInput = {
+    id?: SortOrder
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -39510,6 +37968,8 @@ export namespace Prisma {
     ipd_claim_number?: string | null
     staff_number_claim?: string | null
     sent_date?: string | null
+    hn?: string | null
+    fhd_clain_code?: string | null
   }
 
   export type ipd_claim_statusUncheckedCreateWithoutStatusInput = {
@@ -39519,6 +37979,8 @@ export namespace Prisma {
     ipd_claim_number?: string | null
     staff_number_claim?: string | null
     sent_date?: string | null
+    hn?: string | null
+    fhd_clain_code?: string | null
   }
 
   export type ipd_claim_statusCreateOrConnectWithoutStatusInput = {
@@ -39538,6 +38000,8 @@ export namespace Prisma {
     opd_claim_number?: string | null
     staff_number_claim?: string | null
     sent_date?: string | null
+    hn?: string | null
+    fhd_clain_code?: string | null
   }
 
   export type opd_claim_statusUncheckedCreateWithoutStatusInput = {
@@ -39547,6 +38011,8 @@ export namespace Prisma {
     opd_claim_number?: string | null
     staff_number_claim?: string | null
     sent_date?: string | null
+    hn?: string | null
+    fhd_clain_code?: string | null
   }
 
   export type opd_claim_statusCreateOrConnectWithoutStatusInput = {
@@ -39586,6 +38052,8 @@ export namespace Prisma {
     ipd_claim_number?: StringNullableFilter<"ipd_claim_status"> | string | null
     staff_number_claim?: StringNullableFilter<"ipd_claim_status"> | string | null
     sent_date?: StringNullableFilter<"ipd_claim_status"> | string | null
+    hn?: StringNullableFilter<"ipd_claim_status"> | string | null
+    fhd_clain_code?: StringNullableFilter<"ipd_claim_status"> | string | null
   }
 
   export type opd_claim_statusUpsertWithWhereUniqueWithoutStatusInput = {
@@ -39615,6 +38083,8 @@ export namespace Prisma {
     opd_claim_number?: StringNullableFilter<"opd_claim_status"> | string | null
     staff_number_claim?: StringNullableFilter<"opd_claim_status"> | string | null
     sent_date?: StringNullableFilter<"opd_claim_status"> | string | null
+    hn?: StringNullableFilter<"opd_claim_status"> | string | null
+    fhd_clain_code?: StringNullableFilter<"opd_claim_status"> | string | null
   }
 
   export type f_claim_statusCreateWithoutOpd_claim_statusInput = {
@@ -39712,6 +38182,8 @@ export namespace Prisma {
     ipd_claim_number?: string | null
     staff_number_claim?: string | null
     sent_date?: string | null
+    hn?: string | null
+    fhd_clain_code?: string | null
   }
 
   export type opd_claim_statusCreateManyStatusInput = {
@@ -39721,6 +38193,8 @@ export namespace Prisma {
     opd_claim_number?: string | null
     staff_number_claim?: string | null
     sent_date?: string | null
+    hn?: string | null
+    fhd_clain_code?: string | null
   }
 
   export type ipd_claim_statusUpdateWithoutStatusInput = {
@@ -39730,6 +38204,8 @@ export namespace Prisma {
     ipd_claim_number?: NullableStringFieldUpdateOperationsInput | string | null
     staff_number_claim?: NullableStringFieldUpdateOperationsInput | string | null
     sent_date?: NullableStringFieldUpdateOperationsInput | string | null
+    hn?: NullableStringFieldUpdateOperationsInput | string | null
+    fhd_clain_code?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ipd_claim_statusUncheckedUpdateWithoutStatusInput = {
@@ -39739,6 +38215,8 @@ export namespace Prisma {
     ipd_claim_number?: NullableStringFieldUpdateOperationsInput | string | null
     staff_number_claim?: NullableStringFieldUpdateOperationsInput | string | null
     sent_date?: NullableStringFieldUpdateOperationsInput | string | null
+    hn?: NullableStringFieldUpdateOperationsInput | string | null
+    fhd_clain_code?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ipd_claim_statusUncheckedUpdateManyWithoutStatusInput = {
@@ -39748,6 +38226,8 @@ export namespace Prisma {
     ipd_claim_number?: NullableStringFieldUpdateOperationsInput | string | null
     staff_number_claim?: NullableStringFieldUpdateOperationsInput | string | null
     sent_date?: NullableStringFieldUpdateOperationsInput | string | null
+    hn?: NullableStringFieldUpdateOperationsInput | string | null
+    fhd_clain_code?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type opd_claim_statusUpdateWithoutStatusInput = {
@@ -39757,6 +38237,8 @@ export namespace Prisma {
     opd_claim_number?: NullableStringFieldUpdateOperationsInput | string | null
     staff_number_claim?: NullableStringFieldUpdateOperationsInput | string | null
     sent_date?: NullableStringFieldUpdateOperationsInput | string | null
+    hn?: NullableStringFieldUpdateOperationsInput | string | null
+    fhd_clain_code?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type opd_claim_statusUncheckedUpdateWithoutStatusInput = {
@@ -39766,6 +38248,8 @@ export namespace Prisma {
     opd_claim_number?: NullableStringFieldUpdateOperationsInput | string | null
     staff_number_claim?: NullableStringFieldUpdateOperationsInput | string | null
     sent_date?: NullableStringFieldUpdateOperationsInput | string | null
+    hn?: NullableStringFieldUpdateOperationsInput | string | null
+    fhd_clain_code?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type opd_claim_statusUncheckedUpdateManyWithoutStatusInput = {
@@ -39775,6 +38259,8 @@ export namespace Prisma {
     opd_claim_number?: NullableStringFieldUpdateOperationsInput | string | null
     staff_number_claim?: NullableStringFieldUpdateOperationsInput | string | null
     sent_date?: NullableStringFieldUpdateOperationsInput | string | null
+    hn?: NullableStringFieldUpdateOperationsInput | string | null
+    fhd_clain_code?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 
@@ -39895,13 +38381,13 @@ export namespace Prisma {
      */
     export type t_employeeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = t_employeeDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use adp_free_schedule_backupDefaultArgs instead
-     */
-    export type adp_free_schedule_backupArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = adp_free_schedule_backupDefaultArgs<ExtArgs>
-    /**
      * @deprecated Use adp_typeDefaultArgs instead
      */
     export type adp_typeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = adp_typeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use adp_free_schedule_copy1DefaultArgs instead
+     */
+    export type adp_free_schedule_copy1Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = adp_free_schedule_copy1DefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

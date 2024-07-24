@@ -2,14 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { PrismaFinance } from 'src/prisma/prisma.service.finanec';
 import { IpdClaimType, OpdClaimTyep } from './claim-fdh.entity';
 import { existsSync, mkdirSync, writeFile } from 'fs';
-import { join } from 'path';
+import { join, resolve } from 'path';
 import { ConnectMophService } from 'src/connect-moph/connect-moph.service';
 @Injectable()
 export class ClaimFdhService {
   constructor(readonly prisma: PrismaFinance, readonly conn: ConnectMophService) { }
 
   toTextIpd = async (table: IpdClaimType) => {
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async (resolves, reject) => {
       const directory = join(__dirname, '../../out/ipd/');
       const rep = new Date()
         .toLocaleDateString('th', {
@@ -67,14 +67,14 @@ export class ClaimFdhService {
                 rowCount += 1;
 
                 if (rowMax === rowCount) {
-                  resolve(await this.conn.sentToClaim(pathName, 'ipd'));
+                  resolves(await this.conn.sentToClaim(pathName, 'ipd'));
                 }
               }
             });
           } else {
             rowCount += 1;
             if (rowMax === rowCount) {
-              resolve(await this.conn.sentToClaim(pathName, 'ipd'));
+              resolves(await this.conn.sentToClaim(pathName, 'ipd'));
             }
           }
         } catch (err) {
@@ -85,8 +85,8 @@ export class ClaimFdhService {
   };
 
   toTextOpd = async (table: OpdClaimTyep) => {
-    return new Promise(async (resolve, reject) => {
-      const directory = join(__dirname, '../../out/opd/');
+    return new Promise(async (resolves, reject) => {
+      const directory = join(__dirname, `../../out/opd/`);
       const rep = new Date()
         .toLocaleDateString('th', {
           year: 'numeric',
@@ -145,14 +145,14 @@ export class ClaimFdhService {
                 rowCount += 1;
                 if (rowMax === rowCount) {
                   //  console.log(table);
-                  resolve(await this.conn.sentToClaim(pathName, 'opd'));
+                  resolves(await this.conn.sentToClaim(pathName, 'opd'));
                 }
               }
             });
           } else {
             rowCount += 1;
             if (rowMax === rowCount) {
-              resolve(await this.conn.sentToClaim(pathName, 'ipd'));
+              resolves(await this.conn.sentToClaim(pathName, 'ipd'));
             }
           }
         } catch (err) {

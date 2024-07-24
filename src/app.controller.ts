@@ -1,13 +1,14 @@
 import { Controller, Get, Res } from '@nestjs/common';
 import { Response } from 'express';
-import { join } from 'path';
-import { ChtModifyService } from './cht-modify/cht-modify.service';
+import { join, resolve} from 'path';
+import { UpdateTransService } from './update-trans/update-trans.service';
+import { readdir, readFileSync } from 'fs';
 
 
 @Controller('app')
 export class AppController {
   constructor(
-    readonly test: ChtModifyService
+    readonly test: UpdateTransService
   ) { }
 
   @Get('index')
@@ -21,7 +22,18 @@ export class AppController {
   async getTest(@Res() res: Response) {
     console.log('test');
 
-    res.json(await this.test.opdModifyCht(['067081338']))
+    const filePath = resolve(__dirname, `../out/ipd/`,'ipd01072567191028');
+    console.log(filePath);
+    readdir(filePath, async (_err, files) => {
+      files.forEach(async item => {
+        if (item === "IPD.txt") {
+          const dataOpd = readFileSync(`${filePath}/${item}`).toString().split('\n')
+console.log(dataOpd);
+
+        }
+      })
+    })
+    res.json(555)
     // res.json(await this.test.ipdModifyCht(['167001699']))
   }
 }

@@ -74,7 +74,7 @@ export class ConnectMophService {
       let formData: FormData = new FormData();
       formData.append('type', 'txt');
 
-      const filePath = resolve(__dirname, `../../out/${claimtype}/`, pathName);
+      const filePath = resolve(__dirname, `../out/${claimtype}/`, pathName);
 
       readdir(filePath, async (_err, files) => {
         let row = 0;
@@ -144,11 +144,13 @@ export class ConnectMophService {
   logClaim = (pathName: string, claimtype: string) => {
     const claimNumber = pathName.split('\\')[4]
     const dateSent = new Date().toISOString().split('T')[0].replaceAll('-', '')
-    const filePath = resolve(__dirname, `../../out/${claimtype}/`, pathName);
+    const filePath = resolve(__dirname, `../out/${claimtype}/`, pathName);
+
     readdir(filePath, async (_err, files) => {
       files.forEach(async item => {
         if (item === "OPD.txt") {
           const loggerOpd: {
+            hn: string,
             seq: string,
             opd_claim_date: string,
             status_code: string,
@@ -164,8 +166,9 @@ export class ConnectMophService {
               const list = lists.split("|")
               const seq = list[4]
               const date = list[2]
-
+              const hn = list[0]
               loggerOpd.push({
+                hn: hn,
                 seq: seq,
                 opd_claim_date: date,
                 status_code: '1',
@@ -199,6 +202,7 @@ export class ConnectMophService {
           }
         } else if (item === 'IPD.txt') {
           const loggerIpd: {
+            hn: string,
             an: string,
             ipd_claim_date: string,
             status_code: string,
@@ -213,8 +217,9 @@ export class ConnectMophService {
               const list = lists.split("|")
               const an = list[1]
               const date = list[4]
-
+              const hn = list[0]
               loggerIpd.push({
+                hn: hn,
                 an: an,
                 ipd_claim_date: date,
                 status_code: '1',

@@ -51,6 +51,8 @@ import { OrfService } from './f16/orf/orf.service';
 import { PatService } from './f16/pat/pat.service';
 import { WorkListService } from './work-list/work-list.service';
 import { Edit16fService } from './edit-16f/edit-16f.service';
+import { UpdateTransService } from './update-trans/update-trans.service';
+import { UpdateTransModule } from './update-trans/update-trans.module';
 
 const envConfig = {
   isGlobal: true,
@@ -71,6 +73,7 @@ const envConfig = {
     LoginModule,
     ReProcressModule,
     JwtAppModule,
+    UpdateTransModule,
 
   ],
   controllers: [AppController, WorkListController, Edit16fController, ClaimFdhController, HistoryListController, LoginController],
@@ -78,6 +81,6 @@ const envConfig = {
     WorkListService,
     Edit16fService,
     OpdService, OrfService, OdxService, OopService, IpdService, IrfService, IdxService, IopService, ChtService, ChaService, AerService, AdpService, LvdService, DruService, LabfuService,
-    PrismaFinance, ClaimFdhService, ConnectMophService, HistoryListService, LoginService, PrismaHospital, JwtAppService, JwtService, ScheduleService, ChtModifyService, ReProcressService],
+    PrismaFinance, ClaimFdhService, ConnectMophService, HistoryListService, LoginService, PrismaHospital, JwtAppService, JwtService, ScheduleService, ChtModifyService, ReProcressService, UpdateTransService],
 })
 export class AppModule { }

@@ -328,6 +328,8 @@ model opd_claim_status {
   opd_claim_number   String?
   staff_number_claim String?
   sent_date          String?
+  hn                 String?
+  fhd_clain_code     String?        @default(dbgenerated("0"))
   status             f_claim_status @relation(fields: [status_code], references: [status_code])
 
   @@schema("public")
@@ -341,6 +343,8 @@ model ipd_claim_status {
   ipd_claim_number   String?
   staff_number_claim String?
   sent_date          String?
+  hn                 String?
+  fhd_clain_code     String?        @default(dbgenerated("0"))
   status             f_claim_status @relation(fields: [status_code], references: [status_code])
 
   @@schema("public")
@@ -401,7 +405,7 @@ model adp_free_schedule {
   unit      String
   type      String
   price     String
-  id        Int    @id(map: "adp_free_schedule_copy1_pkey") @default(autoincrement())
+  id        Int    @id(map: "adp_free_schedule_copy1_pkey")
 
   @@schema("master_items")
 }
@@ -416,17 +420,6 @@ model t_employee {
   active                 Int     @default(1) @db.SmallInt
 
   @@schema("employee")
-}
-
-model adp_free_schedule_backup {
-  item_code String
-  item_name String
-  unit      String
-  type      String
-  price     String
-  id        Int    @id(map: "adp_free_schedule_pkey") @default(autoincrement())
-
-  @@schema("master_items")
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
@@ -453,6 +446,17 @@ model adp_type {
   adp_type_number   Int[]
   adp_nhso_name     String? @db.VarChar
   adp_hospital_code String? @db.VarChar(255)
+
+  @@schema("master_items")
+}
+
+model adp_free_schedule_copy1 {
+  item_code String
+  item_name String
+  unit      String
+  type      String
+  price     String
+  id        Int    @id(map: "adp_free_schedule_copy1_pkey1")
 
   @@schema("master_items")
 }
