@@ -24,15 +24,8 @@ export class AppController {
 
     const filePath = resolve(__dirname, `../out/ipd/`,'ipd01072567191028');
     console.log(filePath);
-    readdir(filePath, async (_err, files) => {
-      files.forEach(async item => {
-        if (item === "IPD.txt") {
-          const dataOpd = readFileSync(`${filePath}/${item}`).toString().split('\n')
-console.log(dataOpd);
-
-        }
-      })
-    })
+ 
+    
     res.json(555)
     // res.json(await this.test.ipdModifyCht(['167001699']))
   }
