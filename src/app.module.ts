@@ -51,8 +51,7 @@ import { OrfService } from './f16/orf/orf.service';
 import { PatService } from './f16/pat/pat.service';
 import { WorkListService } from './work-list/work-list.service';
 import { Edit16fService } from './edit-16f/edit-16f.service';
-import { UpdateTransService } from './update-trans/update-trans.service';
-import { UpdateTransModule } from './update-trans/update-trans.module';
+import { AxiosProvider } from './provider/axios.provicer';
 
 const envConfig = {
   isGlobal: true,
@@ -73,14 +72,12 @@ const envConfig = {
     LoginModule,
     ReProcressModule,
     JwtAppModule,
-    UpdateTransModule,
-
   ],
   controllers: [AppController, WorkListController, Edit16fController, ClaimFdhController, HistoryListController, LoginController],
   providers: [AppService, InsService, PatService,
     WorkListService,
     Edit16fService,
     OpdService, OrfService, OdxService, OopService, IpdService, IrfService, IdxService, IopService, ChtService, ChaService, AerService, AdpService, LvdService, DruService, LabfuService,
-    PrismaFinance, ClaimFdhService, ConnectMophService, HistoryListService, LoginService, PrismaHospital, JwtAppService, JwtService, ScheduleService, ChtModifyService, ReProcressService, UpdateTransService],
+    PrismaFinance, ClaimFdhService, ConnectMophService, HistoryListService, LoginService, PrismaHospital, JwtAppService, JwtService, ScheduleService, ChtModifyService, ReProcressService, AxiosProvider],
 })
 export class AppModule { }

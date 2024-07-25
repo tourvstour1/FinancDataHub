@@ -447,6 +447,7 @@ export class Edit16fService {
   };
 
   async updateLogOpd(opd) {
+     
     const findLog = await this.prisma.opd_claim_status.findMany({
       where: {
         seq: opd.seq

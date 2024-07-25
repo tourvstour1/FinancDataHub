@@ -16,12 +16,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.15.0
- * Query Engine version: 473ed3124229e22d881cb7addf559799debae1ab
+ * Prisma Client JS version: 5.17.0
+ * Query Engine version: 393aa359c9ad4a4bb28630fb5613f9c281cde053
  */
 Prisma.prismaVersion = {
-  client: "5.15.0",
-  engine: "473ed3124229e22d881cb7addf559799debae1ab"
+  client: "5.17.0",
+  engine: "393aa359c9ad4a4bb28630fb5613f9c281cde053"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -405,7 +405,9 @@ exports.Prisma.Opd_claim_statusScalarFieldEnum = {
   staff_number_claim: 'staff_number_claim',
   sent_date: 'sent_date',
   hn: 'hn',
-  fhd_clain_code: 'fhd_clain_code'
+  fdh_status_message_th: 'fdh_status_message_th',
+  fdh_process_status: 'fdh_process_status',
+  fdh_status_message: 'fdh_status_message'
 };
 
 exports.Prisma.Ipd_claim_statusScalarFieldEnum = {
@@ -417,7 +419,9 @@ exports.Prisma.Ipd_claim_statusScalarFieldEnum = {
   staff_number_claim: 'staff_number_claim',
   sent_date: 'sent_date',
   hn: 'hn',
-  fhd_clain_code: 'fhd_clain_code'
+  fdh_status_message_th: 'fdh_status_message_th',
+  fdh_process_status: 'fdh_process_status',
+  fdh_status_message: 'fdh_status_message'
 };
 
 exports.Prisma.T_code_errorScalarFieldEnum = {
@@ -791,7 +795,9 @@ exports.Prisma.opd_claim_statusOrderByRelevanceFieldEnum = {
   staff_number_claim: 'staff_number_claim',
   sent_date: 'sent_date',
   hn: 'hn',
-  fhd_clain_code: 'fhd_clain_code'
+  fdh_status_message_th: 'fdh_status_message_th',
+  fdh_process_status: 'fdh_process_status',
+  fdh_status_message: 'fdh_status_message'
 };
 
 exports.Prisma.ipd_claim_statusOrderByRelevanceFieldEnum = {
@@ -803,7 +809,9 @@ exports.Prisma.ipd_claim_statusOrderByRelevanceFieldEnum = {
   staff_number_claim: 'staff_number_claim',
   sent_date: 'sent_date',
   hn: 'hn',
-  fhd_clain_code: 'fhd_clain_code'
+  fdh_status_message_th: 'fdh_status_message_th',
+  fdh_process_status: 'fdh_process_status',
+  fdh_status_message: 'fdh_status_message'
 };
 
 exports.Prisma.t_code_errorOrderByRelevanceFieldEnum = {

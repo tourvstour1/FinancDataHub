@@ -1,10 +1,10 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
-import { AxiosError, AxiosRequestConfig } from 'axios';
 import { openAsBlob, readdir, readFileSync } from 'fs';
 import { resolve } from 'path';
-import { catchError, firstValueFrom } from 'rxjs';
 import { PrismaFinance } from 'src/prisma/prisma.service.finanec';
+import { AxiosProviderModel } from 'src/provider/axios.entity';
+import { AxiosProvider } from 'src/provider/axios.provicer';
 
 let tokenStore: {
   dateAd: Date;
@@ -13,31 +13,30 @@ let tokenStore: {
 
 @Injectable()
 export class ConnectMophService {
-  constructor(private readonly httpService: HttpService, readonly finance: PrismaFinance) { }
+  constructor(
+    readonly finance: PrismaFinance,
+    readonly axios: AxiosProvider
+  ) { }
 
   getMophToken = async () => {
-    const response = await firstValueFrom(
-      this.httpService
-        .post(process.env['GET_TOKEN'], null, {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          params: {
-            user: process.env['MOPH_USER'],
-            password_hash: process.env['MOPH_PASSWORD_HASH'],
-            hospital_code: process.env['HOSPITAL_CODE'],
-          },
-        })
-        .pipe(
-          catchError((error: AxiosError) => {
-            console.log(error);
-            throw 'An error happened!';
-          }),
-        ),
-    );
+    const payload: AxiosProviderModel = {
+      path: process.env['GET_TOKEN'],
+      data: null,
+      config: {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        params: {
+          user: process.env['MOPH_USER'],
+          password_hash: process.env['MOPH_PASSWORD_HASH'],
+          hospital_code: process.env['HOSPITAL_CODE'],
+        },
+      }
+    }
+    const response = await this.axios.axiosPost(payload)
 
     if (response.status !== 200) {
-      //   console.log(response.status);
+   
     } else {
       const item: {
         dateAd: Date;
@@ -114,21 +113,18 @@ export class ConnectMophService {
   };
 
   private sent = async (token: string, data: FormData, pathName: string, claimtype: string) => {
-    const requesConfig: AxiosRequestConfig = {
-      headers: {
-        'Content-type': 'multipart/form-data',
-        Authorization: 'Bearer ' + token,
-      },
-    };
     try {
-      const res = await firstValueFrom(
-        this.httpService.post(process.env['PRD'], data, requesConfig).pipe(
-          catchError((error: AxiosError) => {
-            console.log(error);
-            throw error.response.data;
-          }),
-        ),
-      );
+      const payload: AxiosProviderModel = {
+        path: process.env['PRD'],
+        data: data,
+        config: {
+          headers: {
+            'Content-type': 'multipart/form-data',
+            Authorization: 'Bearer ' + token,
+          },
+        }
+      }
+      const res = await this.axios.axiosPost(payload)
       if (res.status === 200) {
         this.logClaim(pathName, claimtype)
         return res.data;
@@ -142,7 +138,7 @@ export class ConnectMophService {
 
 
   logClaim = (pathName: string, claimtype: string) => {
-    const claimNumber = (pathName.replaceAll('\\','/')).split('/').slice(-1)[0]
+    const claimNumber = (pathName.replaceAll('\\', '/')).split('/').slice(-1)[0]
     const dateSent = new Date().toISOString().split('T')[0].replaceAll('-', '')
     const filePath = resolve(__dirname, `../out/${claimtype}/`, pathName);
 
@@ -259,17 +255,10 @@ export class ConnectMophService {
   getResponstStatus = async (hn: string, an: string | '', seq: string | '',) => {
     try {
       const newToken = await this.getMophToken();
-      const requesConfig: AxiosRequestConfig = {
-        headers: {
-          'Content-type': 'multipart/form-data',
-          Authorization: 'Bearer ' + newToken,
-        },
-      };
-
       const data: {
-        hcode: string,
-        hn: string,
-        an?: string | '',
+        hcode: string
+        hn: string
+        an?: string | ''
         seq?: string | ''
       } = {
         hcode: process.env['HOSPITAL_CODE'],
@@ -277,15 +266,18 @@ export class ConnectMophService {
         an: an,
         seq: seq
       }
+      const payload: AxiosProviderModel = {
+        path: process.env['CHECKTRANS'],
+        data: data,
+        config: {
+          headers: {
+            'Content-type': 'multipart/form-data',
+            Authorization: 'Bearer ' + newToken,
+          },
+        }
+      }
 
-      const res = await firstValueFrom(
-        this.httpService.post(process.env['CHECKTRANS'], data, requesConfig).pipe(
-          catchError((error: AxiosError) => {
-            // console.log(error);
-            throw error.code;
-          }),
-        ),
-      );
+      const res = await this.axios.axiosPost(payload)
       if (res.status === 200) {
         return res.data;
       } else {
@@ -294,6 +286,5 @@ export class ConnectMophService {
     } catch (err) {
 
     }
-
   }
 }

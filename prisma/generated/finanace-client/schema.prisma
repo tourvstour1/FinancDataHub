@@ -321,31 +321,35 @@ model f_claim_status {
 }
 
 model opd_claim_status {
-  id                 String         @id @default(uuid())
-  status_code        String
-  seq                String         @db.VarChar(16)
-  opd_claim_date     String
-  opd_claim_number   String?
-  staff_number_claim String?
-  sent_date          String?
-  hn                 String?
-  fhd_clain_code     String?        @default(dbgenerated("0"))
-  status             f_claim_status @relation(fields: [status_code], references: [status_code])
+  id                    String         @id @default(uuid())
+  status_code           String
+  seq                   String         @db.VarChar(16)
+  opd_claim_date        String
+  opd_claim_number      String?
+  staff_number_claim    String?
+  sent_date             String?
+  hn                    String?
+  fdh_status_message_th String?
+  fdh_process_status    String?        @default(dbgenerated("99"))
+  fdh_status_message    String?
+  status                f_claim_status @relation(fields: [status_code], references: [status_code])
 
   @@schema("public")
 }
 
 model ipd_claim_status {
-  id                 String         @id @default(uuid())
-  status_code        String
-  an                 String         @db.VarChar(16)
-  ipd_claim_date     String
-  ipd_claim_number   String?
-  staff_number_claim String?
-  sent_date          String?
-  hn                 String?
-  fhd_clain_code     String?        @default(dbgenerated("0"))
-  status             f_claim_status @relation(fields: [status_code], references: [status_code])
+  id                    String         @id @default(uuid())
+  status_code           String
+  an                    String         @db.VarChar(16)
+  ipd_claim_date        String
+  ipd_claim_number      String?
+  staff_number_claim    String?
+  sent_date             String?
+  hn                    String?
+  fdh_status_message_th String?
+  fdh_process_status    String?        @default(dbgenerated("99"))
+  fdh_status_message    String?
+  status                f_claim_status @relation(fields: [status_code], references: [status_code])
 
   @@schema("public")
 }

@@ -1,14 +1,15 @@
 import { Controller, Get, Res } from '@nestjs/common';
 import { Response } from 'express';
-import { join, resolve} from 'path';
-import { UpdateTransService } from './update-trans/update-trans.service';
+import { join, resolve } from 'path';
+
 import { readdir, readFileSync } from 'fs';
+import { ScheduleService } from './schedule/schedule.service';
 
 
 @Controller('app')
 export class AppController {
   constructor(
-    readonly test: UpdateTransService
+    readonly test: ScheduleService
   ) { }
 
   @Get('index')
@@ -22,11 +23,10 @@ export class AppController {
   async getTest(@Res() res: Response) {
     console.log('test');
 
-    const filePath = resolve(__dirname, `../out/ipd/`,'ipd01072567191028');
-    console.log(filePath);
- 
-    
-    res.json(555)
-    // res.json(await this.test.ipdModifyCht(['167001699']))
+    this.test.updateOpdFdhStatus()
+
+    this.test.updateIpdFdhStatus()
+
+    res.json('update...')
   }
 }
