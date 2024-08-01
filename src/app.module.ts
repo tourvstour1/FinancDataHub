@@ -52,6 +52,8 @@ import { PatService } from './f16/pat/pat.service';
 import { WorkListService } from './work-list/work-list.service';
 import { Edit16fService } from './edit-16f/edit-16f.service';
 import { AxiosProvider } from './provider/axios.provicer';
+import { DashboardController } from './dashboard/dashboard.controller';
+import { DashboardService } from './dashboard/dashboard.service';
 
 const envConfig = {
   isGlobal: true,
@@ -73,11 +75,11 @@ const envConfig = {
     ReProcressModule,
     JwtAppModule,
   ],
-  controllers: [AppController, WorkListController, Edit16fController, ClaimFdhController, HistoryListController, LoginController],
+  controllers: [AppController, WorkListController, Edit16fController, ClaimFdhController, HistoryListController, LoginController, DashboardController],
   providers: [AppService, InsService, PatService,
     WorkListService,
     Edit16fService,
     OpdService, OrfService, OdxService, OopService, IpdService, IrfService, IdxService, IopService, ChtService, ChaService, AerService, AdpService, LvdService, DruService, LabfuService,
-    PrismaFinance, ClaimFdhService, ConnectMophService, HistoryListService, LoginService, PrismaHospital, JwtAppService, JwtService, ScheduleService, ChtModifyService, ReProcressService, AxiosProvider],
+    PrismaFinance, ClaimFdhService, ConnectMophService, HistoryListService, LoginService, PrismaHospital, JwtAppService, JwtService, ScheduleService, ChtModifyService, ReProcressService, AxiosProvider, DashboardService],
 })
 export class AppModule { }

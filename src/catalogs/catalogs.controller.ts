@@ -1,8 +1,12 @@
-import { Body, Controller, Get, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, Post, Res, UseGuards } from '@nestjs/common';
 import { CatalogsService } from './catalogs.service';
 import { Response } from 'express';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { AdpBody, DrugBody } from './catalogs.body';
+import { AuthGuard } from 'src/auth/auth.guard';
+
+@UseGuards(AuthGuard)
+@ApiBearerAuth()
 
 @ApiTags('catalogs')
 @Controller('catalogs')

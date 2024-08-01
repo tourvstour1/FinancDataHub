@@ -25,6 +25,54 @@ export class IpdClaimService {
     an: string[];
 }
 
+export class HistorysBody {
+    @ApiProperty()
+    serviceType: 'opd' | 'ipd'
+
+    @ApiProperty()
+    startDate: string
+
+    @ApiProperty()
+    endDate: string
+
+    @ApiProperty()
+    status_process: string
+}
+
+export interface PostHistorysOpdRespont {
+    hn: string
+    seq: string
+    dateopd: string
+    timeopd: string
+    opd_claim_date: string
+    fdh_process_status: string
+    fdh_status_message: string
+    fdh_status_message_th: string
+    title: string
+    fname: string
+    lname: string
+    inscl: string
+    subinscl: string
+    subtype: string
+}
+
+export interface PostHistorysIpdRespont {
+    hn: string
+    an: string
+    datedsc: string
+    timedsc: string
+    ipd_claim_date: string
+    fdh_process_status: string
+    fdh_status_message: string
+    fdh_status_message_th: string
+    title: string
+    fname: string
+    lname: string
+    inscl: string
+    subinscl: string
+    subtype: string
+}
+
 
 export interface OpdServiceType {
     opd?: t_opd[];

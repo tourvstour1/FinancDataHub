@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaFinance } from 'src/prisma/prisma.service.finanec';
-import { IpdServiceType, OpdServiceType } from './history-list.entity';
+import { HistorysBody, IpdServiceType, OpdServiceType, PostHistorysIpdRespont, PostHistorysOpdRespont } from './history-list.entity';
 import { ConnectMophService } from 'src/connect-moph/connect-moph.service';
 
 @Injectable()
@@ -266,4 +266,241 @@ export class HistoryListService {
         return reslut
     }
     //#endregion opd&ipd Services
+
+
+
+    //#region historys
+
+    getHistorys = async (service: HistorysBody) => {
+        switch (service.serviceType) {
+            case 'opd':
+                return await this.getOpdHistory(service)
+
+            case 'ipd':
+                return await this.getIpdHistory(service)
+
+            default:
+                return undefined
+
+        }
+    }
+
+    private getOpdHistory = async (service: HistorysBody) => {
+        const opdServive = await this.finance.t_opd.findMany({
+            select: {
+                hn: true,
+                seq: true,
+                dateopd: true,
+                timeopd: true
+            },
+            where: {
+                dateopd: {
+                    gte: service.startDate,
+                    lte: service.endDate
+                }
+            }
+        })
+
+        const seqs = opdServive.map(opd => opd.seq).reduce((pre: string[], cur) => pre.includes(cur) ? pre : pre.concat(cur), [])
+    
+        const row = Math.ceil(seqs.length / 1000)
+    
+
+        const newseq = []
+
+        let startmin = 0
+        let ennMax = 999
+        let a = 1
+        for (a; a <= row; a++) {
+            console.log({startmin,ennMax});
+            
+            newseq.push(seqs.slice(startmin, ennMax))
+            startmin += 1000
+            ennMax += 1000
+        }
+
+        console.log(newseq.length);
+
+        const getOpdClaimStatus = await this.finance.opd_claim_status.findMany({
+            select: {
+                hn: true,
+                seq: true,
+                opd_claim_date: true,
+                fdh_process_status: true,
+                fdh_status_message: true,
+                fdh_status_message_th: true
+            },
+            where: {
+                fdh_status_message: service.status_process,
+                seq: {
+                    in: seqs
+                }
+            }
+        })
+
+        const getOpdPat = await this.finance.t_pat.findMany({
+            select: {
+                hn: true,
+                title: true,
+                fname: true,
+                lname: true,
+            },
+            where: {
+                hn: {
+                    in: opdServive.map(opd => opd.hn).reduce((pre: string[], cur) => pre.includes(cur) ? pre : pre.concat(cur), [])
+                }
+            }
+        })
+
+        const getOpdIns = await this.finance.t_ins.findMany({
+            where: {
+                seq: {
+                    in: seqs
+                }
+            },
+            select: {
+                seq: true,
+                inscl: true,
+                subinscl: true,
+                subtype: true,
+            }
+        })
+
+        const mergeServives = getOpdClaimStatus.reduce((pre: PostHistorysOpdRespont[], cur) => {
+            const getPat = getOpdPat.find(p => p.hn === cur.hn)
+            const getIns = getOpdIns.find(i => i.seq === cur.seq)
+            const getOpd = opdServive.find(c => c.seq === cur.seq)
+
+            if (pre.map(p => p.seq).includes(cur.seq)) {
+                return pre
+            } else {
+                const setObjHistory: PostHistorysOpdRespont = {
+                    hn: getOpd.hn,
+                    seq: getOpd.seq,
+                    dateopd: getOpd.dateopd,
+                    timeopd: getOpd.timeopd,
+                    opd_claim_date: cur.opd_claim_date,
+                    fdh_process_status: cur?.fdh_process_status,
+                    fdh_status_message: cur?.fdh_status_message,
+                    fdh_status_message_th: cur?.fdh_status_message_th,
+                    title: getPat?.title,
+                    fname: getPat?.fname,
+                    lname: getPat?.lname,
+                    inscl: getIns?.inscl,
+                    subinscl: getIns?.subinscl,
+                    subtype: getIns?.subtype,
+                }
+                return pre.concat(setObjHistory)
+            }
+        }, [])
+
+
+        return mergeServives
+    }
+
+    private getIpdHistory = async (service: HistorysBody) => {
+
+        const getIpdServices = await this.finance.t_ipd.findMany({
+            where: {
+                datedsc: {
+                    gte: service.startDate,
+                    lte: service.endDate
+                }
+            },
+            select: {
+                hn: true,
+                an: true,
+                datedsc: true,
+                timedsc: true
+            }
+        })
+
+
+        const anLists = getIpdServices.map(ipd => ipd.an).reduce((pre: string[], cur) => pre.includes(cur) ? pre : pre.concat(cur), [])
+        const hnList = getIpdServices.map(ipd => ipd.hn).reduce((pre: string[], cur) => pre.includes(cur) ? pre : pre.concat(cur), [])
+
+        const getIpdClaimService = await this.finance.ipd_claim_status.findMany({
+            select: {
+                hn: true,
+                an: true,
+                ipd_claim_date: true,
+                fdh_process_status: true,
+                fdh_status_message: true,
+                fdh_status_message_th: true
+            },
+            where: {
+                fdh_status_message: service.status_process,
+                an: {
+                    in: anLists
+                }
+            }
+        })
+
+
+        const getIpdIns = await this.finance.t_ins.findMany({
+            where: {
+                an: {
+                    in: anLists
+                }
+            },
+            select: {
+                an: true,
+                inscl: true,
+                subinscl: true,
+                subtype: true,
+            }
+        })
+
+        const getIpdPat = await this.finance.t_pat.findMany({
+            where: {
+                hn: { in: hnList }
+            },
+            select: {
+                hn: true,
+                title: true,
+                fname: true,
+                lname: true,
+            }
+        })
+
+        const mergeServives = getIpdClaimService.reduce((pre: PostHistorysIpdRespont[], cur) => {
+            const getPat = getIpdPat.find(p => p.hn === cur.hn)
+            const getIns = getIpdIns.find(i => i.an === cur.an)
+            const getIpd = getIpdServices.find(c => c.an === cur.an)
+
+            if (cur.an === getIpd.an) {
+
+            }
+
+            if (pre.map(ipd => ipd.an).includes(cur.an)) {
+                return pre
+            } else {
+                const setObjHistory: PostHistorysIpdRespont = {
+                    hn: getIpd.hn,
+                    an: getIpd.an,
+                    datedsc: getIpd.datedsc,
+                    timedsc: getIpd.timedsc,
+                    ipd_claim_date: cur.ipd_claim_date,
+                    fdh_process_status: cur?.fdh_process_status,
+                    fdh_status_message: cur?.fdh_status_message,
+                    fdh_status_message_th: cur?.fdh_status_message_th,
+                    title: getPat?.title,
+                    fname: getPat?.fname,
+                    lname: getPat?.lname,
+                    inscl: getIns?.inscl,
+                    subinscl: getIns?.subinscl,
+                    subtype: getIns?.subtype,
+                }
+                return pre.concat(setObjHistory)
+            }
+        }, [])
+
+
+
+        return mergeServives
+    }
+
+    //#endregion historys
+
+
 }

@@ -52,6 +52,7 @@ export class ChtModifyService {
 
     private checkOpdNull = async (seq: string) => {
         const checkOpd = await this.prisma.t_opd.findFirst({ where: { seq: seq } })
+        
         if (checkOpd !== null) {
             return false
         } else {
@@ -59,6 +60,7 @@ export class ChtModifyService {
             return true
         }
     }
+
     private getNewOpdDruCht = async (seq: string, tyepAdp: AdpTypeModel[]) => {
         const getDru = await this.prisma.t_dru.findMany({
             where: {
@@ -139,6 +141,7 @@ export class ChtModifyService {
         })
         const getOpd = await this.prisma.t_opd.findFirst({ where: { seq: seq } })
         const getPat = await this.prisma.t_pat.findFirst({ where: { hn: getOpd.hn } })
+
         const reduceGroup = getAdp.reduce((pre: InitChtModel[], cur) => {
             const objTotal: InitChtModel = {
                 hn: cur.hn,

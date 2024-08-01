@@ -21,7 +21,7 @@ export class Edit16fService {
     });
     const hnList: string[] = []
     const seqList: string[] = []
-    
+
     opd.forEach((i) => {
       if (i.hn !== '') {
         hnList.push(i.hn)
@@ -421,15 +421,64 @@ export class Edit16fService {
               }
             }
 
+
+            const referOpd = async (seq: string) => {
+              const orf = await this.prisma.t_orf.count({
+                where: {
+                  seq: seq
+                }
+              })
+
+              const aer = await this.prisma.t_aer.count({
+                where: {
+                  seq: seq,
+                  oreftype: ''
+                }
+              })
+
+              if (orf > 0 && aer === 0) {
+                await this.prisma.t_orf.deleteMany({
+                  where: {
+                    seq: seq
+                  }
+                })
+              }
+            }
+
+            const referIpd = async (an: string) => {
+              const irf = await this.prisma.t_irf.count({
+                where: {
+                  an: an
+                }
+              })
+
+              const aer = await this.prisma.t_aer.count({
+                where: {
+                  an: an,
+                  oreftype: ''
+                }
+              })
+
+              if (irf > 0 && aer === 0) {
+                await this.prisma.t_irf.deleteMany({
+                  where: {
+                    an: an
+                  }
+                })
+              }
+            }
+
             if (isConditions.seq !== undefined && isConditions.an === undefined) {
               if (isConditions.seq !== '') {
                 delMany(find)
+                referOpd(isConditions.seq)
               }
             }
 
             if (isConditions.an !== undefined && isConditions.seq === undefined) {
               if (isConditions.an !== '') {
                 delMany(find)
+                referIpd(isConditions.an)
               }
             }
 
@@ -447,7 +496,7 @@ export class Edit16fService {
   };
 
   async updateLogOpd(opd) {
-     
+
     const findLog = await this.prisma.opd_claim_status.findMany({
       where: {
         seq: opd.seq

@@ -1,5 +1,5 @@
 import { Body, Controller, Post, Res, UseGuards } from '@nestjs/common';
-import { OpdClaimNumber, IpdClaimNumber, OpdClaimService, IpdClaimService } from './history-list.entity';
+import { OpdClaimNumber, IpdClaimNumber, OpdClaimService, IpdClaimService, HistorysBody } from './history-list.entity';
 import { Response } from 'express';
 import { HistoryListService } from './history-list.service';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
@@ -13,6 +13,8 @@ export class HistoryListController {
     constructor(readonly history: HistoryListService) { }
     @Post('opd-claim-numbers')
     async postOpdClaimHistory(@Body() opdClaimHistory: OpdClaimNumber, @Res() res: Response) {
+        console.log(opdClaimHistory);
+        
         const { startDate, endDate } = opdClaimHistory;
         const getClaimNumbers = await this.history.getOpdClaimHistory(startDate, endDate)
         res.status(200).json(getClaimNumbers)
@@ -32,8 +34,14 @@ export class HistoryListController {
     }
 
     @Post('ipd-claim-service')
-    async postIpdClaimService(@Body() ipdClaimService: IpdClaimService, @Res() res: Response) {       
+    async postIpdClaimService(@Body() ipdClaimService: IpdClaimService, @Res() res: Response) {
         const getIpdClaim = await this.history.historyIpdClaimServices(ipdClaimService)
         res.status(200).json(getIpdClaim)
+    }
+
+    @Post('historys')
+    async postHistorys(@Body() req: HistorysBody, @Res() res: Response) {
+        const getClaimHistorys = await this.history.getHistorys(req)
+        res.status(200).json(getClaimHistorys)
     }
 }
