@@ -13,8 +13,6 @@ export class HistoryListController {
     constructor(readonly history: HistoryListService) { }
     @Post('opd-claim-numbers')
     async postOpdClaimHistory(@Body() opdClaimHistory: OpdClaimNumber, @Res() res: Response) {
-        console.log(opdClaimHistory);
-        
         const { startDate, endDate } = opdClaimHistory;
         const getClaimNumbers = await this.history.getOpdClaimHistory(startDate, endDate)
         res.status(200).json(getClaimNumbers)

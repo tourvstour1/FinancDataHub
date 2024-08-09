@@ -1,4 +1,3 @@
-import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { openAsBlob, readdir, readFileSync } from 'fs';
 import { resolve } from 'path';
@@ -6,7 +5,7 @@ import { PrismaFinance } from 'src/prisma/prisma.service.finanec';
 import { AxiosProviderModel } from 'src/provider/axios.entity';
 import { AxiosProvider } from 'src/provider/axios.provicer';
 
-let tokenStore: {
+const tokenStore: {
   dateAd: Date;
   token: string;
 }[] = [];
@@ -36,7 +35,8 @@ export class ConnectMophService {
     const response = await this.axios.axiosPost(payload)
 
     if (response.status !== 200) {
-   
+      console.log();
+
     } else {
       const item: {
         dateAd: Date;
@@ -69,8 +69,8 @@ export class ConnectMophService {
   };
 
   private getF16 = async (token: string, pathName: string, claimtype: 'ipd' | 'opd',) => {
-    return new Promise((resolves, reject) => {
-      let formData: FormData = new FormData();
+    return new Promise((resolves) => {
+      const formData: FormData = new FormData();
       formData.append('type', 'txt');
 
       const filePath = resolve(__dirname, `../out/${claimtype}/`, pathName);
@@ -87,7 +87,7 @@ export class ConnectMophService {
 
           if (row === files.length) {
             const formDataEntries = [...formData.entries()];
-            const contentLength = formDataEntries.reduce((acc, [key, value]) => {
+            const contentLength = formDataEntries.reduce((acc, [_key, value]) => {
               if (typeof value === 'string') return acc + value.length;
               if (typeof value === 'object') return acc + value.size;
 
@@ -152,7 +152,10 @@ export class ConnectMophService {
             status_code: string,
             opd_claim_number: string,
             staff_number_claim?: string,
-            sent_date: string
+            sent_date: string,
+            fdh_status_message_th: string | null
+            fdh_process_status: string
+            fdh_status_message: string | null
           }[] = []
 
           const dataOpd = readFileSync(`${filePath}/${item}`).toString().split('\n')
@@ -169,7 +172,10 @@ export class ConnectMophService {
                 opd_claim_date: date,
                 status_code: '1',
                 opd_claim_number: claimNumber,
-                sent_date: dateSent
+                sent_date: dateSent,
+                fdh_process_status: '99',
+                fdh_status_message: '',
+                fdh_status_message_th: ''
               })
             }
           })
@@ -205,6 +211,9 @@ export class ConnectMophService {
             ipd_claim_number: string,
             staff_number_claim?: string
             sent_date: string
+            fdh_status_message_th: string | null
+            fdh_process_status: string
+            fdh_status_message: string | null
           }[] = []
 
           const dataIpd = readFileSync(`${filePath}/${item}`).toString().split('\n')
@@ -221,6 +230,9 @@ export class ConnectMophService {
                 status_code: '1',
                 ipd_claim_number: claimNumber,
                 sent_date: dateSent,
+                fdh_process_status: '99',
+                fdh_status_message: '',
+                fdh_status_message_th: ''
               })
             }
           })
@@ -284,7 +296,7 @@ export class ConnectMophService {
         return []
       }
     } catch (err) {
-
+      console.log(err);
     }
   }
 }

@@ -11,6 +11,8 @@ export class CheckErrorService {
   ) { }
 
   async checkMasterItem(tableList: OpdServiceType | IpdServiceType) {
+
+    if (tableList === undefined) { return [] }
     const getCatalog = await this.itemMaster.itemMaster();
     const getCodeErrors = await this.finance.t_code_error.findMany({
       where: {
@@ -21,7 +23,7 @@ export class CheckErrorService {
     const list = Object.keys(tableList);
     const dataError = [];
     list.forEach((tableName) => {
-      let tableError = { [tableName]: [] };
+      const tableError = { [tableName]: [] };
       getCodeErrors.forEach(async (t_error) => {
         if (tableName === t_error.main_table) {
           tableList[tableName].map(async (item: any) => {

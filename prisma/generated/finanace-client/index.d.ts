@@ -154,10 +154,10 @@ export type t_employee = $Result.DefaultSelection<Prisma.$t_employeePayload>
  */
 export type adp_type = $Result.DefaultSelection<Prisma.$adp_typePayload>
 /**
- * Model adp_free_schedule_copy1
+ * Model fdh_claim_status
  * 
  */
-export type adp_free_schedule_copy1 = $Result.DefaultSelection<Prisma.$adp_free_schedule_copy1Payload>
+export type fdh_claim_status = $Result.DefaultSelection<Prisma.$fdh_claim_statusPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -562,14 +562,14 @@ export class PrismaClient<
   get adp_type(): Prisma.adp_typeDelegate<ExtArgs>;
 
   /**
-   * `prisma.adp_free_schedule_copy1`: Exposes CRUD operations for the **adp_free_schedule_copy1** model.
+   * `prisma.fdh_claim_status`: Exposes CRUD operations for the **fdh_claim_status** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Adp_free_schedule_copy1s
-    * const adp_free_schedule_copy1s = await prisma.adp_free_schedule_copy1.findMany()
+    * // Fetch zero or more Fdh_claim_statuses
+    * const fdh_claim_statuses = await prisma.fdh_claim_status.findMany()
     * ```
     */
-  get adp_free_schedule_copy1(): Prisma.adp_free_schedule_copy1Delegate<ExtArgs>;
+  get fdh_claim_status(): Prisma.fdh_claim_statusDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -1075,7 +1075,7 @@ export namespace Prisma {
     adp_free_schedule: 'adp_free_schedule',
     t_employee: 't_employee',
     adp_type: 'adp_type',
-    adp_free_schedule_copy1: 'adp_free_schedule_copy1'
+    fdh_claim_status: 'fdh_claim_status'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1091,7 +1091,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "t_ins" | "t_pat" | "t_opd" | "t_orf" | "t_odx" | "t_oop" | "t_ipd" | "t_irf" | "t_idx" | "t_iop" | "t_cht" | "t_cha" | "t_aer" | "t_adp" | "t_lvd" | "t_dru" | "t_labfu" | "f_claim_status" | "opd_claim_status" | "ipd_claim_status" | "t_code_error" | "item_group" | "item_main" | "lab_main" | "drug_free_schedule" | "adp_free_schedule" | "t_employee" | "adp_type" | "adp_free_schedule_copy1"
+      modelProps: "t_ins" | "t_pat" | "t_opd" | "t_orf" | "t_odx" | "t_oop" | "t_ipd" | "t_irf" | "t_idx" | "t_iop" | "t_cht" | "t_cha" | "t_aer" | "t_adp" | "t_lvd" | "t_dru" | "t_labfu" | "f_claim_status" | "opd_claim_status" | "ipd_claim_status" | "t_code_error" | "item_group" | "item_main" | "lab_main" | "drug_free_schedule" | "adp_free_schedule" | "t_employee" | "adp_type" | "fdh_claim_status"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -3055,73 +3055,73 @@ export namespace Prisma {
           }
         }
       }
-      adp_free_schedule_copy1: {
-        payload: Prisma.$adp_free_schedule_copy1Payload<ExtArgs>
-        fields: Prisma.adp_free_schedule_copy1FieldRefs
+      fdh_claim_status: {
+        payload: Prisma.$fdh_claim_statusPayload<ExtArgs>
+        fields: Prisma.fdh_claim_statusFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.adp_free_schedule_copy1FindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_copy1Payload> | null
+            args: Prisma.fdh_claim_statusFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fdh_claim_statusPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.adp_free_schedule_copy1FindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_copy1Payload>
+            args: Prisma.fdh_claim_statusFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fdh_claim_statusPayload>
           }
           findFirst: {
-            args: Prisma.adp_free_schedule_copy1FindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_copy1Payload> | null
+            args: Prisma.fdh_claim_statusFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fdh_claim_statusPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.adp_free_schedule_copy1FindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_copy1Payload>
+            args: Prisma.fdh_claim_statusFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fdh_claim_statusPayload>
           }
           findMany: {
-            args: Prisma.adp_free_schedule_copy1FindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_copy1Payload>[]
+            args: Prisma.fdh_claim_statusFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fdh_claim_statusPayload>[]
           }
           create: {
-            args: Prisma.adp_free_schedule_copy1CreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_copy1Payload>
+            args: Prisma.fdh_claim_statusCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fdh_claim_statusPayload>
           }
           createMany: {
-            args: Prisma.adp_free_schedule_copy1CreateManyArgs<ExtArgs>
+            args: Prisma.fdh_claim_statusCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.adp_free_schedule_copy1CreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_copy1Payload>[]
+            args: Prisma.fdh_claim_statusCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fdh_claim_statusPayload>[]
           }
           delete: {
-            args: Prisma.adp_free_schedule_copy1DeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_copy1Payload>
+            args: Prisma.fdh_claim_statusDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fdh_claim_statusPayload>
           }
           update: {
-            args: Prisma.adp_free_schedule_copy1UpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_copy1Payload>
+            args: Prisma.fdh_claim_statusUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fdh_claim_statusPayload>
           }
           deleteMany: {
-            args: Prisma.adp_free_schedule_copy1DeleteManyArgs<ExtArgs>
+            args: Prisma.fdh_claim_statusDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.adp_free_schedule_copy1UpdateManyArgs<ExtArgs>
+            args: Prisma.fdh_claim_statusUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.adp_free_schedule_copy1UpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$adp_free_schedule_copy1Payload>
+            args: Prisma.fdh_claim_statusUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$fdh_claim_statusPayload>
           }
           aggregate: {
-            args: Prisma.Adp_free_schedule_copy1AggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateAdp_free_schedule_copy1>
+            args: Prisma.Fdh_claim_statusAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFdh_claim_status>
           }
           groupBy: {
-            args: Prisma.adp_free_schedule_copy1GroupByArgs<ExtArgs>
-            result: $Utils.Optional<Adp_free_schedule_copy1GroupByOutputType>[]
+            args: Prisma.fdh_claim_statusGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Fdh_claim_statusGroupByOutputType>[]
           }
           count: {
-            args: Prisma.adp_free_schedule_copy1CountArgs<ExtArgs>
-            result: $Utils.Optional<Adp_free_schedule_copy1CountAggregateOutputType> | number
+            args: Prisma.fdh_claim_statusCountArgs<ExtArgs>
+            result: $Utils.Optional<Fdh_claim_statusCountAggregateOutputType> | number
           }
         }
       }
@@ -30350,373 +30350,317 @@ export namespace Prisma {
 
 
   /**
-   * Model adp_free_schedule_copy1
+   * Model fdh_claim_status
    */
 
-  export type AggregateAdp_free_schedule_copy1 = {
-    _count: Adp_free_schedule_copy1CountAggregateOutputType | null
-    _avg: Adp_free_schedule_copy1AvgAggregateOutputType | null
-    _sum: Adp_free_schedule_copy1SumAggregateOutputType | null
-    _min: Adp_free_schedule_copy1MinAggregateOutputType | null
-    _max: Adp_free_schedule_copy1MaxAggregateOutputType | null
+  export type AggregateFdh_claim_status = {
+    _count: Fdh_claim_statusCountAggregateOutputType | null
+    _min: Fdh_claim_statusMinAggregateOutputType | null
+    _max: Fdh_claim_statusMaxAggregateOutputType | null
   }
 
-  export type Adp_free_schedule_copy1AvgAggregateOutputType = {
-    id: number | null
+  export type Fdh_claim_statusMinAggregateOutputType = {
+    id: string | null
+    fdh_number_process: string | null
+    fdh_status_process: string | null
+    fdh_status_process_th: string | null
   }
 
-  export type Adp_free_schedule_copy1SumAggregateOutputType = {
-    id: number | null
+  export type Fdh_claim_statusMaxAggregateOutputType = {
+    id: string | null
+    fdh_number_process: string | null
+    fdh_status_process: string | null
+    fdh_status_process_th: string | null
   }
 
-  export type Adp_free_schedule_copy1MinAggregateOutputType = {
-    item_code: string | null
-    item_name: string | null
-    unit: string | null
-    type: string | null
-    price: string | null
-    id: number | null
-  }
-
-  export type Adp_free_schedule_copy1MaxAggregateOutputType = {
-    item_code: string | null
-    item_name: string | null
-    unit: string | null
-    type: string | null
-    price: string | null
-    id: number | null
-  }
-
-  export type Adp_free_schedule_copy1CountAggregateOutputType = {
-    item_code: number
-    item_name: number
-    unit: number
-    type: number
-    price: number
+  export type Fdh_claim_statusCountAggregateOutputType = {
     id: number
+    fdh_number_process: number
+    fdh_status_process: number
+    fdh_status_process_th: number
     _all: number
   }
 
 
-  export type Adp_free_schedule_copy1AvgAggregateInputType = {
+  export type Fdh_claim_statusMinAggregateInputType = {
     id?: true
+    fdh_number_process?: true
+    fdh_status_process?: true
+    fdh_status_process_th?: true
   }
 
-  export type Adp_free_schedule_copy1SumAggregateInputType = {
+  export type Fdh_claim_statusMaxAggregateInputType = {
     id?: true
+    fdh_number_process?: true
+    fdh_status_process?: true
+    fdh_status_process_th?: true
   }
 
-  export type Adp_free_schedule_copy1MinAggregateInputType = {
-    item_code?: true
-    item_name?: true
-    unit?: true
-    type?: true
-    price?: true
+  export type Fdh_claim_statusCountAggregateInputType = {
     id?: true
-  }
-
-  export type Adp_free_schedule_copy1MaxAggregateInputType = {
-    item_code?: true
-    item_name?: true
-    unit?: true
-    type?: true
-    price?: true
-    id?: true
-  }
-
-  export type Adp_free_schedule_copy1CountAggregateInputType = {
-    item_code?: true
-    item_name?: true
-    unit?: true
-    type?: true
-    price?: true
-    id?: true
+    fdh_number_process?: true
+    fdh_status_process?: true
+    fdh_status_process_th?: true
     _all?: true
   }
 
-  export type Adp_free_schedule_copy1AggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Fdh_claim_statusAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which adp_free_schedule_copy1 to aggregate.
+     * Filter which fdh_claim_status to aggregate.
      */
-    where?: adp_free_schedule_copy1WhereInput
+    where?: fdh_claim_statusWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of adp_free_schedule_copy1s to fetch.
+     * Determine the order of fdh_claim_statuses to fetch.
      */
-    orderBy?: adp_free_schedule_copy1OrderByWithRelationInput | adp_free_schedule_copy1OrderByWithRelationInput[]
+    orderBy?: fdh_claim_statusOrderByWithRelationInput | fdh_claim_statusOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: adp_free_schedule_copy1WhereUniqueInput
+    cursor?: fdh_claim_statusWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` adp_free_schedule_copy1s from the position of the cursor.
+     * Take `±n` fdh_claim_statuses from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` adp_free_schedule_copy1s.
+     * Skip the first `n` fdh_claim_statuses.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned adp_free_schedule_copy1s
+     * Count returned fdh_claim_statuses
     **/
-    _count?: true | Adp_free_schedule_copy1CountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Adp_free_schedule_copy1AvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Adp_free_schedule_copy1SumAggregateInputType
+    _count?: true | Fdh_claim_statusCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: Adp_free_schedule_copy1MinAggregateInputType
+    _min?: Fdh_claim_statusMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: Adp_free_schedule_copy1MaxAggregateInputType
+    _max?: Fdh_claim_statusMaxAggregateInputType
   }
 
-  export type GetAdp_free_schedule_copy1AggregateType<T extends Adp_free_schedule_copy1AggregateArgs> = {
-        [P in keyof T & keyof AggregateAdp_free_schedule_copy1]: P extends '_count' | 'count'
+  export type GetFdh_claim_statusAggregateType<T extends Fdh_claim_statusAggregateArgs> = {
+        [P in keyof T & keyof AggregateFdh_claim_status]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateAdp_free_schedule_copy1[P]>
-      : GetScalarType<T[P], AggregateAdp_free_schedule_copy1[P]>
+        : GetScalarType<T[P], AggregateFdh_claim_status[P]>
+      : GetScalarType<T[P], AggregateFdh_claim_status[P]>
   }
 
 
 
 
-  export type adp_free_schedule_copy1GroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: adp_free_schedule_copy1WhereInput
-    orderBy?: adp_free_schedule_copy1OrderByWithAggregationInput | adp_free_schedule_copy1OrderByWithAggregationInput[]
-    by: Adp_free_schedule_copy1ScalarFieldEnum[] | Adp_free_schedule_copy1ScalarFieldEnum
-    having?: adp_free_schedule_copy1ScalarWhereWithAggregatesInput
+  export type fdh_claim_statusGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: fdh_claim_statusWhereInput
+    orderBy?: fdh_claim_statusOrderByWithAggregationInput | fdh_claim_statusOrderByWithAggregationInput[]
+    by: Fdh_claim_statusScalarFieldEnum[] | Fdh_claim_statusScalarFieldEnum
+    having?: fdh_claim_statusScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: Adp_free_schedule_copy1CountAggregateInputType | true
-    _avg?: Adp_free_schedule_copy1AvgAggregateInputType
-    _sum?: Adp_free_schedule_copy1SumAggregateInputType
-    _min?: Adp_free_schedule_copy1MinAggregateInputType
-    _max?: Adp_free_schedule_copy1MaxAggregateInputType
+    _count?: Fdh_claim_statusCountAggregateInputType | true
+    _min?: Fdh_claim_statusMinAggregateInputType
+    _max?: Fdh_claim_statusMaxAggregateInputType
   }
 
-  export type Adp_free_schedule_copy1GroupByOutputType = {
-    item_code: string
-    item_name: string
-    unit: string
-    type: string
-    price: string
-    id: number
-    _count: Adp_free_schedule_copy1CountAggregateOutputType | null
-    _avg: Adp_free_schedule_copy1AvgAggregateOutputType | null
-    _sum: Adp_free_schedule_copy1SumAggregateOutputType | null
-    _min: Adp_free_schedule_copy1MinAggregateOutputType | null
-    _max: Adp_free_schedule_copy1MaxAggregateOutputType | null
+  export type Fdh_claim_statusGroupByOutputType = {
+    id: string
+    fdh_number_process: string | null
+    fdh_status_process: string | null
+    fdh_status_process_th: string | null
+    _count: Fdh_claim_statusCountAggregateOutputType | null
+    _min: Fdh_claim_statusMinAggregateOutputType | null
+    _max: Fdh_claim_statusMaxAggregateOutputType | null
   }
 
-  type GetAdp_free_schedule_copy1GroupByPayload<T extends adp_free_schedule_copy1GroupByArgs> = Prisma.PrismaPromise<
+  type GetFdh_claim_statusGroupByPayload<T extends fdh_claim_statusGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<Adp_free_schedule_copy1GroupByOutputType, T['by']> &
+      PickEnumerable<Fdh_claim_statusGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof Adp_free_schedule_copy1GroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof Fdh_claim_statusGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], Adp_free_schedule_copy1GroupByOutputType[P]>
-            : GetScalarType<T[P], Adp_free_schedule_copy1GroupByOutputType[P]>
+              : GetScalarType<T[P], Fdh_claim_statusGroupByOutputType[P]>
+            : GetScalarType<T[P], Fdh_claim_statusGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type adp_free_schedule_copy1Select<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    item_code?: boolean
-    item_name?: boolean
-    unit?: boolean
-    type?: boolean
-    price?: boolean
+  export type fdh_claim_statusSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-  }, ExtArgs["result"]["adp_free_schedule_copy1"]>
+    fdh_number_process?: boolean
+    fdh_status_process?: boolean
+    fdh_status_process_th?: boolean
+  }, ExtArgs["result"]["fdh_claim_status"]>
 
-  export type adp_free_schedule_copy1SelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    item_code?: boolean
-    item_name?: boolean
-    unit?: boolean
-    type?: boolean
-    price?: boolean
+  export type fdh_claim_statusSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-  }, ExtArgs["result"]["adp_free_schedule_copy1"]>
+    fdh_number_process?: boolean
+    fdh_status_process?: boolean
+    fdh_status_process_th?: boolean
+  }, ExtArgs["result"]["fdh_claim_status"]>
 
-  export type adp_free_schedule_copy1SelectScalar = {
-    item_code?: boolean
-    item_name?: boolean
-    unit?: boolean
-    type?: boolean
-    price?: boolean
+  export type fdh_claim_statusSelectScalar = {
     id?: boolean
+    fdh_number_process?: boolean
+    fdh_status_process?: boolean
+    fdh_status_process_th?: boolean
   }
 
 
-  export type $adp_free_schedule_copy1Payload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "adp_free_schedule_copy1"
+  export type $fdh_claim_statusPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "fdh_claim_status"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      item_code: string
-      item_name: string
-      unit: string
-      type: string
-      price: string
-      id: number
-    }, ExtArgs["result"]["adp_free_schedule_copy1"]>
+      id: string
+      fdh_number_process: string | null
+      fdh_status_process: string | null
+      fdh_status_process_th: string | null
+    }, ExtArgs["result"]["fdh_claim_status"]>
     composites: {}
   }
 
-  type adp_free_schedule_copy1GetPayload<S extends boolean | null | undefined | adp_free_schedule_copy1DefaultArgs> = $Result.GetResult<Prisma.$adp_free_schedule_copy1Payload, S>
+  type fdh_claim_statusGetPayload<S extends boolean | null | undefined | fdh_claim_statusDefaultArgs> = $Result.GetResult<Prisma.$fdh_claim_statusPayload, S>
 
-  type adp_free_schedule_copy1CountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<adp_free_schedule_copy1FindManyArgs, 'select' | 'include' | 'distinct' | 'relationLoadStrategy'> & {
-      select?: Adp_free_schedule_copy1CountAggregateInputType | true
+  type fdh_claim_statusCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<fdh_claim_statusFindManyArgs, 'select' | 'include' | 'distinct' | 'relationLoadStrategy'> & {
+      select?: Fdh_claim_statusCountAggregateInputType | true
     }
 
-  export interface adp_free_schedule_copy1Delegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['adp_free_schedule_copy1'], meta: { name: 'adp_free_schedule_copy1' } }
+  export interface fdh_claim_statusDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['fdh_claim_status'], meta: { name: 'fdh_claim_status' } }
     /**
-     * Find zero or one Adp_free_schedule_copy1 that matches the filter.
-     * @param {adp_free_schedule_copy1FindUniqueArgs} args - Arguments to find a Adp_free_schedule_copy1
+     * Find zero or one Fdh_claim_status that matches the filter.
+     * @param {fdh_claim_statusFindUniqueArgs} args - Arguments to find a Fdh_claim_status
      * @example
-     * // Get one Adp_free_schedule_copy1
-     * const adp_free_schedule_copy1 = await prisma.adp_free_schedule_copy1.findUnique({
+     * // Get one Fdh_claim_status
+     * const fdh_claim_status = await prisma.fdh_claim_status.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends adp_free_schedule_copy1FindUniqueArgs>(args: SelectSubset<T, adp_free_schedule_copy1FindUniqueArgs<ExtArgs>>): Prisma__adp_free_schedule_copy1Client<$Result.GetResult<Prisma.$adp_free_schedule_copy1Payload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+    findUnique<T extends fdh_claim_statusFindUniqueArgs>(args: SelectSubset<T, fdh_claim_statusFindUniqueArgs<ExtArgs>>): Prisma__fdh_claim_statusClient<$Result.GetResult<Prisma.$fdh_claim_statusPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one Adp_free_schedule_copy1 that matches the filter or throw an error with `error.code='P2025'` 
+     * Find one Fdh_claim_status that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
-     * @param {adp_free_schedule_copy1FindUniqueOrThrowArgs} args - Arguments to find a Adp_free_schedule_copy1
+     * @param {fdh_claim_statusFindUniqueOrThrowArgs} args - Arguments to find a Fdh_claim_status
      * @example
-     * // Get one Adp_free_schedule_copy1
-     * const adp_free_schedule_copy1 = await prisma.adp_free_schedule_copy1.findUniqueOrThrow({
+     * // Get one Fdh_claim_status
+     * const fdh_claim_status = await prisma.fdh_claim_status.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends adp_free_schedule_copy1FindUniqueOrThrowArgs>(args: SelectSubset<T, adp_free_schedule_copy1FindUniqueOrThrowArgs<ExtArgs>>): Prisma__adp_free_schedule_copy1Client<$Result.GetResult<Prisma.$adp_free_schedule_copy1Payload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+    findUniqueOrThrow<T extends fdh_claim_statusFindUniqueOrThrowArgs>(args: SelectSubset<T, fdh_claim_statusFindUniqueOrThrowArgs<ExtArgs>>): Prisma__fdh_claim_statusClient<$Result.GetResult<Prisma.$fdh_claim_statusPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
-     * Find the first Adp_free_schedule_copy1 that matches the filter.
+     * Find the first Fdh_claim_status that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {adp_free_schedule_copy1FindFirstArgs} args - Arguments to find a Adp_free_schedule_copy1
+     * @param {fdh_claim_statusFindFirstArgs} args - Arguments to find a Fdh_claim_status
      * @example
-     * // Get one Adp_free_schedule_copy1
-     * const adp_free_schedule_copy1 = await prisma.adp_free_schedule_copy1.findFirst({
+     * // Get one Fdh_claim_status
+     * const fdh_claim_status = await prisma.fdh_claim_status.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends adp_free_schedule_copy1FindFirstArgs>(args?: SelectSubset<T, adp_free_schedule_copy1FindFirstArgs<ExtArgs>>): Prisma__adp_free_schedule_copy1Client<$Result.GetResult<Prisma.$adp_free_schedule_copy1Payload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+    findFirst<T extends fdh_claim_statusFindFirstArgs>(args?: SelectSubset<T, fdh_claim_statusFindFirstArgs<ExtArgs>>): Prisma__fdh_claim_statusClient<$Result.GetResult<Prisma.$fdh_claim_statusPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
-     * Find the first Adp_free_schedule_copy1 that matches the filter or
+     * Find the first Fdh_claim_status that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {adp_free_schedule_copy1FindFirstOrThrowArgs} args - Arguments to find a Adp_free_schedule_copy1
+     * @param {fdh_claim_statusFindFirstOrThrowArgs} args - Arguments to find a Fdh_claim_status
      * @example
-     * // Get one Adp_free_schedule_copy1
-     * const adp_free_schedule_copy1 = await prisma.adp_free_schedule_copy1.findFirstOrThrow({
+     * // Get one Fdh_claim_status
+     * const fdh_claim_status = await prisma.fdh_claim_status.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends adp_free_schedule_copy1FindFirstOrThrowArgs>(args?: SelectSubset<T, adp_free_schedule_copy1FindFirstOrThrowArgs<ExtArgs>>): Prisma__adp_free_schedule_copy1Client<$Result.GetResult<Prisma.$adp_free_schedule_copy1Payload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+    findFirstOrThrow<T extends fdh_claim_statusFindFirstOrThrowArgs>(args?: SelectSubset<T, fdh_claim_statusFindFirstOrThrowArgs<ExtArgs>>): Prisma__fdh_claim_statusClient<$Result.GetResult<Prisma.$fdh_claim_statusPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
-     * Find zero or more Adp_free_schedule_copy1s that matches the filter.
+     * Find zero or more Fdh_claim_statuses that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {adp_free_schedule_copy1FindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {fdh_claim_statusFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Adp_free_schedule_copy1s
-     * const adp_free_schedule_copy1s = await prisma.adp_free_schedule_copy1.findMany()
+     * // Get all Fdh_claim_statuses
+     * const fdh_claim_statuses = await prisma.fdh_claim_status.findMany()
      * 
-     * // Get first 10 Adp_free_schedule_copy1s
-     * const adp_free_schedule_copy1s = await prisma.adp_free_schedule_copy1.findMany({ take: 10 })
+     * // Get first 10 Fdh_claim_statuses
+     * const fdh_claim_statuses = await prisma.fdh_claim_status.findMany({ take: 10 })
      * 
-     * // Only select the `item_code`
-     * const adp_free_schedule_copy1WithItem_codeOnly = await prisma.adp_free_schedule_copy1.findMany({ select: { item_code: true } })
+     * // Only select the `id`
+     * const fdh_claim_statusWithIdOnly = await prisma.fdh_claim_status.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends adp_free_schedule_copy1FindManyArgs>(args?: SelectSubset<T, adp_free_schedule_copy1FindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$adp_free_schedule_copy1Payload<ExtArgs>, T, "findMany">>
+    findMany<T extends fdh_claim_statusFindManyArgs>(args?: SelectSubset<T, fdh_claim_statusFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$fdh_claim_statusPayload<ExtArgs>, T, "findMany">>
 
     /**
-     * Create a Adp_free_schedule_copy1.
-     * @param {adp_free_schedule_copy1CreateArgs} args - Arguments to create a Adp_free_schedule_copy1.
+     * Create a Fdh_claim_status.
+     * @param {fdh_claim_statusCreateArgs} args - Arguments to create a Fdh_claim_status.
      * @example
-     * // Create one Adp_free_schedule_copy1
-     * const Adp_free_schedule_copy1 = await prisma.adp_free_schedule_copy1.create({
+     * // Create one Fdh_claim_status
+     * const Fdh_claim_status = await prisma.fdh_claim_status.create({
      *   data: {
-     *     // ... data to create a Adp_free_schedule_copy1
+     *     // ... data to create a Fdh_claim_status
      *   }
      * })
      * 
      */
-    create<T extends adp_free_schedule_copy1CreateArgs>(args: SelectSubset<T, adp_free_schedule_copy1CreateArgs<ExtArgs>>): Prisma__adp_free_schedule_copy1Client<$Result.GetResult<Prisma.$adp_free_schedule_copy1Payload<ExtArgs>, T, "create">, never, ExtArgs>
+    create<T extends fdh_claim_statusCreateArgs>(args: SelectSubset<T, fdh_claim_statusCreateArgs<ExtArgs>>): Prisma__fdh_claim_statusClient<$Result.GetResult<Prisma.$fdh_claim_statusPayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
-     * Create many Adp_free_schedule_copy1s.
-     * @param {adp_free_schedule_copy1CreateManyArgs} args - Arguments to create many Adp_free_schedule_copy1s.
+     * Create many Fdh_claim_statuses.
+     * @param {fdh_claim_statusCreateManyArgs} args - Arguments to create many Fdh_claim_statuses.
      * @example
-     * // Create many Adp_free_schedule_copy1s
-     * const adp_free_schedule_copy1 = await prisma.adp_free_schedule_copy1.createMany({
+     * // Create many Fdh_claim_statuses
+     * const fdh_claim_status = await prisma.fdh_claim_status.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends adp_free_schedule_copy1CreateManyArgs>(args?: SelectSubset<T, adp_free_schedule_copy1CreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends fdh_claim_statusCreateManyArgs>(args?: SelectSubset<T, fdh_claim_statusCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Adp_free_schedule_copy1s and returns the data saved in the database.
-     * @param {adp_free_schedule_copy1CreateManyAndReturnArgs} args - Arguments to create many Adp_free_schedule_copy1s.
+     * Create many Fdh_claim_statuses and returns the data saved in the database.
+     * @param {fdh_claim_statusCreateManyAndReturnArgs} args - Arguments to create many Fdh_claim_statuses.
      * @example
-     * // Create many Adp_free_schedule_copy1s
-     * const adp_free_schedule_copy1 = await prisma.adp_free_schedule_copy1.createManyAndReturn({
+     * // Create many Fdh_claim_statuses
+     * const fdh_claim_status = await prisma.fdh_claim_status.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Adp_free_schedule_copy1s and only return the `item_code`
-     * const adp_free_schedule_copy1WithItem_codeOnly = await prisma.adp_free_schedule_copy1.createManyAndReturn({ 
-     *   select: { item_code: true },
+     * // Create many Fdh_claim_statuses and only return the `id`
+     * const fdh_claim_statusWithIdOnly = await prisma.fdh_claim_status.createManyAndReturn({ 
+     *   select: { id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -30725,28 +30669,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends adp_free_schedule_copy1CreateManyAndReturnArgs>(args?: SelectSubset<T, adp_free_schedule_copy1CreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$adp_free_schedule_copy1Payload<ExtArgs>, T, "createManyAndReturn">>
+    createManyAndReturn<T extends fdh_claim_statusCreateManyAndReturnArgs>(args?: SelectSubset<T, fdh_claim_statusCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$fdh_claim_statusPayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
-     * Delete a Adp_free_schedule_copy1.
-     * @param {adp_free_schedule_copy1DeleteArgs} args - Arguments to delete one Adp_free_schedule_copy1.
+     * Delete a Fdh_claim_status.
+     * @param {fdh_claim_statusDeleteArgs} args - Arguments to delete one Fdh_claim_status.
      * @example
-     * // Delete one Adp_free_schedule_copy1
-     * const Adp_free_schedule_copy1 = await prisma.adp_free_schedule_copy1.delete({
+     * // Delete one Fdh_claim_status
+     * const Fdh_claim_status = await prisma.fdh_claim_status.delete({
      *   where: {
-     *     // ... filter to delete one Adp_free_schedule_copy1
+     *     // ... filter to delete one Fdh_claim_status
      *   }
      * })
      * 
      */
-    delete<T extends adp_free_schedule_copy1DeleteArgs>(args: SelectSubset<T, adp_free_schedule_copy1DeleteArgs<ExtArgs>>): Prisma__adp_free_schedule_copy1Client<$Result.GetResult<Prisma.$adp_free_schedule_copy1Payload<ExtArgs>, T, "delete">, never, ExtArgs>
+    delete<T extends fdh_claim_statusDeleteArgs>(args: SelectSubset<T, fdh_claim_statusDeleteArgs<ExtArgs>>): Prisma__fdh_claim_statusClient<$Result.GetResult<Prisma.$fdh_claim_statusPayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
-     * Update one Adp_free_schedule_copy1.
-     * @param {adp_free_schedule_copy1UpdateArgs} args - Arguments to update one Adp_free_schedule_copy1.
+     * Update one Fdh_claim_status.
+     * @param {fdh_claim_statusUpdateArgs} args - Arguments to update one Fdh_claim_status.
      * @example
-     * // Update one Adp_free_schedule_copy1
-     * const adp_free_schedule_copy1 = await prisma.adp_free_schedule_copy1.update({
+     * // Update one Fdh_claim_status
+     * const fdh_claim_status = await prisma.fdh_claim_status.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -30756,30 +30700,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends adp_free_schedule_copy1UpdateArgs>(args: SelectSubset<T, adp_free_schedule_copy1UpdateArgs<ExtArgs>>): Prisma__adp_free_schedule_copy1Client<$Result.GetResult<Prisma.$adp_free_schedule_copy1Payload<ExtArgs>, T, "update">, never, ExtArgs>
+    update<T extends fdh_claim_statusUpdateArgs>(args: SelectSubset<T, fdh_claim_statusUpdateArgs<ExtArgs>>): Prisma__fdh_claim_statusClient<$Result.GetResult<Prisma.$fdh_claim_statusPayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
-     * Delete zero or more Adp_free_schedule_copy1s.
-     * @param {adp_free_schedule_copy1DeleteManyArgs} args - Arguments to filter Adp_free_schedule_copy1s to delete.
+     * Delete zero or more Fdh_claim_statuses.
+     * @param {fdh_claim_statusDeleteManyArgs} args - Arguments to filter Fdh_claim_statuses to delete.
      * @example
-     * // Delete a few Adp_free_schedule_copy1s
-     * const { count } = await prisma.adp_free_schedule_copy1.deleteMany({
+     * // Delete a few Fdh_claim_statuses
+     * const { count } = await prisma.fdh_claim_status.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends adp_free_schedule_copy1DeleteManyArgs>(args?: SelectSubset<T, adp_free_schedule_copy1DeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends fdh_claim_statusDeleteManyArgs>(args?: SelectSubset<T, fdh_claim_statusDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Adp_free_schedule_copy1s.
+     * Update zero or more Fdh_claim_statuses.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {adp_free_schedule_copy1UpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {fdh_claim_statusUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Adp_free_schedule_copy1s
-     * const adp_free_schedule_copy1 = await prisma.adp_free_schedule_copy1.updateMany({
+     * // Update many Fdh_claim_statuses
+     * const fdh_claim_status = await prisma.fdh_claim_status.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -30789,56 +30733,56 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends adp_free_schedule_copy1UpdateManyArgs>(args: SelectSubset<T, adp_free_schedule_copy1UpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends fdh_claim_statusUpdateManyArgs>(args: SelectSubset<T, fdh_claim_statusUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one Adp_free_schedule_copy1.
-     * @param {adp_free_schedule_copy1UpsertArgs} args - Arguments to update or create a Adp_free_schedule_copy1.
+     * Create or update one Fdh_claim_status.
+     * @param {fdh_claim_statusUpsertArgs} args - Arguments to update or create a Fdh_claim_status.
      * @example
-     * // Update or create a Adp_free_schedule_copy1
-     * const adp_free_schedule_copy1 = await prisma.adp_free_schedule_copy1.upsert({
+     * // Update or create a Fdh_claim_status
+     * const fdh_claim_status = await prisma.fdh_claim_status.upsert({
      *   create: {
-     *     // ... data to create a Adp_free_schedule_copy1
+     *     // ... data to create a Fdh_claim_status
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Adp_free_schedule_copy1 we want to update
+     *     // ... the filter for the Fdh_claim_status we want to update
      *   }
      * })
      */
-    upsert<T extends adp_free_schedule_copy1UpsertArgs>(args: SelectSubset<T, adp_free_schedule_copy1UpsertArgs<ExtArgs>>): Prisma__adp_free_schedule_copy1Client<$Result.GetResult<Prisma.$adp_free_schedule_copy1Payload<ExtArgs>, T, "upsert">, never, ExtArgs>
+    upsert<T extends fdh_claim_statusUpsertArgs>(args: SelectSubset<T, fdh_claim_statusUpsertArgs<ExtArgs>>): Prisma__fdh_claim_statusClient<$Result.GetResult<Prisma.$fdh_claim_statusPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
-     * Count the number of Adp_free_schedule_copy1s.
+     * Count the number of Fdh_claim_statuses.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {adp_free_schedule_copy1CountArgs} args - Arguments to filter Adp_free_schedule_copy1s to count.
+     * @param {fdh_claim_statusCountArgs} args - Arguments to filter Fdh_claim_statuses to count.
      * @example
-     * // Count the number of Adp_free_schedule_copy1s
-     * const count = await prisma.adp_free_schedule_copy1.count({
+     * // Count the number of Fdh_claim_statuses
+     * const count = await prisma.fdh_claim_status.count({
      *   where: {
-     *     // ... the filter for the Adp_free_schedule_copy1s we want to count
+     *     // ... the filter for the Fdh_claim_statuses we want to count
      *   }
      * })
     **/
-    count<T extends adp_free_schedule_copy1CountArgs>(
-      args?: Subset<T, adp_free_schedule_copy1CountArgs>,
+    count<T extends fdh_claim_statusCountArgs>(
+      args?: Subset<T, fdh_claim_statusCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], Adp_free_schedule_copy1CountAggregateOutputType>
+          : GetScalarType<T['select'], Fdh_claim_statusCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Adp_free_schedule_copy1.
+     * Allows you to perform aggregations operations on a Fdh_claim_status.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {Adp_free_schedule_copy1AggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {Fdh_claim_statusAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -30858,13 +30802,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends Adp_free_schedule_copy1AggregateArgs>(args: Subset<T, Adp_free_schedule_copy1AggregateArgs>): Prisma.PrismaPromise<GetAdp_free_schedule_copy1AggregateType<T>>
+    aggregate<T extends Fdh_claim_statusAggregateArgs>(args: Subset<T, Fdh_claim_statusAggregateArgs>): Prisma.PrismaPromise<GetFdh_claim_statusAggregateType<T>>
 
     /**
-     * Group by Adp_free_schedule_copy1.
+     * Group by Fdh_claim_status.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {adp_free_schedule_copy1GroupByArgs} args - Group by arguments.
+     * @param {fdh_claim_statusGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -30879,14 +30823,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends adp_free_schedule_copy1GroupByArgs,
+      T extends fdh_claim_statusGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: adp_free_schedule_copy1GroupByArgs['orderBy'] }
-        : { orderBy?: adp_free_schedule_copy1GroupByArgs['orderBy'] },
+        ? { orderBy: fdh_claim_statusGroupByArgs['orderBy'] }
+        : { orderBy?: fdh_claim_statusGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -30935,20 +30879,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, adp_free_schedule_copy1GroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAdp_free_schedule_copy1GroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, fdh_claim_statusGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFdh_claim_statusGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the adp_free_schedule_copy1 model
+   * Fields of the fdh_claim_status model
    */
-  readonly fields: adp_free_schedule_copy1FieldRefs;
+  readonly fields: fdh_claim_statusFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for adp_free_schedule_copy1.
+   * The delegate class that acts as a "Promise-like" for fdh_claim_status.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__adp_free_schedule_copy1Client<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__fdh_claim_statusClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -30976,309 +30920,307 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the adp_free_schedule_copy1 model
+   * Fields of the fdh_claim_status model
    */ 
-  interface adp_free_schedule_copy1FieldRefs {
-    readonly item_code: FieldRef<"adp_free_schedule_copy1", 'String'>
-    readonly item_name: FieldRef<"adp_free_schedule_copy1", 'String'>
-    readonly unit: FieldRef<"adp_free_schedule_copy1", 'String'>
-    readonly type: FieldRef<"adp_free_schedule_copy1", 'String'>
-    readonly price: FieldRef<"adp_free_schedule_copy1", 'String'>
-    readonly id: FieldRef<"adp_free_schedule_copy1", 'Int'>
+  interface fdh_claim_statusFieldRefs {
+    readonly id: FieldRef<"fdh_claim_status", 'String'>
+    readonly fdh_number_process: FieldRef<"fdh_claim_status", 'String'>
+    readonly fdh_status_process: FieldRef<"fdh_claim_status", 'String'>
+    readonly fdh_status_process_th: FieldRef<"fdh_claim_status", 'String'>
   }
     
 
   // Custom InputTypes
   /**
-   * adp_free_schedule_copy1 findUnique
+   * fdh_claim_status findUnique
    */
-  export type adp_free_schedule_copy1FindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type fdh_claim_statusFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the adp_free_schedule_copy1
+     * Select specific fields to fetch from the fdh_claim_status
      */
-    select?: adp_free_schedule_copy1Select<ExtArgs> | null
+    select?: fdh_claim_statusSelect<ExtArgs> | null
     /**
-     * Filter, which adp_free_schedule_copy1 to fetch.
+     * Filter, which fdh_claim_status to fetch.
      */
-    where: adp_free_schedule_copy1WhereUniqueInput
+    where: fdh_claim_statusWhereUniqueInput
     relationLoadStrategy?: RelationLoadStrategy
   }
 
   /**
-   * adp_free_schedule_copy1 findUniqueOrThrow
+   * fdh_claim_status findUniqueOrThrow
    */
-  export type adp_free_schedule_copy1FindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type fdh_claim_statusFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the adp_free_schedule_copy1
+     * Select specific fields to fetch from the fdh_claim_status
      */
-    select?: adp_free_schedule_copy1Select<ExtArgs> | null
+    select?: fdh_claim_statusSelect<ExtArgs> | null
     /**
-     * Filter, which adp_free_schedule_copy1 to fetch.
+     * Filter, which fdh_claim_status to fetch.
      */
-    where: adp_free_schedule_copy1WhereUniqueInput
+    where: fdh_claim_statusWhereUniqueInput
     relationLoadStrategy?: RelationLoadStrategy
   }
 
   /**
-   * adp_free_schedule_copy1 findFirst
+   * fdh_claim_status findFirst
    */
-  export type adp_free_schedule_copy1FindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type fdh_claim_statusFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the adp_free_schedule_copy1
+     * Select specific fields to fetch from the fdh_claim_status
      */
-    select?: adp_free_schedule_copy1Select<ExtArgs> | null
+    select?: fdh_claim_statusSelect<ExtArgs> | null
     /**
-     * Filter, which adp_free_schedule_copy1 to fetch.
+     * Filter, which fdh_claim_status to fetch.
      */
-    where?: adp_free_schedule_copy1WhereInput
+    where?: fdh_claim_statusWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of adp_free_schedule_copy1s to fetch.
+     * Determine the order of fdh_claim_statuses to fetch.
      */
-    orderBy?: adp_free_schedule_copy1OrderByWithRelationInput | adp_free_schedule_copy1OrderByWithRelationInput[]
+    orderBy?: fdh_claim_statusOrderByWithRelationInput | fdh_claim_statusOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for adp_free_schedule_copy1s.
+     * Sets the position for searching for fdh_claim_statuses.
      */
-    cursor?: adp_free_schedule_copy1WhereUniqueInput
+    cursor?: fdh_claim_statusWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` adp_free_schedule_copy1s from the position of the cursor.
+     * Take `±n` fdh_claim_statuses from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` adp_free_schedule_copy1s.
+     * Skip the first `n` fdh_claim_statuses.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of adp_free_schedule_copy1s.
+     * Filter by unique combinations of fdh_claim_statuses.
      */
-    distinct?: Adp_free_schedule_copy1ScalarFieldEnum | Adp_free_schedule_copy1ScalarFieldEnum[]
+    distinct?: Fdh_claim_statusScalarFieldEnum | Fdh_claim_statusScalarFieldEnum[]
     relationLoadStrategy?: RelationLoadStrategy
   }
 
   /**
-   * adp_free_schedule_copy1 findFirstOrThrow
+   * fdh_claim_status findFirstOrThrow
    */
-  export type adp_free_schedule_copy1FindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type fdh_claim_statusFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the adp_free_schedule_copy1
+     * Select specific fields to fetch from the fdh_claim_status
      */
-    select?: adp_free_schedule_copy1Select<ExtArgs> | null
+    select?: fdh_claim_statusSelect<ExtArgs> | null
     /**
-     * Filter, which adp_free_schedule_copy1 to fetch.
+     * Filter, which fdh_claim_status to fetch.
      */
-    where?: adp_free_schedule_copy1WhereInput
+    where?: fdh_claim_statusWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of adp_free_schedule_copy1s to fetch.
+     * Determine the order of fdh_claim_statuses to fetch.
      */
-    orderBy?: adp_free_schedule_copy1OrderByWithRelationInput | adp_free_schedule_copy1OrderByWithRelationInput[]
+    orderBy?: fdh_claim_statusOrderByWithRelationInput | fdh_claim_statusOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for adp_free_schedule_copy1s.
+     * Sets the position for searching for fdh_claim_statuses.
      */
-    cursor?: adp_free_schedule_copy1WhereUniqueInput
+    cursor?: fdh_claim_statusWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` adp_free_schedule_copy1s from the position of the cursor.
+     * Take `±n` fdh_claim_statuses from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` adp_free_schedule_copy1s.
+     * Skip the first `n` fdh_claim_statuses.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of adp_free_schedule_copy1s.
+     * Filter by unique combinations of fdh_claim_statuses.
      */
-    distinct?: Adp_free_schedule_copy1ScalarFieldEnum | Adp_free_schedule_copy1ScalarFieldEnum[]
+    distinct?: Fdh_claim_statusScalarFieldEnum | Fdh_claim_statusScalarFieldEnum[]
     relationLoadStrategy?: RelationLoadStrategy
   }
 
   /**
-   * adp_free_schedule_copy1 findMany
+   * fdh_claim_status findMany
    */
-  export type adp_free_schedule_copy1FindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type fdh_claim_statusFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the adp_free_schedule_copy1
+     * Select specific fields to fetch from the fdh_claim_status
      */
-    select?: adp_free_schedule_copy1Select<ExtArgs> | null
+    select?: fdh_claim_statusSelect<ExtArgs> | null
     /**
-     * Filter, which adp_free_schedule_copy1s to fetch.
+     * Filter, which fdh_claim_statuses to fetch.
      */
-    where?: adp_free_schedule_copy1WhereInput
+    where?: fdh_claim_statusWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of adp_free_schedule_copy1s to fetch.
+     * Determine the order of fdh_claim_statuses to fetch.
      */
-    orderBy?: adp_free_schedule_copy1OrderByWithRelationInput | adp_free_schedule_copy1OrderByWithRelationInput[]
+    orderBy?: fdh_claim_statusOrderByWithRelationInput | fdh_claim_statusOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing adp_free_schedule_copy1s.
+     * Sets the position for listing fdh_claim_statuses.
      */
-    cursor?: adp_free_schedule_copy1WhereUniqueInput
+    cursor?: fdh_claim_statusWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` adp_free_schedule_copy1s from the position of the cursor.
+     * Take `±n` fdh_claim_statuses from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` adp_free_schedule_copy1s.
+     * Skip the first `n` fdh_claim_statuses.
      */
     skip?: number
-    distinct?: Adp_free_schedule_copy1ScalarFieldEnum | Adp_free_schedule_copy1ScalarFieldEnum[]
+    distinct?: Fdh_claim_statusScalarFieldEnum | Fdh_claim_statusScalarFieldEnum[]
     relationLoadStrategy?: RelationLoadStrategy
   }
 
   /**
-   * adp_free_schedule_copy1 create
+   * fdh_claim_status create
    */
-  export type adp_free_schedule_copy1CreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type fdh_claim_statusCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the adp_free_schedule_copy1
+     * Select specific fields to fetch from the fdh_claim_status
      */
-    select?: adp_free_schedule_copy1Select<ExtArgs> | null
+    select?: fdh_claim_statusSelect<ExtArgs> | null
     /**
-     * The data needed to create a adp_free_schedule_copy1.
+     * The data needed to create a fdh_claim_status.
      */
-    data: XOR<adp_free_schedule_copy1CreateInput, adp_free_schedule_copy1UncheckedCreateInput>
+    data: XOR<fdh_claim_statusCreateInput, fdh_claim_statusUncheckedCreateInput>
     relationLoadStrategy?: RelationLoadStrategy
   }
 
   /**
-   * adp_free_schedule_copy1 createMany
+   * fdh_claim_status createMany
    */
-  export type adp_free_schedule_copy1CreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type fdh_claim_statusCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many adp_free_schedule_copy1s.
+     * The data used to create many fdh_claim_statuses.
      */
-    data: adp_free_schedule_copy1CreateManyInput | adp_free_schedule_copy1CreateManyInput[]
+    data: fdh_claim_statusCreateManyInput | fdh_claim_statusCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * adp_free_schedule_copy1 createManyAndReturn
+   * fdh_claim_status createManyAndReturn
    */
-  export type adp_free_schedule_copy1CreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type fdh_claim_statusCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the adp_free_schedule_copy1
+     * Select specific fields to fetch from the fdh_claim_status
      */
-    select?: adp_free_schedule_copy1SelectCreateManyAndReturn<ExtArgs> | null
+    select?: fdh_claim_statusSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * The data used to create many adp_free_schedule_copy1s.
+     * The data used to create many fdh_claim_statuses.
      */
-    data: adp_free_schedule_copy1CreateManyInput | adp_free_schedule_copy1CreateManyInput[]
+    data: fdh_claim_statusCreateManyInput | fdh_claim_statusCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * adp_free_schedule_copy1 update
+   * fdh_claim_status update
    */
-  export type adp_free_schedule_copy1UpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type fdh_claim_statusUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the adp_free_schedule_copy1
+     * Select specific fields to fetch from the fdh_claim_status
      */
-    select?: adp_free_schedule_copy1Select<ExtArgs> | null
+    select?: fdh_claim_statusSelect<ExtArgs> | null
     /**
-     * The data needed to update a adp_free_schedule_copy1.
+     * The data needed to update a fdh_claim_status.
      */
-    data: XOR<adp_free_schedule_copy1UpdateInput, adp_free_schedule_copy1UncheckedUpdateInput>
+    data: XOR<fdh_claim_statusUpdateInput, fdh_claim_statusUncheckedUpdateInput>
     /**
-     * Choose, which adp_free_schedule_copy1 to update.
+     * Choose, which fdh_claim_status to update.
      */
-    where: adp_free_schedule_copy1WhereUniqueInput
+    where: fdh_claim_statusWhereUniqueInput
     relationLoadStrategy?: RelationLoadStrategy
   }
 
   /**
-   * adp_free_schedule_copy1 updateMany
+   * fdh_claim_status updateMany
    */
-  export type adp_free_schedule_copy1UpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type fdh_claim_statusUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update adp_free_schedule_copy1s.
+     * The data used to update fdh_claim_statuses.
      */
-    data: XOR<adp_free_schedule_copy1UpdateManyMutationInput, adp_free_schedule_copy1UncheckedUpdateManyInput>
+    data: XOR<fdh_claim_statusUpdateManyMutationInput, fdh_claim_statusUncheckedUpdateManyInput>
     /**
-     * Filter which adp_free_schedule_copy1s to update
+     * Filter which fdh_claim_statuses to update
      */
-    where?: adp_free_schedule_copy1WhereInput
+    where?: fdh_claim_statusWhereInput
   }
 
   /**
-   * adp_free_schedule_copy1 upsert
+   * fdh_claim_status upsert
    */
-  export type adp_free_schedule_copy1UpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type fdh_claim_statusUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the adp_free_schedule_copy1
+     * Select specific fields to fetch from the fdh_claim_status
      */
-    select?: adp_free_schedule_copy1Select<ExtArgs> | null
+    select?: fdh_claim_statusSelect<ExtArgs> | null
     /**
-     * The filter to search for the adp_free_schedule_copy1 to update in case it exists.
+     * The filter to search for the fdh_claim_status to update in case it exists.
      */
-    where: adp_free_schedule_copy1WhereUniqueInput
+    where: fdh_claim_statusWhereUniqueInput
     /**
-     * In case the adp_free_schedule_copy1 found by the `where` argument doesn't exist, create a new adp_free_schedule_copy1 with this data.
+     * In case the fdh_claim_status found by the `where` argument doesn't exist, create a new fdh_claim_status with this data.
      */
-    create: XOR<adp_free_schedule_copy1CreateInput, adp_free_schedule_copy1UncheckedCreateInput>
+    create: XOR<fdh_claim_statusCreateInput, fdh_claim_statusUncheckedCreateInput>
     /**
-     * In case the adp_free_schedule_copy1 was found with the provided `where` argument, update it with this data.
+     * In case the fdh_claim_status was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<adp_free_schedule_copy1UpdateInput, adp_free_schedule_copy1UncheckedUpdateInput>
+    update: XOR<fdh_claim_statusUpdateInput, fdh_claim_statusUncheckedUpdateInput>
     relationLoadStrategy?: RelationLoadStrategy
   }
 
   /**
-   * adp_free_schedule_copy1 delete
+   * fdh_claim_status delete
    */
-  export type adp_free_schedule_copy1DeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type fdh_claim_statusDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the adp_free_schedule_copy1
+     * Select specific fields to fetch from the fdh_claim_status
      */
-    select?: adp_free_schedule_copy1Select<ExtArgs> | null
+    select?: fdh_claim_statusSelect<ExtArgs> | null
     /**
-     * Filter which adp_free_schedule_copy1 to delete.
+     * Filter which fdh_claim_status to delete.
      */
-    where: adp_free_schedule_copy1WhereUniqueInput
+    where: fdh_claim_statusWhereUniqueInput
     relationLoadStrategy?: RelationLoadStrategy
   }
 
   /**
-   * adp_free_schedule_copy1 deleteMany
+   * fdh_claim_status deleteMany
    */
-  export type adp_free_schedule_copy1DeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type fdh_claim_statusDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which adp_free_schedule_copy1s to delete
+     * Filter which fdh_claim_statuses to delete
      */
-    where?: adp_free_schedule_copy1WhereInput
+    where?: fdh_claim_statusWhereInput
   }
 
   /**
-   * adp_free_schedule_copy1 without action
+   * fdh_claim_status without action
    */
-  export type adp_free_schedule_copy1DefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type fdh_claim_statusDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the adp_free_schedule_copy1
+     * Select specific fields to fetch from the fdh_claim_status
      */
-    select?: adp_free_schedule_copy1Select<ExtArgs> | null
+    select?: fdh_claim_statusSelect<ExtArgs> | null
   }
 
 
@@ -31754,16 +31696,14 @@ export namespace Prisma {
   export type Adp_typeScalarFieldEnum = (typeof Adp_typeScalarFieldEnum)[keyof typeof Adp_typeScalarFieldEnum]
 
 
-  export const Adp_free_schedule_copy1ScalarFieldEnum: {
-    item_code: 'item_code',
-    item_name: 'item_name',
-    unit: 'unit',
-    type: 'type',
-    price: 'price',
-    id: 'id'
+  export const Fdh_claim_statusScalarFieldEnum: {
+    id: 'id',
+    fdh_number_process: 'fdh_number_process',
+    fdh_status_process: 'fdh_status_process',
+    fdh_status_process_th: 'fdh_status_process_th'
   };
 
-  export type Adp_free_schedule_copy1ScalarFieldEnum = (typeof Adp_free_schedule_copy1ScalarFieldEnum)[keyof typeof Adp_free_schedule_copy1ScalarFieldEnum]
+  export type Fdh_claim_statusScalarFieldEnum = (typeof Fdh_claim_statusScalarFieldEnum)[keyof typeof Fdh_claim_statusScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -32217,15 +32157,14 @@ export namespace Prisma {
   export type adp_typeOrderByRelevanceFieldEnum = (typeof adp_typeOrderByRelevanceFieldEnum)[keyof typeof adp_typeOrderByRelevanceFieldEnum]
 
 
-  export const adp_free_schedule_copy1OrderByRelevanceFieldEnum: {
-    item_code: 'item_code',
-    item_name: 'item_name',
-    unit: 'unit',
-    type: 'type',
-    price: 'price'
+  export const fdh_claim_statusOrderByRelevanceFieldEnum: {
+    id: 'id',
+    fdh_number_process: 'fdh_number_process',
+    fdh_status_process: 'fdh_status_process',
+    fdh_status_process_th: 'fdh_status_process_th'
   };
 
-  export type adp_free_schedule_copy1OrderByRelevanceFieldEnum = (typeof adp_free_schedule_copy1OrderByRelevanceFieldEnum)[keyof typeof adp_free_schedule_copy1OrderByRelevanceFieldEnum]
+  export type fdh_claim_statusOrderByRelevanceFieldEnum = (typeof fdh_claim_statusOrderByRelevanceFieldEnum)[keyof typeof fdh_claim_statusOrderByRelevanceFieldEnum]
 
 
   /**
@@ -34498,64 +34437,52 @@ export namespace Prisma {
     adp_hospital_code?: StringNullableWithAggregatesFilter<"adp_type"> | string | null
   }
 
-  export type adp_free_schedule_copy1WhereInput = {
-    AND?: adp_free_schedule_copy1WhereInput | adp_free_schedule_copy1WhereInput[]
-    OR?: adp_free_schedule_copy1WhereInput[]
-    NOT?: adp_free_schedule_copy1WhereInput | adp_free_schedule_copy1WhereInput[]
-    item_code?: StringFilter<"adp_free_schedule_copy1"> | string
-    item_name?: StringFilter<"adp_free_schedule_copy1"> | string
-    unit?: StringFilter<"adp_free_schedule_copy1"> | string
-    type?: StringFilter<"adp_free_schedule_copy1"> | string
-    price?: StringFilter<"adp_free_schedule_copy1"> | string
-    id?: IntFilter<"adp_free_schedule_copy1"> | number
+  export type fdh_claim_statusWhereInput = {
+    AND?: fdh_claim_statusWhereInput | fdh_claim_statusWhereInput[]
+    OR?: fdh_claim_statusWhereInput[]
+    NOT?: fdh_claim_statusWhereInput | fdh_claim_statusWhereInput[]
+    id?: StringFilter<"fdh_claim_status"> | string
+    fdh_number_process?: StringNullableFilter<"fdh_claim_status"> | string | null
+    fdh_status_process?: StringNullableFilter<"fdh_claim_status"> | string | null
+    fdh_status_process_th?: StringNullableFilter<"fdh_claim_status"> | string | null
   }
 
-  export type adp_free_schedule_copy1OrderByWithRelationInput = {
-    item_code?: SortOrder
-    item_name?: SortOrder
-    unit?: SortOrder
-    type?: SortOrder
-    price?: SortOrder
+  export type fdh_claim_statusOrderByWithRelationInput = {
     id?: SortOrder
-    _relevance?: adp_free_schedule_copy1OrderByRelevanceInput
+    fdh_number_process?: SortOrderInput | SortOrder
+    fdh_status_process?: SortOrderInput | SortOrder
+    fdh_status_process_th?: SortOrderInput | SortOrder
+    _relevance?: fdh_claim_statusOrderByRelevanceInput
   }
 
-  export type adp_free_schedule_copy1WhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: adp_free_schedule_copy1WhereInput | adp_free_schedule_copy1WhereInput[]
-    OR?: adp_free_schedule_copy1WhereInput[]
-    NOT?: adp_free_schedule_copy1WhereInput | adp_free_schedule_copy1WhereInput[]
-    item_code?: StringFilter<"adp_free_schedule_copy1"> | string
-    item_name?: StringFilter<"adp_free_schedule_copy1"> | string
-    unit?: StringFilter<"adp_free_schedule_copy1"> | string
-    type?: StringFilter<"adp_free_schedule_copy1"> | string
-    price?: StringFilter<"adp_free_schedule_copy1"> | string
+  export type fdh_claim_statusWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: fdh_claim_statusWhereInput | fdh_claim_statusWhereInput[]
+    OR?: fdh_claim_statusWhereInput[]
+    NOT?: fdh_claim_statusWhereInput | fdh_claim_statusWhereInput[]
+    fdh_number_process?: StringNullableFilter<"fdh_claim_status"> | string | null
+    fdh_status_process?: StringNullableFilter<"fdh_claim_status"> | string | null
+    fdh_status_process_th?: StringNullableFilter<"fdh_claim_status"> | string | null
   }, "id">
 
-  export type adp_free_schedule_copy1OrderByWithAggregationInput = {
-    item_code?: SortOrder
-    item_name?: SortOrder
-    unit?: SortOrder
-    type?: SortOrder
-    price?: SortOrder
+  export type fdh_claim_statusOrderByWithAggregationInput = {
     id?: SortOrder
-    _count?: adp_free_schedule_copy1CountOrderByAggregateInput
-    _avg?: adp_free_schedule_copy1AvgOrderByAggregateInput
-    _max?: adp_free_schedule_copy1MaxOrderByAggregateInput
-    _min?: adp_free_schedule_copy1MinOrderByAggregateInput
-    _sum?: adp_free_schedule_copy1SumOrderByAggregateInput
+    fdh_number_process?: SortOrderInput | SortOrder
+    fdh_status_process?: SortOrderInput | SortOrder
+    fdh_status_process_th?: SortOrderInput | SortOrder
+    _count?: fdh_claim_statusCountOrderByAggregateInput
+    _max?: fdh_claim_statusMaxOrderByAggregateInput
+    _min?: fdh_claim_statusMinOrderByAggregateInput
   }
 
-  export type adp_free_schedule_copy1ScalarWhereWithAggregatesInput = {
-    AND?: adp_free_schedule_copy1ScalarWhereWithAggregatesInput | adp_free_schedule_copy1ScalarWhereWithAggregatesInput[]
-    OR?: adp_free_schedule_copy1ScalarWhereWithAggregatesInput[]
-    NOT?: adp_free_schedule_copy1ScalarWhereWithAggregatesInput | adp_free_schedule_copy1ScalarWhereWithAggregatesInput[]
-    item_code?: StringWithAggregatesFilter<"adp_free_schedule_copy1"> | string
-    item_name?: StringWithAggregatesFilter<"adp_free_schedule_copy1"> | string
-    unit?: StringWithAggregatesFilter<"adp_free_schedule_copy1"> | string
-    type?: StringWithAggregatesFilter<"adp_free_schedule_copy1"> | string
-    price?: StringWithAggregatesFilter<"adp_free_schedule_copy1"> | string
-    id?: IntWithAggregatesFilter<"adp_free_schedule_copy1"> | number
+  export type fdh_claim_statusScalarWhereWithAggregatesInput = {
+    AND?: fdh_claim_statusScalarWhereWithAggregatesInput | fdh_claim_statusScalarWhereWithAggregatesInput[]
+    OR?: fdh_claim_statusScalarWhereWithAggregatesInput[]
+    NOT?: fdh_claim_statusScalarWhereWithAggregatesInput | fdh_claim_statusScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"fdh_claim_status"> | string
+    fdh_number_process?: StringNullableWithAggregatesFilter<"fdh_claim_status"> | string | null
+    fdh_status_process?: StringNullableWithAggregatesFilter<"fdh_claim_status"> | string | null
+    fdh_status_process_th?: StringNullableWithAggregatesFilter<"fdh_claim_status"> | string | null
   }
 
   export type t_insCreateInput = {
@@ -37117,67 +37044,53 @@ export namespace Prisma {
     adp_hospital_code?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type adp_free_schedule_copy1CreateInput = {
-    item_code: string
-    item_name: string
-    unit: string
-    type: string
-    price: string
-    id: number
+  export type fdh_claim_statusCreateInput = {
+    id: string
+    fdh_number_process?: string | null
+    fdh_status_process?: string | null
+    fdh_status_process_th?: string | null
   }
 
-  export type adp_free_schedule_copy1UncheckedCreateInput = {
-    item_code: string
-    item_name: string
-    unit: string
-    type: string
-    price: string
-    id: number
+  export type fdh_claim_statusUncheckedCreateInput = {
+    id: string
+    fdh_number_process?: string | null
+    fdh_status_process?: string | null
+    fdh_status_process_th?: string | null
   }
 
-  export type adp_free_schedule_copy1UpdateInput = {
-    item_code?: StringFieldUpdateOperationsInput | string
-    item_name?: StringFieldUpdateOperationsInput | string
-    unit?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    price?: StringFieldUpdateOperationsInput | string
-    id?: IntFieldUpdateOperationsInput | number
+  export type fdh_claim_statusUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fdh_number_process?: NullableStringFieldUpdateOperationsInput | string | null
+    fdh_status_process?: NullableStringFieldUpdateOperationsInput | string | null
+    fdh_status_process_th?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type adp_free_schedule_copy1UncheckedUpdateInput = {
-    item_code?: StringFieldUpdateOperationsInput | string
-    item_name?: StringFieldUpdateOperationsInput | string
-    unit?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    price?: StringFieldUpdateOperationsInput | string
-    id?: IntFieldUpdateOperationsInput | number
+  export type fdh_claim_statusUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fdh_number_process?: NullableStringFieldUpdateOperationsInput | string | null
+    fdh_status_process?: NullableStringFieldUpdateOperationsInput | string | null
+    fdh_status_process_th?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type adp_free_schedule_copy1CreateManyInput = {
-    item_code: string
-    item_name: string
-    unit: string
-    type: string
-    price: string
-    id: number
+  export type fdh_claim_statusCreateManyInput = {
+    id: string
+    fdh_number_process?: string | null
+    fdh_status_process?: string | null
+    fdh_status_process_th?: string | null
   }
 
-  export type adp_free_schedule_copy1UpdateManyMutationInput = {
-    item_code?: StringFieldUpdateOperationsInput | string
-    item_name?: StringFieldUpdateOperationsInput | string
-    unit?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    price?: StringFieldUpdateOperationsInput | string
-    id?: IntFieldUpdateOperationsInput | number
+  export type fdh_claim_statusUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fdh_number_process?: NullableStringFieldUpdateOperationsInput | string | null
+    fdh_status_process?: NullableStringFieldUpdateOperationsInput | string | null
+    fdh_status_process_th?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type adp_free_schedule_copy1UncheckedUpdateManyInput = {
-    item_code?: StringFieldUpdateOperationsInput | string
-    item_name?: StringFieldUpdateOperationsInput | string
-    unit?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    price?: StringFieldUpdateOperationsInput | string
-    id?: IntFieldUpdateOperationsInput | number
+  export type fdh_claim_statusUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fdh_number_process?: NullableStringFieldUpdateOperationsInput | string | null
+    fdh_status_process?: NullableStringFieldUpdateOperationsInput | string | null
+    fdh_status_process_th?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -38666,45 +38579,31 @@ export namespace Prisma {
     adp_type_number?: SortOrder
   }
 
-  export type adp_free_schedule_copy1OrderByRelevanceInput = {
-    fields: adp_free_schedule_copy1OrderByRelevanceFieldEnum | adp_free_schedule_copy1OrderByRelevanceFieldEnum[]
+  export type fdh_claim_statusOrderByRelevanceInput = {
+    fields: fdh_claim_statusOrderByRelevanceFieldEnum | fdh_claim_statusOrderByRelevanceFieldEnum[]
     sort: SortOrder
     search: string
   }
 
-  export type adp_free_schedule_copy1CountOrderByAggregateInput = {
-    item_code?: SortOrder
-    item_name?: SortOrder
-    unit?: SortOrder
-    type?: SortOrder
-    price?: SortOrder
+  export type fdh_claim_statusCountOrderByAggregateInput = {
     id?: SortOrder
+    fdh_number_process?: SortOrder
+    fdh_status_process?: SortOrder
+    fdh_status_process_th?: SortOrder
   }
 
-  export type adp_free_schedule_copy1AvgOrderByAggregateInput = {
+  export type fdh_claim_statusMaxOrderByAggregateInput = {
     id?: SortOrder
+    fdh_number_process?: SortOrder
+    fdh_status_process?: SortOrder
+    fdh_status_process_th?: SortOrder
   }
 
-  export type adp_free_schedule_copy1MaxOrderByAggregateInput = {
-    item_code?: SortOrder
-    item_name?: SortOrder
-    unit?: SortOrder
-    type?: SortOrder
-    price?: SortOrder
+  export type fdh_claim_statusMinOrderByAggregateInput = {
     id?: SortOrder
-  }
-
-  export type adp_free_schedule_copy1MinOrderByAggregateInput = {
-    item_code?: SortOrder
-    item_name?: SortOrder
-    unit?: SortOrder
-    type?: SortOrder
-    price?: SortOrder
-    id?: SortOrder
-  }
-
-  export type adp_free_schedule_copy1SumOrderByAggregateInput = {
-    id?: SortOrder
+    fdh_number_process?: SortOrder
+    fdh_status_process?: SortOrder
+    fdh_status_process_th?: SortOrder
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -39438,9 +39337,9 @@ export namespace Prisma {
      */
     export type adp_typeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = adp_typeDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use adp_free_schedule_copy1DefaultArgs instead
+     * @deprecated Use fdh_claim_statusDefaultArgs instead
      */
-    export type adp_free_schedule_copy1Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = adp_free_schedule_copy1DefaultArgs<ExtArgs>
+    export type fdh_claim_statusArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = fdh_claim_statusDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

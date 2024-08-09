@@ -6,8 +6,12 @@ import { IpdResponstModel, IpdSearchModel, OpdResponstModel, OpdSearchModel } fr
 export class WorkListService {
   constructor(readonly finance: PrismaFinance) { }
   opdListSerive = async (startDate: string, endDate: string, pageSize: number, pageOffset: number): Promise<OpdResponstModel> => {
-    pageSize = pageSize === undefined ? 15 : pageSize === null ? 15 : pageSize
-    pageOffset = pageOffset === undefined ? 1 : pageOffset === null ? 1 : pageOffset
+
+    pageSize = pageSize === undefined ? 15 : pageSize === null ? 15 : pageSize;
+    pageOffset = pageOffset === undefined ? 1 : pageOffset === null ? 1 : pageOffset;
+
+    console.log({ pageSize, pageOffset });
+
     const start = startDate.replaceAll('-', '');
     const end = endDate.replaceAll('-', '');
 
@@ -183,7 +187,7 @@ export class WorkListService {
         Object.assign(item, {
           error: [],
         });
-        for (let e in item) {
+        for (const e in item) {
           if (typeof item[e] === 'bigint') {
             Object.assign(item, {
               [e]: item[e].toString(),
@@ -206,7 +210,7 @@ export class WorkListService {
       where: { hn: { in: ipd.map((i) => i.hn) } },
     }).then((patItem) => {
       return patItem.map((item) => {
-        for (let event in item) {
+        for (const event in item) {
           if (typeof item[event] === 'bigint') {
             Object.assign(item, {
               [event]: item[event].toString(),
@@ -232,7 +236,7 @@ export class WorkListService {
       },
     }).then((itemPat) => {
       return itemPat.map((item) => {
-        for (let event in item) {
+        for (const event in item) {
           if (typeof item[event] === 'bigint') {
             Object.assign(item, {
               [event]: item[event].toString(),
@@ -311,7 +315,7 @@ export class WorkListService {
 
   //#region mapping error
   mapOpdError = (opdList: OpdResponstModel, resultError: any[]): OpdResponstModel => {
-    let opd = opdList.data
+    const opd = opdList.data
     resultError.forEach((f16) => {
       const isFile16 = Object.keys(f16)[0];
       const fileError = f16[isFile16];
@@ -337,7 +341,7 @@ export class WorkListService {
 
   //#region mapping error
   mapIpdError = (IpdList: IpdResponstModel, resultError: any[]): IpdResponstModel => {
-    let ipd = IpdList.data
+    const ipd = IpdList.data
     resultError.forEach((f16) => {
       const isFile16 = Object.keys(f16)[0];
       const fileError = f16[isFile16];
@@ -365,6 +369,7 @@ export class WorkListService {
   opdListTransfer = async (startDate: string, endDate: string, pageSize: number, pageOffset: number): Promise<OpdResponstModel> => {
     pageSize = pageSize === undefined ? 15 : pageSize === null ? 15 : pageSize
     pageOffset = pageOffset === undefined ? 1 : pageOffset === null ? 1 : pageOffset
+    console.log({ pageSize, pageOffset })
     const start = startDate.replaceAll('-', '');
     const end = endDate.replaceAll('-', '');
 
@@ -504,6 +509,7 @@ export class WorkListService {
     pageOffset = pageOffset === undefined ? 0 : pageOffset === null ? 0 : pageOffset
     const start = startDate.replaceAll('-', '');
     const end = endDate.replaceAll('-', '');
+    console.log({ pageSize, pageOffset });
 
     const countIpd = await this.finance.t_ipd.count({
       where: {
@@ -537,7 +543,7 @@ export class WorkListService {
         Object.assign(item, {
           error: [],
         });
-        for (let e in item) {
+        for (const e in item) {
           if (typeof item[e] === 'bigint') {
             Object.assign(item, {
               [e]: item[e].toString(),
@@ -560,7 +566,7 @@ export class WorkListService {
       where: { hn: { in: ipd.map((i) => i.hn) } },
     }).then((patItem) => {
       return patItem.map((item) => {
-        for (let event in item) {
+        for (const event in item) {
           if (typeof item[event] === 'bigint') {
             Object.assign(item, {
               [event]: item[event].toString(),
@@ -587,7 +593,7 @@ export class WorkListService {
       },
     }).then((itemPat) => {
       return itemPat.map((item) => {
-        for (let event in item) {
+        for (const event in item) {
           if (typeof item[event] === 'bigint') {
             Object.assign(item, {
               [event]: item[event].toString(),

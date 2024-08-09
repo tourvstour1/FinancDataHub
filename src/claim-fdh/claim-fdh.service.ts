@@ -9,157 +9,162 @@ export class ClaimFdhService {
   constructor(readonly prisma: PrismaFinance, readonly conn: ConnectMophService) { }
 
   toTextIpd = async (table: IpdClaimType) => {
-    return new Promise(async (resolves, reject) => {
-      const directory = resolve(__dirname, '../../out/ipd/');
-      const rep = new Date()
-        .toLocaleDateString('th', {
-          year: 'numeric',
-          month: '2-digit',
-          day: '2-digit',
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit',
-        })
-        .replaceAll('/', '')
-        .replaceAll(':', '')
-        .replaceAll(' ', '');
+    return await new Promise((resolves, reject) => {
+      (async () => {
+        const directory = resolve(__dirname, '../../out/ipd/');
+        const rep = new Date()
+          .toLocaleDateString('th', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+          })
+          .replaceAll('/', '')
+          .replaceAll(':', '')
+          .replaceAll(' ', '');
 
-      const pathName = directory + '/' + 'ipd' + rep;
-      if (!existsSync(pathName)) {
-        mkdirSync(pathName);
-      }
-
-      const rowMax = Object.keys(table).length;
-      let rowCount = 0;
-      for (let f in table) {
-        try {
-          if (table[f].length > 0) {
-            const fileName = f.toUpperCase() + '.txt';
-            const out = join(pathName, fileName);
-            const setHead = [];
-
-            for (let head in table[f][0]) {
-              if (head !== 'id') {
-                if (head === 'dcip_e_screen') {
-                  setHead.push('DCIP/E_screen');
-                } else {
-                  setHead.push(head.toUpperCase());
-                }
-              }
-            }
-            const makeHead = setHead.join('|');
-
-            const dataValue = [];
-            table[f].map((data: any) => {
-              const isList = [];
-              for (let value in data) {
-                if (value !== 'id') {
-                  isList.push(data[value]);
-                }
-              }
-              dataValue.push(isList.join('|'));
-            });
-            const content = makeHead + '\r\n' + dataValue.join('\r\n');
-            writeFile(out, content, { encoding: 'utf-8' }, async (err) => {
-              if (err) {
-                console.log(err);
-              } else {
-                rowCount += 1;
-
-                if (rowMax === rowCount) {
-                  resolves(await this.conn.sentToClaim(pathName, 'ipd'));
-                }
-              }
-            });
-          } else {
-            rowCount += 1;
-            if (rowMax === rowCount) {
-              resolves(await this.conn.sentToClaim(pathName, 'ipd'));
-            }
-          }
-        } catch (err) {
-          reject(err);
+        const pathName = directory + '/' + 'ipd' + rep;
+        if (!existsSync(pathName)) {
+          mkdirSync(pathName);
         }
-      }
+
+        const rowMax = Object.keys(table).length;
+        let rowCount = 0;
+        for (const f in table) {
+          try {
+            if (table[f].length > 0) {
+              const fileName = f.toUpperCase() + '.txt';
+              const out = join(pathName, fileName);
+              const setHead = [];
+
+              for (const head in table[f][0]) {
+                if (head !== 'id') {
+                  if (head === 'dcip_e_screen') {
+                    setHead.push('DCIP/E_screen');
+                  } else {
+                    setHead.push(head.toUpperCase());
+                  }
+                }
+              }
+              const makeHead = setHead.join('|');
+
+              const dataValue = [];
+              table[f].map((data: any) => {
+                const isList = [];
+                for (const value in data) {
+                  if (value !== 'id') {
+                    isList.push(data[value]);
+                  }
+                }
+                dataValue.push(isList.join('|'));
+              });
+              const content = makeHead + '\r\n' + dataValue.join('\r\n');
+              writeFile(out, content, { encoding: 'utf-8' }, async (err) => {
+                if (err) {
+                  console.log(err);
+                } else {
+                  rowCount += 1;
+
+                  if (rowMax === rowCount) {
+                    resolves(await this.conn.sentToClaim(pathName, 'ipd'));
+                  }
+                }
+              });
+            } else {
+              rowCount += 1;
+              if (rowMax === rowCount) {
+                resolves(await this.conn.sentToClaim(pathName, 'ipd'));
+              }
+            }
+          } catch (err) {
+            reject(err);
+          }
+        }
+      })()
+
     });
   };
 
   toTextOpd = async (table: OpdClaimTyep) => {
-    return new Promise(async (resolves, reject) => {
-      const directory = resolve(__dirname, '../../out/opd');
-      const rep = new Date()
-        .toLocaleDateString('th', {
-          year: 'numeric',
-          month: '2-digit',
-          day: '2-digit',
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit',
-        })
-        .replaceAll('/', '')
-        .replaceAll(':', '')
-        .replaceAll(' ', '');
+    return new Promise((resolves, reject) => {
+      (async () => {
+        const directory = resolve(__dirname, '../../out/opd');
+        const rep = new Date()
+          .toLocaleDateString('th', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+          })
+          .replaceAll('/', '')
+          .replaceAll(':', '')
+          .replaceAll(' ', '');
 
-      const pathName = directory + '/' + 'opd' + rep;
+        const pathName = directory + '/' + 'opd' + rep;
 
-      if (!existsSync(pathName)) {
-        mkdirSync(pathName);
-      }
-
-      const rowMax = Object.keys(table).length;
-      let rowCount = 0;
-      for (let f in table) {
-        try {
-          if (table[f].length > 0) {
-            const fileName = f.toUpperCase() + '.txt';
-            const out = join(pathName, fileName);
-            const setHead = [];
-
-            for (let head in table[f][0]) {
-              if (head !== 'id') {
-                if (head === 'dcip_e_screen') {
-                  setHead.push('DCIP/E_screen');
-                } else {
-                  setHead.push(head.toUpperCase());
-                }
-              }
-            }
-            const makeHead = setHead.join('|');
-
-            const dataValue = [];
-            table[f].map((data: any) => {
-              const isList = [];
-              for (let value in data) {
-                if (value !== 'id') {
-                  isList.push(data[value]);
-                }
-              }
-              dataValue.push(isList.join('|'));
-            });
-
-            const content = makeHead + '\r\n' + dataValue.join('\r\n');
-
-            writeFile(out, content, { encoding: 'utf-8' }, async (err) => {
-              if (err) {
-                console.log(err);
-              } else {
-                rowCount += 1;
-                if (rowMax === rowCount) {
-                  //  console.log(table);
-                  resolves(await this.conn.sentToClaim(pathName, 'opd'));
-                }
-              }
-            });
-          } else {
-            rowCount += 1;
-            if (rowMax === rowCount) {
-              resolves(await this.conn.sentToClaim(pathName, 'ipd'));
-            }
-          }
-        } catch (err) {
-          reject(err);
+        if (!existsSync(pathName)) {
+          mkdirSync(pathName);
         }
-      }
+        const rowMax = Object.keys(table).length;
+        let rowCount = 0;
+        for (const f in table) {
+          try {
+            if (table[f].length > 0) {
+              const fileName = f.toUpperCase() + '.txt';
+              const out = join(pathName, fileName);
+              const setHead = [];
+
+              for (const head in table[f][0]) {
+                if (head !== 'id') {
+                  if (head === 'dcip_e_screen') {
+                    setHead.push('DCIP/E_screen');
+                  } else {
+                    setHead.push(head.toUpperCase());
+                  }
+                }
+              }
+              const makeHead = setHead.join('|');
+
+              const dataValue = [];
+              table[f].map((data: any) => {
+                const isList = [];
+                for (const value in data) {
+                  if (value !== 'id') {
+                    isList.push(data[value]);
+                  }
+                }
+                dataValue.push(isList.join('|'));
+              });
+
+              const content = makeHead + '\r\n' + dataValue.join('\r\n');
+
+              writeFile(out, content, { encoding: 'utf-8' }, async (err) => {
+                if (err) {
+                  console.log(err);
+                } else {
+                  rowCount += 1;
+                  if (rowMax === rowCount) {
+                    //  console.log(table);
+                    resolves(await this.conn.sentToClaim(pathName, 'opd'));
+                  }
+                }
+              });
+            } else {
+              rowCount += 1;
+              if (rowMax === rowCount) {
+                resolves(await this.conn.sentToClaim(pathName, 'ipd'));
+              }
+            }
+          } catch (err) {
+            reject(err);
+          }
+        }
+      })()
+
     });
   };
 
@@ -180,7 +185,7 @@ export class ClaimFdhService {
     ];
     // console.log(listSeq);
 
-    return await new Promise(async (resolve, reject) => {
+    return await new Promise((resolve, _reject) => {
       const resultOpd: OpdClaimTyep = {
         adp: [],
         aer: [],
@@ -267,7 +272,7 @@ export class ClaimFdhService {
       't_lvd'
     ];
 
-    return await new Promise(async (resolve, reject) => {
+    return await new Promise((resolve, _reject) => {
       const resultIpd: IpdClaimType = {
         adp: [],
         aer: [],

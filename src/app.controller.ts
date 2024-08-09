@@ -1,8 +1,6 @@
 import { Controller, Get, Res } from '@nestjs/common';
 import { Response } from 'express';
-import { join, resolve } from 'path';
-
-import { readdir, readFileSync } from 'fs';
+import { join } from 'path';
 import { ScheduleService } from './schedule/schedule.service';
 
 

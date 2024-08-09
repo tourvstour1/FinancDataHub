@@ -86,4 +86,14 @@ export class CatalogsService {
       take: 20
     });
   }
+
+  async financeClaimStatus() {
+    return await this.finance.fdh_claim_status.findMany({
+      select: {
+        fdh_number_process: true,
+        fdh_status_process: true,
+        fdh_status_process_th: true
+      }
+    })
+  }
 }

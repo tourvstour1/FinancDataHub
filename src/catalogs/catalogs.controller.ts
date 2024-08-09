@@ -19,6 +19,12 @@ export class CatalogsController {
     res.status(200).json(reslut);
   }
 
+  @Get('claim-status')
+  async getFinanceClaimStatus(@Res() res: Response) {
+    const result = await this.cattalog.financeClaimStatus()
+    res.status(200).json(result)
+  }
+
   @Post('free-schedule-drug')
   async DrugFreeSchedule(@Body() drugKeyWord: DrugBody, @Res() res: Response) {
 

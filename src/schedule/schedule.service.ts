@@ -35,7 +35,7 @@ export class ScheduleService {
             },
         })
 
-        for (let opd in getSeq) {
+        for (const opd in getSeq) {
             const hn = getSeq[opd].hn
             const vn = getSeq[opd].seq
             const respons = await this.fdh.getResponstStatus(hn, '', vn)
@@ -58,11 +58,11 @@ export class ScheduleService {
                             fdh_status_message_th: messageThai
                         }
                     })
-                        .then(res => {
+                        .then(_res => {
                             console.log("OPD." + (+opd + 1) + "/" + getSeq.length + " update hn/vn: " + hn + '/' + vn + "update: " + processStatus + " | " + messageStatus + ' | ' + messageThai);
 
                         })
-                        .catch(err => {
+                        .catch(_err => {
                             console.log(hn + '/' + vn + "update err");
                         })
                 }
@@ -86,12 +86,11 @@ export class ScheduleService {
             },
         })
 
-
-        for (let ipd in getAn) {
+        for (const ipd in getAn) {
             const hn = getAn[ipd].hn
             const vn = getAn[ipd].an
-
             const respons = await this.fdh.getResponstStatus(hn, vn, '')
+
             if (respons !== undefined) {
                 const checkData = respons?.data
                 if (checkData !== undefined) {
@@ -109,9 +108,9 @@ export class ScheduleService {
                             fdh_status_message: messageStatus,
                             fdh_status_message_th: messageThai
                         }
-                    }).then(res => {
+                    }).then(_res => {
                         console.log("IPD." + (+ipd + 1) + "/" + getAn.length + " update hn/vn: " + hn + '/' + vn + "update: " + processStatus + " | " + messageStatus + ' | ' + messageThai);
-                    }).catch(err => {
+                    }).catch(_err => {
                         console.log(hn + '/' + vn + "update err");
                     })
                 }

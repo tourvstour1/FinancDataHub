@@ -33,7 +33,7 @@ export class Edit16fController {
     const an = body.an
     await this.modifyCht.ipdModifyCht([an])
     const data = await this.getServie.getWithAn([an]);
-    const error = await this.getError.checkMasterItem(data);;
+    const error = await this.getError.checkMasterItem(data);
     res.status(200).json({ data, error });
   }
 

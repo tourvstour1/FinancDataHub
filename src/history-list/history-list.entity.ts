@@ -36,7 +36,7 @@ export class HistorysBody {
     endDate: string
 
     @ApiProperty()
-    status_process: string
+    statusProcess: string
 }
 
 export interface PostHistorysOpdRespont {

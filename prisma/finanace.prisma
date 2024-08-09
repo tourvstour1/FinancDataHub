@@ -454,13 +454,11 @@ model adp_type {
   @@schema("master_items")
 }
 
-model adp_free_schedule_copy1 {
-  item_code String
-  item_name String
-  unit      String
-  type      String
-  price     String
-  id        Int    @id(map: "adp_free_schedule_copy1_pkey1")
+model fdh_claim_status {
+  id                    String  @id
+  fdh_number_process    String?
+  fdh_status_process    String?
+  fdh_status_process_th String?
 
   @@schema("master_items")
 }

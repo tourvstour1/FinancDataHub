@@ -4,7 +4,7 @@ export class ApiResponst {
     @ApiProperty()
     description: string
     @ApiProperty()
-    data?: Array<Object>
+    data?: Array<object>
     @ApiProperty()
     status: number
 }

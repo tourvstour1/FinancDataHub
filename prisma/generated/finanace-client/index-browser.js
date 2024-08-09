@@ -490,13 +490,11 @@ exports.Prisma.Adp_typeScalarFieldEnum = {
   adp_hospital_code: 'adp_hospital_code'
 };
 
-exports.Prisma.Adp_free_schedule_copy1ScalarFieldEnum = {
-  item_code: 'item_code',
-  item_name: 'item_name',
-  unit: 'unit',
-  type: 'type',
-  price: 'price',
-  id: 'id'
+exports.Prisma.Fdh_claim_statusScalarFieldEnum = {
+  id: 'id',
+  fdh_number_process: 'fdh_number_process',
+  fdh_status_process: 'fdh_status_process',
+  fdh_status_process_th: 'fdh_status_process_th'
 };
 
 exports.Prisma.SortOrder = {
@@ -863,12 +861,11 @@ exports.Prisma.adp_typeOrderByRelevanceFieldEnum = {
   adp_hospital_code: 'adp_hospital_code'
 };
 
-exports.Prisma.adp_free_schedule_copy1OrderByRelevanceFieldEnum = {
-  item_code: 'item_code',
-  item_name: 'item_name',
-  unit: 'unit',
-  type: 'type',
-  price: 'price'
+exports.Prisma.fdh_claim_statusOrderByRelevanceFieldEnum = {
+  id: 'id',
+  fdh_number_process: 'fdh_number_process',
+  fdh_status_process: 'fdh_status_process',
+  fdh_status_process_th: 'fdh_status_process_th'
 };
 
 
@@ -901,7 +898,7 @@ exports.Prisma.ModelName = {
   adp_free_schedule: 'adp_free_schedule',
   t_employee: 't_employee',
   adp_type: 'adp_type',
-  adp_free_schedule_copy1: 'adp_free_schedule_copy1'
+  fdh_claim_status: 'fdh_claim_status'
 };
 
 /**
